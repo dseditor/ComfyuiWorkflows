@@ -1,2 +1,3 @@
 # ComfyuiWorkflows
 My Workflows
+HandFix：修復手指使用，包括SegOpenPose/SegHandRefiner/HandRefinerMask三個流程，提供Mask Preview預覽圖及成果，前兩個部分是Seg出手部區域細化後，再使用ControlNet抓出手指的深度圖或Pose，最後一個則是自己產生蒙版並依蒙版繪製。
