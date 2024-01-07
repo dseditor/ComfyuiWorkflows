@@ -1,86 +1,13 @@
 {
-  "last_node_id": 128,
-  "last_link_id": 271,
+  "last_node_id": 131,
+  "last_link_id": 274,
   "nodes": [
-    {
-      "id": 108,
-      "type": "UltralyticsDetectorProvider",
-      "pos": [
-        1786.2604470007818,
-        -119.78392658360086
-      ],
-      "size": {
-        "0": 226.8000030517578,
-        "1": 80
-      },
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "BBOX_DETECTOR",
-          "type": "BBOX_DETECTOR",
-          "links": [
-            251
-          ],
-          "shape": 3,
-          "label": "BBox檢測"
-        },
-        {
-          "name": "SEGM_DETECTOR",
-          "type": "SEGM_DETECTOR",
-          "links": [
-            239
-          ],
-          "shape": 3,
-          "label": "SEGM檢測",
-          "slot_index": 1
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "UltralyticsDetectorProvider"
-      },
-      "widgets_values": [
-        "bbox/hand_yolov8s.pt"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 119,
-      "type": "MeshGraphormerDepthMapPreprocessorProvider_for_SEGS //Inspire",
-      "pos": [
-        2136.6618044226548,
-        -1.225235177349731
-      ],
-      "size": {
-        "0": 445.20001220703125,
-        "1": 26
-      },
-      "flags": {},
-      "order": 1,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "SEGS_PREPROCESSOR",
-          "type": "SEGS_PREPROCESSOR",
-          "links": [
-            248
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "MeshGraphormerDepthMapPreprocessorProvider_for_SEGS //Inspire"
-      }
-    },
     {
       "id": 93,
       "type": "PreviewImage",
       "pos": [
-        2616,
-        -1202
+        3132,
+        -1176
       ],
       "size": {
         "0": 210,
@@ -89,7 +16,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 23,
+      "order": 24,
       "mode": 0,
       "inputs": [
         {
@@ -106,248 +33,18 @@
       "bgcolor": "#335"
     },
     {
-      "id": 107,
-      "type": "ImpactSimpleDetectorSEGS",
-      "pos": [
-        1783,
-        -515
-      ],
-      "size": {
-        "0": 315,
-        "1": 310
-      },
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "bbox_detector",
-          "type": "BBOX_DETECTOR",
-          "link": 251,
-          "label": "BBox檢測",
-          "slot_index": 0
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 252,
-          "label": "圖形"
-        },
-        {
-          "name": "sam_model_opt",
-          "type": "SAM_MODEL",
-          "link": 238,
-          "label": "SAM模型",
-          "slot_index": 2
-        },
-        {
-          "name": "segm_detector_opt",
-          "type": "SEGM_DETECTOR",
-          "link": 239,
-          "label": "SEGM檢測",
-          "slot_index": 3
-        }
-      ],
-      "outputs": [
-        {
-          "name": "SEGS",
-          "type": "SEGS",
-          "links": [
-            240,
-            255
-          ],
-          "shape": 3,
-          "label": "Seg",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ImpactSimpleDetectorSEGS"
-      },
-      "widgets_values": [
-        0.5,
-        0,
-        3,
-        10,
-        0.5,
-        0,
-        0,
-        0.7,
-        0
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 109,
-      "type": "SAMLoader",
-      "pos": [
-        2117,
-        -329
-      ],
-      "size": {
-        "0": 210,
-        "1": 82
-      },
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "SAM_MODEL",
-          "type": "SAM_MODEL",
-          "links": [
-            238
-          ],
-          "shape": 3,
-          "label": "SAM模型",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "SAMLoader"
-      },
-      "widgets_values": [
-        "sam_vit_b_01ec64.pth",
-        "AUTO"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 94,
+      "id": 123,
       "type": "PreviewImage",
       "pos": [
-        2612,
-        -891
+        2267,
+        451
       ],
       "size": {
         "0": 210,
         "1": 246
       },
       "flags": {},
-      "order": 24,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 207,
-          "label": "圖形"
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "PreviewImage"
-      },
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 117,
-      "type": "ImpactControlNetApplySEGS",
-      "pos": [
-        2081.6618044226548,
-        -168.22523517735002
-      ],
-      "size": {
-        "0": 315,
-        "1": 98
-      },
-      "flags": {},
-      "order": 13,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "segs",
-          "type": "SEGS",
-          "link": 240,
-          "label": "Seg"
-        },
-        {
-          "name": "control_net",
-          "type": "CONTROL_NET",
-          "link": 247,
-          "label": "ControlNet",
-          "slot_index": 1
-        },
-        {
-          "name": "segs_preprocessor",
-          "type": "SEGS_PREPROCESSOR",
-          "link": 248,
-          "label": "Seg預處理",
-          "slot_index": 2
-        }
-      ],
-      "outputs": [
-        {
-          "name": "SEGS",
-          "type": "SEGS",
-          "links": [
-            241
-          ],
-          "shape": 3,
-          "label": "Seg",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ImpactControlNetApplySEGS"
-      },
-      "widgets_values": [
-        1
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 116,
-      "type": "ControlNetLoader",
-      "pos": [
-        1768.6618044226564,
-        30.774764822649583
-      ],
-      "size": {
-        "0": 315,
-        "1": 58
-      },
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "CONTROL_NET",
-          "type": "CONTROL_NET",
-          "links": [
-            247,
-            261
-          ],
-          "shape": 3,
-          "label": "ControlNet",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ControlNetLoader"
-      },
-      "widgets_values": [
-        "control_sd15_inpaint_depth_hand_fp16.safetensors"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 123,
-      "type": "PreviewImage",
-      "pos": [
-        2127,
-        538
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 15,
+      "order": 16,
       "mode": 0,
       "inputs": [
         {
@@ -364,15 +61,15 @@
       "id": 124,
       "type": "VAEEncodeForInpaint",
       "pos": [
-        2099,
-        371
+        2239,
+        284
       ],
       "size": {
         "0": 315,
         "1": 98
       },
       "flags": {},
-      "order": 17,
+      "order": 18,
       "mode": 0,
       "inputs": [
         {
@@ -414,15 +111,15 @@
       "id": 127,
       "type": "VAEDecode",
       "pos": [
-        3115,
-        361
+        3255,
+        274
       ],
       "size": {
         "0": 210,
         "1": 46
       },
       "flags": {},
-      "order": 25,
+      "order": 26,
       "mode": 0,
       "inputs": [
         {
@@ -452,137 +149,18 @@
       }
     },
     {
-      "id": 125,
-      "type": "ControlNetApplyAdvanced",
-      "pos": [
-        2442,
-        396
-      ],
-      "size": {
-        "0": 315,
-        "1": 166
-      },
-      "flags": {},
-      "order": 16,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 262,
-          "slot_index": 0
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 263
-        },
-        {
-          "name": "control_net",
-          "type": "CONTROL_NET",
-          "link": 261
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 260
-        }
-      ],
-      "outputs": [
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "links": [
-            264
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "links": [
-            265
-          ],
-          "shape": 3,
-          "slot_index": 1
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ControlNetApplyAdvanced"
-      },
-      "widgets_values": [
-        0.5,
-        0,
-        1
-      ]
-    },
-    {
-      "id": 122,
-      "type": "MeshGraphormer-DepthMapPreprocessor",
-      "pos": [
-        1752,
-        383
-      ],
-      "size": {
-        "0": 315,
-        "1": 174
-      },
-      "flags": {},
-      "order": 11,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 256
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            257,
-            260
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "INPAINTING_MASK",
-          "type": "MASK",
-          "links": [
-            258
-          ],
-          "shape": 3,
-          "slot_index": 1
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "MeshGraphormer-DepthMapPreprocessor"
-      },
-      "widgets_values": [
-        30,
-        512,
-        "tight_bboxes",
-        5,
-        88
-      ]
-    },
-    {
       "id": 128,
       "type": "PreviewImage",
       "pos": [
-        3118,
-        534
+        3258,
+        447
       ],
-      "size": [
-        210,
-        246
-      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
       "flags": {},
-      "order": 26,
+      "order": 27,
       "mode": 0,
       "inputs": [
         {
@@ -599,15 +177,15 @@
       "id": 81,
       "type": "DetailerForEachPipe",
       "pos": [
-        2159,
-        -1166
+        2675,
+        -1140
       ],
       "size": {
         "0": 430.8000183105469,
         "1": 516.0001220703125
       },
       "flags": {},
-      "order": 19,
+      "order": 20,
       "mode": 0,
       "inputs": [
         {
@@ -704,18 +282,402 @@
       "bgcolor": "#335"
     },
     {
+      "id": 68,
+      "type": "ImpactControlNetApplySEGS",
+      "pos": [
+        2336,
+        -1120
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "segs",
+          "type": "SEGS",
+          "link": 255,
+          "label": "Seg"
+        },
+        {
+          "name": "control_net",
+          "type": "CONTROL_NET",
+          "link": 200,
+          "label": "ControlNet",
+          "slot_index": 1
+        },
+        {
+          "name": "segs_preprocessor",
+          "type": "SEGS_PREPROCESSOR",
+          "link": 228,
+          "label": "Seg預處理",
+          "slot_index": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SEGS",
+          "type": "SEGS",
+          "links": [
+            181
+          ],
+          "shape": 3,
+          "label": "Seg",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImpactControlNetApplySEGS"
+      },
+      "widgets_values": [
+        1
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 91,
+      "type": "ControlNetLoader",
+      "pos": [
+        2337,
+        -937
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "CONTROL_NET",
+          "type": "CONTROL_NET",
+          "links": [
+            200
+          ],
+          "shape": 3,
+          "label": "ControlNet",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ControlNetLoader"
+      },
+      "widgets_values": [
+        "control_v11p_sd15_openpose.pth"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 103,
+      "type": "DWPreprocessor_Provider_for_SEGS //Inspire",
+      "pos": [
+        2331,
+        -807
+      ],
+      "size": {
+        "0": 315,
+        "1": 130
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "SEGS_PREPROCESSOR",
+          "type": "SEGS_PREPROCESSOR",
+          "links": [
+            228
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DWPreprocessor_Provider_for_SEGS //Inspire"
+      },
+      "widgets_values": [
+        true,
+        false,
+        false,
+        1
+      ]
+    },
+    {
+      "id": 114,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1280,
+        121
+      ],
+      "size": {
+        "0": 210,
+        "1": 76.00021362304688
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 243,
+          "label": "CLIP"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            245,
+            263
+          ],
+          "shape": 3,
+          "label": "條件",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 115,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1285,
+        240
+      ],
+      "size": {
+        "0": 210,
+        "1": 76.00021362304688
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 242,
+          "label": "CLIP"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            244,
+            262
+          ],
+          "shape": 3,
+          "label": "條件",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 118,
+      "type": "ToBasicPipe",
+      "pos": [
+        1285,
+        364
+      ],
+      "size": {
+        "0": 241.79998779296875,
+        "1": 106
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 233,
+          "label": "模型",
+          "slot_index": 0
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 234,
+          "label": "CLIP"
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 235,
+          "label": "VAE",
+          "slot_index": 2
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 244,
+          "label": "正向提示",
+          "slot_index": 3
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 245,
+          "label": "負向提示",
+          "slot_index": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "basic_pipe",
+          "type": "BASIC_PIPE",
+          "links": [
+            246,
+            254
+          ],
+          "shape": 3,
+          "label": "基礎節點束",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ToBasicPipe"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 112,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        1270,
+        -22
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            233,
+            267,
+            274
+          ],
+          "shape": 3,
+          "label": "模型",
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            234,
+            242,
+            243
+          ],
+          "shape": 3,
+          "label": "CLIP",
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            235,
+            259,
+            269
+          ],
+          "shape": 3,
+          "label": "VAE",
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "majicmixRealistic_v7.safetensors"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 130,
+      "type": "DiffControlNetLoader",
+      "pos": [
+        2609,
+        572
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 274,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONTROL_NET",
+          "type": "CONTROL_NET",
+          "links": [
+            272
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DiffControlNetLoader"
+      },
+      "widgets_values": [
+        "control_sd15_inpaint_depth_hand_fp16.safetensors"
+      ]
+    },
+    {
       "id": 126,
       "type": "KSampler",
       "pos": [
-        2786,
-        360
+        2926,
+        273
       ],
       "size": {
         "0": 315,
         "1": 262
       },
       "flags": {},
-      "order": 20,
+      "order": 21,
       "mode": 0,
       "inputs": [
         {
@@ -755,28 +717,478 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        120156150462748,
+        614958852740718,
         "randomize",
         20,
         7,
-        "dpmpp_2m_sde",
+        "dpmpp_2m",
         "karras",
         1
       ]
     },
     {
+      "id": 122,
+      "type": "MeshGraphormer-DepthMapPreprocessor",
+      "pos": [
+        1892,
+        296
+      ],
+      "size": {
+        "0": 315,
+        "1": 174
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 256
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            257,
+            260
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "INPAINTING_MASK",
+          "type": "MASK",
+          "links": [
+            258
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MeshGraphormer-DepthMapPreprocessor"
+      },
+      "widgets_values": [
+        30,
+        512,
+        "tight_bboxes",
+        5,
+        88
+      ]
+    },
+    {
+      "id": 125,
+      "type": "ControlNetApplyAdvanced",
+      "pos": [
+        2630,
+        342
+      ],
+      "size": {
+        "0": 315,
+        "1": 166
+      },
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 262,
+          "slot_index": 0
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 263
+        },
+        {
+          "name": "control_net",
+          "type": "CONTROL_NET",
+          "link": 272,
+          "slot_index": 2
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 260
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            264
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            265
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ControlNetApplyAdvanced"
+      },
+      "widgets_values": [
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 107,
+      "type": "ImpactSimpleDetectorSEGS",
+      "pos": [
+        1683,
+        -685
+      ],
+      "size": {
+        "0": 315,
+        "1": 310
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "bbox_detector",
+          "type": "BBOX_DETECTOR",
+          "link": 251,
+          "label": "BBox檢測",
+          "slot_index": 0
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 252,
+          "label": "圖形"
+        },
+        {
+          "name": "sam_model_opt",
+          "type": "SAM_MODEL",
+          "link": 238,
+          "label": "SAM模型",
+          "slot_index": 2
+        },
+        {
+          "name": "segm_detector_opt",
+          "type": "SEGM_DETECTOR",
+          "link": 239,
+          "label": "SEGM檢測",
+          "slot_index": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SEGS",
+          "type": "SEGS",
+          "links": [
+            240,
+            255
+          ],
+          "shape": 3,
+          "label": "Seg",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImpactSimpleDetectorSEGS"
+      },
+      "widgets_values": [
+        0.5,
+        0,
+        3,
+        10,
+        0.5,
+        0,
+        0,
+        0.7,
+        0
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 109,
+      "type": "SAMLoader",
+      "pos": [
+        2021,
+        -556
+      ],
+      "size": {
+        "0": 210,
+        "1": 82
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "SAM_MODEL",
+          "type": "SAM_MODEL",
+          "links": [
+            238
+          ],
+          "shape": 3,
+          "label": "SAM模型",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SAMLoader"
+      },
+      "widgets_values": [
+        "sam_vit_b_01ec64.pth",
+        "AUTO"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 108,
+      "type": "UltralyticsDetectorProvider",
+      "pos": [
+        1690,
+        -325
+      ],
+      "size": {
+        "0": 226.8000030517578,
+        "1": 80
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "BBOX_DETECTOR",
+          "type": "BBOX_DETECTOR",
+          "links": [
+            251
+          ],
+          "shape": 3,
+          "label": "BBox檢測"
+        },
+        {
+          "name": "SEGM_DETECTOR",
+          "type": "SEGM_DETECTOR",
+          "links": [
+            239
+          ],
+          "shape": 3,
+          "label": "SEGM檢測",
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UltralyticsDetectorProvider"
+      },
+      "widgets_values": [
+        "bbox/hand_yolov8s.pt"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 116,
+      "type": "ControlNetLoader",
+      "pos": [
+        2290,
+        46
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "CONTROL_NET",
+          "type": "CONTROL_NET",
+          "links": [
+            247
+          ],
+          "shape": 3,
+          "label": "ControlNet",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ControlNetLoader"
+      },
+      "widgets_values": [
+        "control_sd15_inpaint_depth_hand_fp16.safetensors"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 117,
+      "type": "ImpactControlNetApplySEGS",
+      "pos": [
+        2678,
+        60
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "segs",
+          "type": "SEGS",
+          "link": 240,
+          "label": "Seg"
+        },
+        {
+          "name": "control_net",
+          "type": "CONTROL_NET",
+          "link": 247,
+          "label": "ControlNet",
+          "slot_index": 1
+        },
+        {
+          "name": "segs_preprocessor",
+          "type": "SEGS_PREPROCESSOR",
+          "link": 248,
+          "label": "Seg預處理",
+          "slot_index": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SEGS",
+          "type": "SEGS",
+          "links": [
+            241
+          ],
+          "shape": 3,
+          "label": "Seg",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImpactControlNetApplySEGS"
+      },
+      "widgets_values": [
+        1
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 119,
+      "type": "MeshGraphormerDepthMapPreprocessorProvider_for_SEGS //Inspire",
+      "pos": [
+        3035,
+        91
+      ],
+      "size": {
+        "0": 445.20001220703125,
+        "1": 26
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "SEGS_PREPROCESSOR",
+          "type": "SEGS_PREPROCESSOR",
+          "links": [
+            248
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MeshGraphormerDepthMapPreprocessorProvider_for_SEGS //Inspire"
+      },
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 121,
+      "type": "PreviewImage",
+      "pos": [
+        2785,
+        -500
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 250
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 120,
+      "type": "PreviewImage",
+      "pos": [
+        3017,
+        -241
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 249
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
       "id": 111,
       "type": "DetailerForEachPipe",
       "pos": [
-        2415,
-        -440
+        2278,
+        -522
       ],
       "size": {
         "0": 430.8000183105469,
         "1": 516.000244140625
       },
       "flags": {},
-      "order": 18,
+      "order": 19,
       "mode": 0,
       "inputs": [
         {
@@ -873,405 +1285,39 @@
       "bgcolor": "#335"
     },
     {
-      "id": 121,
+      "id": 94,
       "type": "PreviewImage",
       "pos": [
-        2918,
-        -429
+        3128,
+        -881
       ],
       "size": {
         "0": 210,
         "1": 246
       },
       "flags": {},
-      "order": 21,
+      "order": 25,
       "mode": 0,
       "inputs": [
         {
           "name": "images",
           "type": "IMAGE",
-          "link": 250
+          "link": 207,
+          "label": "圖形"
         }
       ],
       "properties": {
         "Node name for S&R": "PreviewImage"
-      }
-    },
-    {
-      "id": 120,
-      "type": "PreviewImage",
-      "pos": [
-        2921,
-        -95
-      ],
-      "size": {
-        "0": 210,
-        "1": 246
       },
-      "flags": {},
-      "order": 22,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 249
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "PreviewImage"
-      }
-    },
-    {
-      "id": 68,
-      "type": "ImpactControlNetApplySEGS",
-      "pos": [
-        1820,
-        -1146
-      ],
-      "size": {
-        "0": 315,
-        "1": 98
-      },
-      "flags": {},
-      "order": 14,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "segs",
-          "type": "SEGS",
-          "link": 255,
-          "label": "Seg"
-        },
-        {
-          "name": "control_net",
-          "type": "CONTROL_NET",
-          "link": 200,
-          "label": "ControlNet",
-          "slot_index": 1
-        },
-        {
-          "name": "segs_preprocessor",
-          "type": "SEGS_PREPROCESSOR",
-          "link": 228,
-          "label": "Seg預處理",
-          "slot_index": 2
-        }
-      ],
-      "outputs": [
-        {
-          "name": "SEGS",
-          "type": "SEGS",
-          "links": [
-            181
-          ],
-          "shape": 3,
-          "label": "Seg",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ImpactControlNetApplySEGS"
-      },
-      "widgets_values": [
-        1
-      ],
       "color": "#223",
       "bgcolor": "#335"
-    },
-    {
-      "id": 91,
-      "type": "ControlNetLoader",
-      "pos": [
-        1821,
-        -963
-      ],
-      "size": {
-        "0": 315,
-        "1": 58
-      },
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "CONTROL_NET",
-          "type": "CONTROL_NET",
-          "links": [
-            200
-          ],
-          "shape": 3,
-          "label": "ControlNet",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ControlNetLoader"
-      },
-      "widgets_values": [
-        "control_v11p_sd15_openpose.pth"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 103,
-      "type": "DWPreprocessor_Provider_for_SEGS //Inspire",
-      "pos": [
-        1815,
-        -833
-      ],
-      "size": {
-        "0": 315,
-        "1": 130
-      },
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "SEGS_PREPROCESSOR",
-          "type": "SEGS_PREPROCESSOR",
-          "links": [
-            228
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "DWPreprocessor_Provider_for_SEGS //Inspire"
-      },
-      "widgets_values": [
-        true,
-        false,
-        false,
-        1
-      ]
-    },
-    {
-      "id": 112,
-      "type": "CheckpointLoaderSimple",
-      "pos": [
-        1297,
-        -844
-      ],
-      "size": {
-        "0": 315,
-        "1": 98
-      },
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            233,
-            267
-          ],
-          "shape": 3,
-          "label": "模型",
-          "slot_index": 0
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": [
-            234,
-            242,
-            243
-          ],
-          "shape": 3,
-          "label": "CLIP",
-          "slot_index": 1
-        },
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "links": [
-            235,
-            259,
-            269
-          ],
-          "shape": 3,
-          "label": "VAE",
-          "slot_index": 2
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "CheckpointLoaderSimple"
-      },
-      "widgets_values": [
-        "majicmixRealistic_v7.safetensors"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 114,
-      "type": "CLIPTextEncode",
-      "pos": [
-        1307,
-        -701
-      ],
-      "size": {
-        "0": 210,
-        "1": 76.00021362304688
-      },
-      "flags": {},
-      "order": 9,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 243,
-          "label": "CLIP"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            245,
-            263
-          ],
-          "shape": 3,
-          "label": "條件",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        ""
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 115,
-      "type": "CLIPTextEncode",
-      "pos": [
-        1312,
-        -582
-      ],
-      "size": {
-        "0": 210,
-        "1": 76.00021362304688
-      },
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 242,
-          "label": "CLIP"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            244,
-            262
-          ],
-          "shape": 3,
-          "label": "條件",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        ""
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 118,
-      "type": "ToBasicPipe",
-      "pos": [
-        1312,
-        -458
-      ],
-      "size": {
-        "0": 241.79998779296875,
-        "1": 106
-      },
-      "flags": {},
-      "order": 12,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 233,
-          "label": "模型",
-          "slot_index": 0
-        },
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 234,
-          "label": "CLIP"
-        },
-        {
-          "name": "vae",
-          "type": "VAE",
-          "link": 235,
-          "label": "VAE",
-          "slot_index": 2
-        },
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 244,
-          "label": "正向提示",
-          "slot_index": 3
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 245,
-          "label": "負向提示",
-          "slot_index": 4
-        }
-      ],
-      "outputs": [
-        {
-          "name": "basic_pipe",
-          "type": "BASIC_PIPE",
-          "links": [
-            246,
-            254
-          ],
-          "shape": 3,
-          "label": "基礎節點束",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ToBasicPipe"
-      },
-      "color": "#322",
-      "bgcolor": "#533"
     },
     {
       "id": 102,
       "type": "LoadImage",
       "pos": [
-        1301,
-        -272
+        1268,
+        -453
       ],
       "size": {
         "0": 315,
@@ -1305,7 +1351,7 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "Test0.png",
+        "00064-3706417167.png",
         "image"
       ]
     }
@@ -1568,14 +1614,6 @@
       "IMAGE"
     ],
     [
-      261,
-      116,
-      0,
-      125,
-      2,
-      "CONTROL_NET"
-    ],
-    [
       262,
       115,
       0,
@@ -1654,27 +1692,32 @@
       124,
       0,
       "IMAGE"
+    ],
+    [
+      272,
+      130,
+      0,
+      125,
+      2,
+      "CONTROL_NET"
+    ],
+    [
+      274,
+      112,
+      0,
+      130,
+      0,
+      "MODEL"
     ]
   ],
   "groups": [
     {
-      "title": "HandDepthFixHand",
-      "bounding": [
-        1751,
-        -616,
-        1586,
-        842
-      ],
-      "color": "#3f789e",
-      "font_size": 24
-    },
-    {
       "title": "OpenPoseFixHand",
       "bounding": [
-        1749,
-        -1276,
-        1087,
-        641
+        2265,
+        -1250,
+        1226,
+        646
       ],
       "color": "#3f789e",
       "font_size": 24
@@ -1682,10 +1725,10 @@
     {
       "title": "HandRefinerMask",
       "bounding": [
-        1742,
-        286,
-        1598,
-        532
+        1882,
+        199,
+        1608,
+        538
       ],
       "color": "#3f789e",
       "font_size": 24
@@ -1693,10 +1736,32 @@
     {
       "title": "ClipArea",
       "bounding": [
-        1287,
-        -918,
+        1260,
+        -96,
         335,
         576
+      ],
+      "color": "#A88",
+      "font_size": 24
+    },
+    {
+      "title": "手部偵測",
+      "bounding": [
+        1673,
+        -759,
+        568,
+        524
+      ],
+      "color": "#b06634",
+      "font_size": 24
+    },
+    {
+      "title": "分割影像檢測輸出",
+      "bounding": [
+        2268,
+        -596,
+        1222,
+        764
       ],
       "color": "#3f789e",
       "font_size": 24
