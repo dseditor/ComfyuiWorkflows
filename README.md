@@ -1,3 +1,5 @@
 # ComfyuiWorkflows
 HandFix：修復手指使用，包括SegOpenPose/SegHandRefiner/HandRefinerMask三個流程，提供Mask Preview預覽圖及成果，前兩個部分是Seg出手部區域細化後，再使用ControlNet抓出手指的深度圖或Pose，最後一個則是自己產生蒙版並依蒙版繪製。
+
+
 Changeshows：替換服裝模特兒的人物及背景，並提升畫素，利用了masquerade-nodes提取衣服的模組，ComfyUI_IPAdapter_plus提取人物的臉部，使用Controlnet Openpose固定與原有模特兒相同的動作，並繪製背景及合併
