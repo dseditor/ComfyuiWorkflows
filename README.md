@@ -7,3 +7,5 @@ Changeshows：替換服裝模特兒的人物及背景，並提升畫素，利用
 Ipaclothes:這個工作流大概就是做三件事：把臉大頭貼放進去/把衣服放進去/把底圖動作放進去。左邊三張圖是放進去的東西，右邊兩張圖是成果，下面是預覽圖，用以看出圖的衣服樣式是否正確，如果要短裙卻變成長裙，在這裡就會發現，修改提示詞會有幫助，上面有套用臉部的最後成果，表示臉模已經發揮了作用。邏輯是固定動作、底圖，用IPAdapter換衣服，在細化臉部的部分套用另一個IPAdapter，這樣就可以做到臉型的控制，注意ClipVision的檔名我把它改成了CLIP-ViT-H-14-laion2B-s32B-b79K，原因是要符合官方的Model名，實際上原本的model.safesensors就可以了。
 
 inpaintandoutpaint：使用SDXL inpainting的簡單工作流，需要SDXL的基本模型(或任何一個SDXL模型)，與SDXL inpainting訓練模型，和一般inpainting的差別是必須在Unet層加載，處理玩偶、模型和物品都不錯。
+
+AnimeArt：使用Controlnet Softedge HED把動畫人物轉換為真人呈現的工作流，可選擇連接ipAdapter變換臉部，實現最低階的Cosplay
