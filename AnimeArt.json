@@ -1,20 +1,274 @@
 {
-  "last_node_id": 81,
-  "last_link_id": 262,
+  "last_node_id": 93,
+  "last_link_id": 273,
   "nodes": [
+    {
+      "id": 39,
+      "type": "workflow/CLIPLoaderWD14",
+      "pos": [
+        350.3333435058594,
+        22.77741241455078
+      ],
+      "size": {
+        "0": 475.27093505859375,
+        "1": 473.90887451171875
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 130,
+          "slot_index": 0
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 107
+        },
+        {
+          "name": "CLIPTextEncode clip",
+          "type": "CLIP",
+          "link": 108
+        },
+        {
+          "name": "CLIPTextEncode 2 clip",
+          "type": "CLIP",
+          "link": 109
+        },
+        {
+          "name": "LoraLoader model",
+          "type": "MODEL",
+          "link": 110
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            149,
+            164,
+            243,
+            262
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            127,
+            150,
+            269
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "CLIPTextEncode CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            128,
+            151,
+            270
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "title": "CLIPCombine(WD14CaptioningAndLora)",
+      "properties": {
+        "Node name for S&R": "workflow/CLIPLoaderWD14"
+      },
+      "widgets_values": [
+        "wd-v1-4-moat-tagger-v2",
+        0.35,
+        0.85,
+        "",
+        -2,
+        "ultra high res, best quality,masterpiece, High detail, RAW color photo (realistic, photo realism:1. 2), (highest quality), (best shadow),highly detailed CG unified 8K wallpapers, physics-based rendering, cinematic lighting, JAV Actress ,oval face, ultra high res, best quality,masterpiece, ",
+        "add_detail.safetensors",
+        1,
+        1,
+        "(deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch), text, close up, cropped, out of frame, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, deformed, blurry, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck, cropped, zoomed in, deformed arms, long hair, bra, bad hands, extra hands, bad fingers, paintings, sketches, (worst quality:2), (low quality:2), (normal quality:2), lowres, normal quality, ((monochrome)), ((grayscale)), skin spots, acnes, skin blemishes, age spot, glans, multiple characters, (big breasts:1.1),"
+      ]
+    },
+    {
+      "id": 57,
+      "type": "workflow/ResizetoLATENT",
+      "pos": [
+        419.3333435058594,
+        544.7777824401855
+      ],
+      "size": {
+        "0": 315,
+        "1": 102
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 161
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 162
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            267,
+            268
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            167
+          ],
+          "shape": 3
+        }
+      ],
+      "title": "ResizetoLATENTForLineArt",
+      "properties": {
+        "Node name for S&R": "workflow/ResizetoLATENT"
+      },
+      "widgets_values": [
+        768,
+        "bicubic"
+      ]
+    },
+    {
+      "id": 92,
+      "type": "workflow/MultiControlnet",
+      "pos": [
+        849.3333435058594,
+        9.777782440185547
+      ],
+      "size": [
+        488.79998779296875,
+        614
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 267
+        },
+        {
+          "name": "AIO_Preprocessor image",
+          "type": "IMAGE",
+          "link": 268
+        },
+        {
+          "name": "image_3",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "controlnet_stack",
+          "type": "CONTROL_NET_STACK",
+          "link": null
+        },
+        {
+          "name": "base_positive",
+          "type": "CONDITIONING",
+          "link": 269
+        },
+        {
+          "name": "base_negative",
+          "type": "CONDITIONING",
+          "link": 270
+        }
+      ],
+      "outputs": [
+        {
+          "name": "show_help",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "base_pos",
+          "type": "CONDITIONING",
+          "links": [
+            271
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "base_neg",
+          "type": "CONDITIONING",
+          "links": [
+            272
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "CR Apply Multi-ControlNet show_help",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "workflow/MultiControlnet"
+      },
+      "widgets_values": [
+        "HEDPreprocessor",
+        768,
+        "AnimeLineArtPreprocessor",
+        768,
+        "On",
+        "control_v11p_sd15_softedge_fp16.safetensors",
+        0.8,
+        0,
+        1,
+        "On",
+        "control_v11p_sd15_lineart_fp16.safetensors",
+        0.65,
+        0,
+        1,
+        "Off",
+        "None",
+        1,
+        0,
+        1,
+        "Off"
+      ]
+    },
     {
       "id": 44,
       "type": "workflow/FaceDetailerEX",
       "pos": [
-        1062,
-        380
+        1368.3333435058594,
+        388.77778244018555
       ],
-      "size": {
-        "0": 506.4000244140625,
-        "1": 864
-      },
+      "size": [
+        506.4000244140625,
+        864
+      ],
       "flags": {},
-      "order": 9,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -56,6 +310,14 @@
           "name": "detailer_hook",
           "type": "DETAILER_HOOK",
           "link": null
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "seed"
+          }
         }
       ],
       "outputs": [
@@ -116,7 +378,7 @@
         384,
         true,
         1024,
-        543756618444926,
+        1042623789732750,
         "randomize",
         20,
         8,
@@ -141,29 +403,189 @@
       ]
     },
     {
-      "id": 57,
-      "type": "workflow/ResizetoLATENT",
+      "id": 93,
+      "type": "PreviewImage",
       "pos": [
-        232,
-        552.9996299743652
+        1737.3333435058594,
+        115.77778244018555
       ],
-      "size": {
-        "0": 315,
-        "1": 102
-      },
+      "size": [
+        210,
+        246
+      ],
       "flags": {},
-      "order": 4,
+      "order": 9,
       "mode": 0,
       "inputs": [
         {
-          "name": "image",
+          "name": "images",
           "type": "IMAGE",
-          "link": 161
+          "link": 273
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 45,
+      "type": "PreviewImage",
+      "pos": [
+        1923.3333435058594,
+        503.77778244018555
+      ],
+      "size": {
+        "0": 297.27093505859375,
+        "1": 246
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 129
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 28,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -6.666656494140625,
+        146.77741241455078
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            110
+          ],
+          "shape": 3
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            107,
+            108,
+            109,
+            125
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            126,
+            152,
+            162,
+            168
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "hellorealisticman_V12a.safetensors"
+      ]
+    },
+    {
+      "id": 46,
+      "type": "LoadImage",
+      "pos": [
+        -6.666656494140625,
+        328.77778244018555
+      ],
+      "size": {
+        "0": 315,
+        "1": 314
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            130,
+            161
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "fe670e24c2584d888accd7c7bb5a4ca7_th.jpeg",
+        "image"
+      ]
+    },
+    {
+      "id": 58,
+      "type": "workflow/SamplerAndDecoder",
+      "pos": [
+        1368.3333435058594,
+        18.777782440185547
+      ],
+      "size": {
+        "0": 315,
+        "1": 306
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 164
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 271
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 272
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 167
         },
         {
           "name": "vae",
           "type": "VAE",
-          "link": 162
+          "link": 168
         }
       ],
       "outputs": [
@@ -171,35 +593,33 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            259
+            163,
+            273
           ],
           "shape": 3,
           "slot_index": 0
-        },
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "links": [
-            167
-          ],
-          "shape": 3
         }
       ],
-      "title": "ResizetoLATENTForLineArt",
       "properties": {
-        "Node name for S&R": "workflow/ResizetoLATENT"
+        "Node name for S&R": "workflow/SamplerAndDecoder"
       },
       "widgets_values": [
-        768,
-        "bicubic"
+        617840633902988,
+        "randomize",
+        35,
+        7,
+        "dpmpp_2m",
+        "karras",
+        0.44,
+        512
       ]
     },
     {
       "id": 55,
       "type": "workflow/UPscale",
       "pos": [
-        729,
-        312
+        971,
+        667
       ],
       "size": {
         "0": 315,
@@ -253,7 +673,7 @@
       "widgets_values": [
         "RealESRGAN_x4.pth",
         2,
-        569212070248184,
+        75680569572331,
         "randomize",
         10,
         8,
@@ -275,228 +695,11 @@
       ]
     },
     {
-      "id": 39,
-      "type": "workflow/CLIPLoaderWD14",
-      "pos": [
-        224,
-        33.999629974365234
-      ],
-      "size": {
-        "0": 475.27093505859375,
-        "1": 473.90887451171875
-      },
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 130,
-          "slot_index": 0
-        },
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 107
-        },
-        {
-          "name": "CLIPTextEncode clip",
-          "type": "CLIP",
-          "link": 108
-        },
-        {
-          "name": "CLIPTextEncode 2 clip",
-          "type": "CLIP",
-          "link": 109
-        },
-        {
-          "name": "LoraLoader model",
-          "type": "MODEL",
-          "link": 110
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            149,
-            164,
-            243,
-            258,
-            262
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            127,
-            150,
-            260
-          ],
-          "shape": 3,
-          "slot_index": 1
-        },
-        {
-          "name": "CLIPTextEncode CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            128,
-            151,
-            261
-          ],
-          "shape": 3,
-          "slot_index": 2
-        }
-      ],
-      "title": "CLIPCombine(WD14CaptioningAndLora)",
-      "properties": {
-        "Node name for S&R": "workflow/CLIPLoaderWD14"
-      },
-      "widgets_values": [
-        "wd-v1-4-moat-tagger-v2",
-        0.35,
-        0.85,
-        "",
-        -2,
-        "ultra high res, best quality,masterpiece, High detail, RAW color photo (realistic, photo realism:1. 2), (highest quality), (best shadow),highly detailed CG unified 8K wallpapers, physics-based rendering, cinematic lighting, JAV Actress ,oval face, ultra high res, best quality,masterpiece, ",
-        "add_detail.safetensors",
-        1,
-        1,
-        "(deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch), text, close up, cropped, out of frame, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, deformed, blurry, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck, cropped, zoomed in, deformed arms, long hair, bra, bad hands, extra hands, bad fingers, paintings, sketches, (worst quality:2), (low quality:2), (normal quality:2), lowres, normal quality, ((monochrome)), ((grayscale)), skin spots, acnes, skin blemishes, age spot, glans, multiple characters, (big breasts:1.1),"
-      ]
-    },
-    {
-      "id": 81,
-      "type": "workflow/Controlnet與預處理",
-      "pos": [
-        724,
-        32
-      ],
-      "size": {
-        "0": 315,
-        "1": 238
-      },
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 258
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 259
-        },
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 260
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 261
-        }
-      ],
-      "outputs": [
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "links": [
-            256
-          ],
-          "shape": 3
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "links": [
-            257
-          ],
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "workflow/Controlnet與預處理"
-      },
-      "widgets_values": [
-        "control_v11p_sd15_softedge_fp16.safetensors",
-        "HEDPreprocessor",
-        768,
-        0.7000000000000001,
-        0,
-        1
-      ]
-    },
-    {
-      "id": 28,
-      "type": "CheckpointLoaderSimple",
-      "pos": [
-        -133,
-        157.99962997436523
-      ],
-      "size": {
-        "0": 315,
-        "1": 98
-      },
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            110
-          ],
-          "shape": 3
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": [
-            107,
-            108,
-            109,
-            125
-          ],
-          "shape": 3,
-          "slot_index": 1
-        },
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "links": [
-            126,
-            152,
-            162,
-            168
-          ],
-          "shape": 3,
-          "slot_index": 2
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "CheckpointLoaderSimple"
-      },
-      "widgets_values": [
-        "majicmixRealistic_v7.safetensors"
-      ]
-    },
-    {
       "id": 76,
       "type": "workflow/IPAdaperFace",
       "pos": [
-        402,
-        720
+        574,
+        918
       ],
       "size": {
         "0": 315,
@@ -549,15 +752,15 @@
       "id": 75,
       "type": "LoadImage",
       "pos": [
-        52,
-        716
+        235,
+        901
       ],
       "size": {
         "0": 315,
         "1": 314
       },
       "flags": {},
-      "order": 1,
+      "order": 2,
       "mode": 0,
       "outputs": [
         {
@@ -580,136 +783,6 @@
       },
       "widgets_values": [
         "00002-385333024 (3).png",
-        "image"
-      ]
-    },
-    {
-      "id": 58,
-      "type": "workflow/SamplerAndDecoder",
-      "pos": [
-        1059,
-        31.999629974365234
-      ],
-      "size": {
-        "0": 315,
-        "1": 306
-      },
-      "flags": {},
-      "order": 7,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 164
-        },
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 256
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 257
-        },
-        {
-          "name": "latent_image",
-          "type": "LATENT",
-          "link": 167
-        },
-        {
-          "name": "vae",
-          "type": "VAE",
-          "link": 168
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            163
-          ],
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "workflow/SamplerAndDecoder"
-      },
-      "widgets_values": [
-        516612834576156,
-        "randomize",
-        35,
-        7,
-        "dpmpp_2m",
-        "karras",
-        0.6,
-        512
-      ]
-    },
-    {
-      "id": 45,
-      "type": "PreviewImage",
-      "pos": [
-        1583,
-        722
-      ],
-      "size": {
-        "0": 297.27093505859375,
-        "1": 246
-      },
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 129
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "PreviewImage"
-      }
-    },
-    {
-      "id": 46,
-      "type": "LoadImage",
-      "pos": [
-        -133,
-        340
-      ],
-      "size": {
-        "0": 315,
-        "1": 314
-      },
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            130,
-            161
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null,
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "409187958_225465890575629_7093173019467793386_n.jpg",
         "image"
       ]
     }
@@ -900,68 +973,76 @@
       "MODEL"
     ],
     [
-      256,
-      81,
-      0,
-      58,
-      1,
-      "CONDITIONING"
-    ],
-    [
-      257,
-      81,
-      1,
-      58,
-      2,
-      "CONDITIONING"
-    ],
-    [
-      258,
-      39,
-      0,
-      81,
-      0,
-      "MODEL"
-    ],
-    [
-      259,
-      57,
-      0,
-      81,
-      1,
-      "IMAGE"
-    ],
-    [
-      260,
-      39,
-      1,
-      81,
-      2,
-      "CONDITIONING"
-    ],
-    [
-      261,
-      39,
-      2,
-      81,
-      3,
-      "CONDITIONING"
-    ],
-    [
       262,
       39,
       0,
       44,
       1,
       "MODEL"
+    ],
+    [
+      267,
+      57,
+      0,
+      92,
+      0,
+      "IMAGE"
+    ],
+    [
+      268,
+      57,
+      0,
+      92,
+      1,
+      "IMAGE"
+    ],
+    [
+      269,
+      39,
+      1,
+      92,
+      4,
+      "CONDITIONING"
+    ],
+    [
+      270,
+      39,
+      2,
+      92,
+      5,
+      "CONDITIONING"
+    ],
+    [
+      271,
+      92,
+      1,
+      58,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      272,
+      92,
+      2,
+      58,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      273,
+      58,
+      0,
+      93,
+      0,
+      "IMAGE"
     ]
   ],
   "groups": [
     {
       "title": "AnimeArt",
       "bounding": [
-        -143,
-        -42,
+        -17,
+        -53,
         2066,
         1298
       ],
@@ -4384,6 +4465,244 @@
             "CONDITIONING"
           ]
         ]
+      },
+      "MultiControlnet": {
+        "nodes": [
+          {
+            "type": "AIO_Preprocessor",
+            "pos": [
+              103,
+              1555
+            ],
+            "size": {
+              "0": 315,
+              "1": 82
+            },
+            "flags": {},
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "image",
+                "type": "IMAGE",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "IMAGE",
+                "type": "IMAGE",
+                "links": [],
+                "shape": 3,
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "AIO_Preprocessor"
+            },
+            "widgets_values": [
+              "AnimeLineArtPreprocessor",
+              768
+            ],
+            "index": 0
+          },
+          {
+            "type": "AIO_Preprocessor",
+            "pos": [
+              99,
+              1423
+            ],
+            "size": {
+              "0": 315,
+              "1": 82
+            },
+            "flags": {},
+            "order": 4,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "image",
+                "type": "IMAGE",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "IMAGE",
+                "type": "IMAGE",
+                "links": [],
+                "shape": 3,
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "AIO_Preprocessor"
+            },
+            "widgets_values": [
+              "HEDPreprocessor",
+              768
+            ],
+            "index": 1
+          },
+          {
+            "type": "CR Multi-ControlNet Stack",
+            "pos": [
+              485,
+              1375
+            ],
+            "size": {
+              "0": 418.1999816894531,
+              "1": 454
+            },
+            "flags": {},
+            "order": 7,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "image_1",
+                "type": "IMAGE",
+                "link": null
+              },
+              {
+                "name": "image_2",
+                "type": "IMAGE",
+                "link": null
+              },
+              {
+                "name": "image_3",
+                "type": "IMAGE",
+                "link": null
+              },
+              {
+                "name": "controlnet_stack",
+                "type": "CONTROL_NET_STACK",
+                "link": null,
+                "slot_index": 3
+              }
+            ],
+            "outputs": [
+              {
+                "name": "CONTROLNET_STACK",
+                "type": "CONTROL_NET_STACK",
+                "links": [],
+                "shape": 3,
+                "slot_index": 0
+              },
+              {
+                "name": "show_help",
+                "type": "STRING",
+                "links": null,
+                "shape": 3
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "CR Multi-ControlNet Stack"
+            },
+            "widgets_values": [
+              "On",
+              "control_v11p_sd15_softedge_fp16.safetensors",
+              0.7000000000000001,
+              0,
+              1,
+              "On",
+              "control_v11p_sd15_lineart_fp16.safetensors",
+              0.7000000000000001,
+              0,
+              1,
+              "Off",
+              "None",
+              1,
+              0,
+              1
+            ],
+            "index": 2
+          },
+          {
+            "type": "CR Apply Multi-ControlNet",
+            "pos": [
+              991,
+              1384
+            ],
+            "size": {
+              "0": 330,
+              "1": 98
+            },
+            "flags": {},
+            "order": 10,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "base_positive",
+                "type": "CONDITIONING",
+                "link": null
+              },
+              {
+                "name": "base_negative",
+                "type": "CONDITIONING",
+                "link": null
+              },
+              {
+                "name": "controlnet_stack",
+                "type": "CONTROL_NET_STACK",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "base_pos",
+                "type": "CONDITIONING",
+                "links": null,
+                "shape": 3
+              },
+              {
+                "name": "base_neg",
+                "type": "CONDITIONING",
+                "links": null,
+                "shape": 3
+              },
+              {
+                "name": "show_help",
+                "type": "STRING",
+                "links": null,
+                "shape": 3
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "CR Apply Multi-ControlNet"
+            },
+            "widgets_values": [
+              "Off"
+            ],
+            "index": 3
+          }
+        ],
+        "links": [
+          [
+            1,
+            0,
+            2,
+            0,
+            89,
+            "IMAGE"
+          ],
+          [
+            0,
+            0,
+            2,
+            1,
+            91,
+            "IMAGE"
+          ],
+          [
+            2,
+            0,
+            3,
+            2,
+            83,
+            "CONTROL_NET_STACK"
+          ]
+        ],
+        "external": []
       }
     }
   },
