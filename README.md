@@ -9,3 +9,5 @@ Ipaclothes:這個工作流大概就是做三件事：把臉大頭貼放進去/�
 inpaintandoutpaint：使用SDXL inpainting的簡單工作流，需要SDXL的基本模型(或任何一個SDXL模型)，與SDXL inpainting訓練模型，和一般inpainting的差別是必須在Unet層加載，處理玩偶、模型和物品都不錯。
 
 AnimeArt：使用Controlnet Softedge HED把動畫人物轉換為真人呈現的工作流，可選擇連接ipAdapter變換臉部，實現最低階的Cosplay
+
+Couplefaceid：使用faceid/v2的雙人工作流，本工作流必須安裝insightface才能執行，流程是透過SEGSOrdered產生色版，再複製人物的動作，利用Ordered的參數來調整色版。
