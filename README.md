@@ -8,3 +8,7 @@ inpaintandoutpaint：使用SDXL inpainting的簡單工作流，需要SDXL的基�
 AnimeArt：使用Controlnet Softedge HED把動畫人物轉換為真人呈現的工作流，可選擇連接ipAdapter變換臉部，實現最低階的Cosplay
 
 Couplefaceid：使用faceid/v2的雙人工作流，本工作流必須安裝insightface才能執行，流程是透過SEGSOrdered產生色版，再複製人物的動作，利用Ordered的參數來調整色版。
+
+Charmake：製作角色用的節點，特色是把背景給blend進去了，實際上效果不怎樣，StyleAlign也不怎好，細節是很多但是地雷感濃厚，應該OpenArt會不太愛
+
+HandFixSDXL：SDXL修手用，這玩意終於從1.5畢業了
