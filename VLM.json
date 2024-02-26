@@ -1,6 +1,6 @@
 {
-  "last_node_id": 47,
-  "last_link_id": 58,
+  "last_node_id": 49,
+  "last_link_id": 60,
   "nodes": [
     {
       "id": 32,
@@ -82,7 +82,7 @@
         "1": 222
       },
       "flags": {},
-      "order": 9,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -139,63 +139,6 @@
       ]
     },
     {
-      "id": 29,
-      "type": "LLavaSamplerSimple",
-      "pos": [
-        769.6340175903323,
-        182.3240056098938
-      ],
-      "size": {
-        "0": 315,
-        "1": 102
-      },
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 39,
-          "slot_index": 0
-        },
-        {
-          "name": "model",
-          "type": "CUSTOM",
-          "link": 36,
-          "slot_index": 1
-        },
-        {
-          "name": "prompt",
-          "type": "STRING",
-          "link": 38,
-          "widget": {
-            "name": "prompt"
-          },
-          "slot_index": 2
-        }
-      ],
-      "outputs": [
-        {
-          "name": "STRING",
-          "type": "STRING",
-          "links": [
-            42,
-            55
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LLavaSamplerSimple"
-      },
-      "widgets_values": [
-        "",
-        0.1
-      ]
-    },
-    {
       "id": 34,
       "type": "LLMSampler",
       "pos": [
@@ -207,7 +150,7 @@
         "1": 298
       },
       "flags": {},
-      "order": 7,
+      "order": 8,
       "mode": 0,
       "inputs": [
         {
@@ -239,8 +182,7 @@
           "name": "STRING",
           "type": "STRING",
           "links": [
-            44,
-            56
+            44
           ],
           "shape": 3,
           "slot_index": 0
@@ -261,46 +203,6 @@
         1.1,
         1762,
         "randomize"
-      ]
-    },
-    {
-      "id": 45,
-      "type": "ShowText|pysssss",
-      "pos": [
-        1160,
-        390
-      ],
-      "size": {
-        "0": 350,
-        "1": 120
-      },
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "link": 56,
-          "widget": {
-            "name": "text"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "STRING",
-          "type": "STRING",
-          "links": null,
-          "shape": 6
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ShowText|pysssss"
-      },
-      "widgets_values": [
-        "",
-        " A large, yellow rubber duck sits atop a black pedestal with intricate designs, set against a stage adorned with red curtains and gold chandeliers. The image captures a whimsical and opulent scene. "
       ]
     },
     {
@@ -386,49 +288,6 @@
       ]
     },
     {
-      "id": 30,
-      "type": "LLava Loader Simple",
-      "pos": [
-        439.6340175903321,
-        272.3240056098937
-      ],
-      "size": {
-        "0": 315,
-        "1": 130
-      },
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CUSTOM",
-          "link": 37,
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "model",
-          "type": "CUSTOM",
-          "links": [
-            36,
-            40
-          ],
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LLava Loader Simple"
-      },
-      "widgets_values": [
-        "llava-1.6-mistral-7b-gguf\\llava-v1.6-mistral-7b.Q4_K_M.gguf",
-        2048,
-        100,
-        2
-      ]
-    },
-    {
       "id": 33,
       "type": "LoadImage",
       "pos": [
@@ -467,43 +326,46 @@
       ]
     },
     {
-      "id": 44,
-      "type": "ShowText|pysssss",
+      "id": 30,
+      "type": "LLava Loader Simple",
       "pos": [
-        780,
-        340
+        440,
+        270
       ],
       "size": {
-        "0": 290,
-        "1": 170
+        "0": 315,
+        "1": 130
       },
       "flags": {},
-      "order": 8,
+      "order": 5,
       "mode": 0,
       "inputs": [
         {
-          "name": "text",
-          "type": "STRING",
-          "link": 55,
-          "widget": {
-            "name": "text"
-          }
+          "name": "clip",
+          "type": "CUSTOM",
+          "link": 37,
+          "slot_index": 0
         }
       ],
       "outputs": [
         {
-          "name": "STRING",
-          "type": "STRING",
-          "links": null,
-          "shape": 6
+          "name": "model",
+          "type": "CUSTOM",
+          "links": [
+            36,
+            40
+          ],
+          "shape": 3
         }
       ],
       "properties": {
-        "Node name for S&R": "ShowText|pysssss"
+        "Node name for S&R": "LLava Loader Simple"
       },
       "widgets_values": [
-        "",
-        " The image features a large, yellow rubber duck sitting on a black pedestal with intricate designs. The duck is positioned in the center of the frame and appears to be the main subject of the photo. In the background, there's a stage with red curtains and gold chandeliers, suggesting a formal or grand setting. The overall atmosphere of the image is opulent and whimsical due to the contrast between the luxurious backdrop and the playful rubber duck. "
+        "llava-1.6-mistral-7b-gguf\\llava-v1.6-mistral-7b.Q4_K_M.gguf",
+        2048,
+        100,
+        2
       ]
     },
     {
@@ -525,7 +387,8 @@
           "name": "STRING",
           "type": "STRING",
           "links": [
-            41
+            41,
+            59
           ],
           "shape": 3,
           "slot_index": 0
@@ -539,6 +402,141 @@
       ],
       "color": "#232",
       "bgcolor": "#353"
+    },
+    {
+      "id": 48,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1160,
+        380
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 59,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 29,
+      "type": "LLavaSamplerSimple",
+      "pos": [
+        770,
+        180
+      ],
+      "size": {
+        "0": 315,
+        "1": 102
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 39,
+          "slot_index": 0
+        },
+        {
+          "name": "model",
+          "type": "CUSTOM",
+          "link": 36,
+          "slot_index": 1
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 38,
+          "widget": {
+            "name": "prompt"
+          },
+          "slot_index": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            42,
+            60
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LLavaSamplerSimple"
+      },
+      "widgets_values": [
+        "",
+        0.1
+      ]
+    },
+    {
+      "id": 49,
+      "type": "ShowText|pysssss",
+      "pos": [
+        780,
+        360
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 60,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        ""
+      ]
     }
   ],
   "links": [
@@ -631,35 +629,23 @@
       "INT"
     ],
     [
-      55,
-      29,
+      59,
+      35,
       0,
-      44,
+      48,
       0,
       "STRING"
     ],
     [
-      56,
-      34,
+      60,
+      29,
       0,
-      45,
+      49,
       0,
       "STRING"
     ]
   ],
   "groups": [
-    {
-      "title": "VLM",
-      "bounding": [
-        90,
-        98,
-        1005,
-        446
-      ],
-      "color": "#3f789e",
-      "font_size": 24,
-      "locked": false
-    },
     {
       "title": "LLM",
       "bounding": [
