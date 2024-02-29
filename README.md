@@ -11,4 +11,6 @@ Couplefaceid：使用faceid/v2的雙人工作流，本工作流必須安裝insig
 
 Charmake：製作角色用的節點，特色是把背景給blend進去了，實際上效果不怎樣，StyleAlign也不怎好，細節是很多但是地雷感濃厚，應該OpenArt會不太愛
 
-HandFixSDXL：SDXL修手用，這玩意終於從1.5畢業了
+HandFixSDXL：SDXL修手用，這玩意終於從1.5畢業了   
+
+VLM：修正官方的VLM工作流，讓文字可以正常出現
