@@ -1,0 +1,669 @@
+{
+  "last_node_id": 80,
+  "last_link_id": 106,
+  "nodes": [
+    {
+      "id": 78,
+      "type": "PreviewImage",
+      "pos": [
+        1090,
+        420
+      ],
+      "size": [
+        210,
+        250
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 105
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 79,
+      "type": "SDXL Empty Latent Image",
+      "pos": [
+        130,
+        220
+      ],
+      "size": [
+        270,
+        80
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            106
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SDXL Empty Latent Image"
+      },
+      "widgets_values": [
+        "1024 x 1024 (1.00)",
+        1
+      ]
+    },
+    {
+      "id": 72,
+      "type": "SDXLPromptStyler",
+      "pos": [
+        160,
+        350
+      ],
+      "size": [
+        250,
+        192.00003051757812
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_positive",
+          "type": "STRING",
+          "link": 102,
+          "widget": {
+            "name": "text_positive"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text_positive",
+          "type": "STRING",
+          "links": [
+            99
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "text_negative",
+          "type": "STRING",
+          "links": [
+            100
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SDXLPromptStyler"
+      },
+      "widgets_values": [
+        "a photograph of mizuoto,medium shot, cinematic film still, photo of mizuoto,twintails, fictional landscapes, (intense sunlight:1.4), detailed, brooding mood, detailed character expressions, light amber and red, amazing quality, wallpaper,long hair, bangs, black hair, dress, jewelry, ",
+        "",
+        "sai-photographic",
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 32,
+      "type": "SimpleText",
+      "pos": [
+        150,
+        50
+      ],
+      "size": [
+        250,
+        120
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            89
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "SimpleText (YourLanguage)",
+      "properties": {
+        "Node name for S&R": "SimpleText"
+      },
+      "widgets_values": [
+        "一個漂亮的十八歲日本女孩的全身照片，在雪地中的合掌村，穿著高級的和服，金色耳環，夜間，劇場光線，手上握著長劍，綁著雙馬尾，細緻的背景"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 30,
+      "type": "LLava Loader Simple",
+      "pos": [
+        450,
+        150
+      ],
+      "size": [
+        240,
+        130
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CUSTOM",
+          "link": 64,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "CUSTOM",
+          "links": [
+            88
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LLava Loader Simple"
+      },
+      "widgets_values": [
+        "llava-1.6-mistral-7b-gguf\\llava-v1.6-mistral-7b.Q4_K_M.gguf",
+        2048,
+        100,
+        2
+      ]
+    },
+    {
+      "id": 31,
+      "type": "LlavaClipLoader",
+      "pos": [
+        440,
+        50
+      ],
+      "size": [
+        250,
+        60
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "clip",
+          "type": "CUSTOM",
+          "links": [
+            64
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LlavaClipLoader"
+      },
+      "widgets_values": [
+        "llava-1.6-mistral-7b-gguf\\mmproj-model-f16.gguf"
+      ]
+    },
+    {
+      "id": 69,
+      "type": "LLMSampler",
+      "pos": [
+        710,
+        50
+      ],
+      "size": [
+        250,
+        290
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "CUSTOM",
+          "link": 88
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 89,
+          "widget": {
+            "name": "prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            90
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LLMSampler"
+      },
+      "widgets_values": [
+        "You are an assistant who perfectly translate the words into English",
+        "",
+        512,
+        0.2,
+        0.95,
+        40,
+        0,
+        0,
+        1.1,
+        707,
+        "fixed"
+      ]
+    },
+    {
+      "id": 67,
+      "type": "ShowText|pysssss",
+      "pos": [
+        450,
+        360
+      ],
+      "size": [
+        250,
+        140
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 90,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            102
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        " A beautiful eighteen-year-old Japanese girl's full-body photo, taken in a snowy village called Meru, wearing high-end and traditional Japanese clothing, with gold earrings, at night, with the theater lights on, holding a long sword, tied to a double tail of horses, and a detailed background. "
+      ]
+    },
+    {
+      "id": 71,
+      "type": "KSampler (Efficient)",
+      "pos": [
+        760,
+        390
+      ],
+      "size": [
+        300,
+        560
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 103
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 104
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 91
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 106
+        },
+        {
+          "name": "optional_vae",
+          "type": "VAE",
+          "link": 93
+        },
+        {
+          "name": "script",
+          "type": "SCRIPT",
+          "link": null,
+          "slot_index": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            105
+          ],
+          "shape": 3,
+          "slot_index": 5
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler (Efficient)"
+      },
+      "widgets_values": [
+        59781378585547,
+        null,
+        6,
+        2,
+        "dpmpp_sde",
+        "karras",
+        1,
+        "auto",
+        "true"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159",
+      "shape": 1
+    },
+    {
+      "id": 70,
+      "type": "Efficient Loader",
+      "pos": [
+        430,
+        550
+      ],
+      "size": [
+        290,
+        370
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "link": null
+        },
+        {
+          "name": "cnet_stack",
+          "type": "CONTROL_NET_STACK",
+          "link": null,
+          "slot_index": 1
+        },
+        {
+          "name": "positive",
+          "type": "STRING",
+          "link": 99,
+          "widget": {
+            "name": "positive"
+          }
+        },
+        {
+          "name": "negative",
+          "type": "STRING",
+          "link": 100,
+          "widget": {
+            "name": "negative"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            103
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "links": [
+            104
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "links": [
+            91
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [],
+          "shape": 3,
+          "slot_index": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            93
+          ],
+          "shape": 3,
+          "slot_index": 4
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [],
+          "shape": 3,
+          "slot_index": 5
+        },
+        {
+          "name": "DEPENDENCIES",
+          "type": "DEPENDENCIES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Efficient Loader"
+      },
+      "widgets_values": [
+        "dreamshaperXL_lightningDPMSDE.safetensors",
+        "Baked VAE",
+        -1,
+        "None",
+        1.5,
+        1,
+        "",
+        "(deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch), text, close up, cropped, out of frame, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, deformed, blurry, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck, cropped, zoomed in, deformed arms, long hair, bra, bad hands, extra hands, bad fingers, paintings, sketches, (worst quality:2), (low quality:2), (normal quality:2), lowres, normal quality, ((monochrome)), ((grayscale)), skin spots, acnes, skin blemishes, age spot, glans, multiple characters, (big breasts:1.1), ",
+        "length+mean",
+        "comfy++",
+        512,
+        704,
+        1
+      ],
+      "color": "#332233",
+      "bgcolor": "#553355",
+      "shape": 1
+    }
+  ],
+  "links": [
+    [
+      64,
+      31,
+      0,
+      30,
+      0,
+      "CUSTOM"
+    ],
+    [
+      88,
+      30,
+      0,
+      69,
+      0,
+      "CUSTOM"
+    ],
+    [
+      89,
+      32,
+      0,
+      69,
+      1,
+      "STRING"
+    ],
+    [
+      90,
+      69,
+      0,
+      67,
+      0,
+      "STRING"
+    ],
+    [
+      91,
+      70,
+      2,
+      71,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      93,
+      70,
+      4,
+      71,
+      4,
+      "VAE"
+    ],
+    [
+      99,
+      72,
+      0,
+      70,
+      2,
+      "STRING"
+    ],
+    [
+      100,
+      72,
+      1,
+      70,
+      3,
+      "STRING"
+    ],
+    [
+      102,
+      67,
+      0,
+      72,
+      0,
+      "STRING"
+    ],
+    [
+      103,
+      70,
+      0,
+      71,
+      0,
+      "MODEL"
+    ],
+    [
+      104,
+      70,
+      1,
+      71,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      105,
+      71,
+      5,
+      78,
+      0,
+      "IMAGE"
+    ],
+    [
+      106,
+      79,
+      0,
+      71,
+      3,
+      "LATENT"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
