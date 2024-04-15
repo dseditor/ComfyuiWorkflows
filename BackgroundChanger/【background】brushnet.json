@@ -1,0 +1,470 @@
+{
+  "last_node_id": 49,
+  "last_link_id": 83,
+  "nodes": [
+    {
+      "id": 24,
+      "type": "BrushNetLoader",
+      "pos": [
+        170,
+        200
+      ],
+      "size": {
+        "0": 354.79998779296875,
+        "1": 61.60003662109375
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "BrushNet",
+          "type": "BRMODEL",
+          "links": [
+            67
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BrushNetLoader"
+      },
+      "widgets_values": [
+        "Brushnet\\segmentation_mask_brushnet_ckpt\\"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        30,
+        340
+      ],
+      "size": {
+        "0": 520,
+        "1": 470
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            73
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "20240413_232655 (1) (1).jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 46,
+      "type": "JWImageResizeByLongerSide",
+      "pos": [
+        100,
+        890
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 73
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            78,
+            80
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "JWImageResizeByLongerSide"
+      },
+      "widgets_values": [
+        1200,
+        "bicubic"
+      ]
+    },
+    {
+      "id": 48,
+      "type": "LayerMask: BiRefNetUltra",
+      "pos": [
+        590,
+        380
+      ],
+      "size": {
+        "0": 315,
+        "1": 198
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 80
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            81
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerMask: BiRefNetUltra"
+      },
+      "widgets_values": [
+        "VITMatte",
+        6,
+        6,
+        0.01,
+        0.99,
+        true
+      ]
+    },
+    {
+      "id": 32,
+      "type": "PreviewImage",
+      "pos": [
+        610,
+        800
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 60
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 49,
+      "type": "InvertMask",
+      "pos": [
+        610,
+        630
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 81
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            82,
+            83
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "InvertMask"
+      }
+    },
+    {
+      "id": 31,
+      "type": "MaskToImage",
+      "pos": [
+        610,
+        710
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 82
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            60
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MaskToImage"
+      }
+    },
+    {
+      "id": 12,
+      "type": "PreviewImage",
+      "pos": [
+        940,
+        440
+      ],
+      "size": {
+        "0": 523.5944213867188,
+        "1": 547.4853515625
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 53
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 26,
+      "type": "BrushNetInpaint",
+      "pos": [
+        980,
+        190
+      ],
+      "size": {
+        "0": 315,
+        "1": 194
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "BRPL",
+          "type": "BRPL",
+          "link": 66
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 78
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 83
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Image",
+          "type": "IMAGE",
+          "links": [
+            53
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BrushNetInpaint"
+      },
+      "widgets_values": [
+        "garden",
+        693179274333950,
+        "randomize",
+        25,
+        0.7000000000000001
+      ]
+    },
+    {
+      "id": 44,
+      "type": "BrushNetPipeline",
+      "pos": [
+        560,
+        200
+      ],
+      "size": {
+        "0": 371.60003662109375,
+        "1": 103.20001220703125
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "brushnet",
+          "type": "BRMODEL",
+          "link": 67
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BRPL",
+          "type": "BRPL",
+          "links": [
+            66
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BrushNetPipeline"
+      },
+      "widgets_values": [
+        "ghostmix_v20Bakedvae.safetensors"
+      ]
+    }
+  ],
+  "links": [
+    [
+      53,
+      26,
+      0,
+      12,
+      0,
+      "IMAGE"
+    ],
+    [
+      60,
+      31,
+      0,
+      32,
+      0,
+      "IMAGE"
+    ],
+    [
+      66,
+      44,
+      0,
+      26,
+      0,
+      "BRPL"
+    ],
+    [
+      67,
+      24,
+      0,
+      44,
+      0,
+      "BRMODEL"
+    ],
+    [
+      73,
+      1,
+      0,
+      46,
+      0,
+      "IMAGE"
+    ],
+    [
+      78,
+      46,
+      0,
+      26,
+      1,
+      "IMAGE"
+    ],
+    [
+      80,
+      46,
+      0,
+      48,
+      0,
+      "IMAGE"
+    ],
+    [
+      81,
+      48,
+      1,
+      49,
+      0,
+      "MASK"
+    ],
+    [
+      82,
+      49,
+      0,
+      31,
+      0,
+      "MASK"
+    ],
+    [
+      83,
+      49,
+      0,
+      26,
+      2,
+      "MASK"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
