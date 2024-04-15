@@ -1,0 +1,1152 @@
+{
+  "last_node_id": 60,
+  "last_link_id": 103,
+  "nodes": [
+    {
+      "id": 24,
+      "type": "BrushNetLoader",
+      "pos": [
+        265.58083157039664,
+        125.59225178311323
+      ],
+      "size": {
+        "0": 354.79998779296875,
+        "1": 61.60003662109375
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "BrushNet",
+          "type": "BRMODEL",
+          "links": [
+            67
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BrushNetLoader"
+      },
+      "widgets_values": [
+        "Brushnet\\segmentation_mask_brushnet_ckpt\\"
+      ]
+    },
+    {
+      "id": 48,
+      "type": "LayerMask: BiRefNetUltra",
+      "pos": [
+        685.580831570396,
+        305.5922517831132
+      ],
+      "size": {
+        "0": 315,
+        "1": 198
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 80
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            81
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerMask: BiRefNetUltra"
+      },
+      "widgets_values": [
+        "VITMatte",
+        6,
+        6,
+        0.01,
+        0.99,
+        true
+      ]
+    },
+    {
+      "id": 32,
+      "type": "PreviewImage",
+      "pos": [
+        705.580831570396,
+        725.5922517831134
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 60
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 49,
+      "type": "InvertMask",
+      "pos": [
+        705.580831570396,
+        555.5922517831134
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 81
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            82,
+            83
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "InvertMask"
+      }
+    },
+    {
+      "id": 31,
+      "type": "MaskToImage",
+      "pos": [
+        705.580831570396,
+        635.5922517831134
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 82
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            60
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MaskToImage"
+      }
+    },
+    {
+      "id": 12,
+      "type": "PreviewImage",
+      "pos": [
+        1035.5808315703962,
+        365.5922517831132
+      ],
+      "size": {
+        "0": 523.5944213867188,
+        "1": 547.4853515625
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 53
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 50,
+      "type": "SUPIR_first_stage",
+      "pos": [
+        1950.1118538826854,
+        598.8267827245005
+      ],
+      "size": {
+        "0": 248.86013793945312,
+        "1": 170
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "SUPIR_VAE",
+          "type": "SUPIRVAE",
+          "link": 84,
+          "slot_index": 0
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 103
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SUPIR_VAE",
+          "type": "SUPIRVAE",
+          "links": [
+            92
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "denoised_image",
+          "type": "IMAGE",
+          "links": [
+            93
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "denoised_latents",
+          "type": "LATENT",
+          "links": [
+            89
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SUPIR_first_stage"
+      },
+      "widgets_values": [
+        true,
+        512,
+        512,
+        "auto"
+      ]
+    },
+    {
+      "id": 54,
+      "type": "SUPIR_encode",
+      "pos": [
+        1970.1118538826854,
+        858.8267827245005
+      ],
+      "size": {
+        "0": 217.8501434326172,
+        "1": 126
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "SUPIR_VAE",
+          "type": "SUPIRVAE",
+          "link": 92
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 93
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            86
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SUPIR_encode"
+      },
+      "widgets_values": [
+        true,
+        512,
+        "auto"
+      ]
+    },
+    {
+      "id": 51,
+      "type": "SUPIR_sample",
+      "pos": [
+        2230.111853882686,
+        618.8267827245005
+      ],
+      "size": {
+        "0": 315,
+        "1": 454
+      },
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "SUPIR_model",
+          "type": "SUPIRMODEL",
+          "link": 101,
+          "slot_index": 0
+        },
+        {
+          "name": "latents",
+          "type": "LATENT",
+          "link": 86
+        },
+        {
+          "name": "positive",
+          "type": "SUPIR_cond_pos",
+          "link": 87,
+          "slot_index": 2
+        },
+        {
+          "name": "negative",
+          "type": "SUPIR_cond_neg",
+          "link": 88
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            91
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SUPIR_sample"
+      },
+      "widgets_values": [
+        174277455657960,
+        "fixed",
+        10,
+        2,
+        1.5,
+        5,
+        1.0030000000000001,
+        1,
+        1,
+        0.9,
+        1,
+        false,
+        "RestoreDPMPP2MSampler",
+        1024,
+        512
+      ]
+    },
+    {
+      "id": 57,
+      "type": "SUPIR_model_loader_v2",
+      "pos": [
+        1630.1118538826854,
+        318.82678272450045
+      ],
+      "size": {
+        "0": 412.73406982421875,
+        "1": 146
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 96,
+          "slot_index": 0
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 97
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 98
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SUPIR_model",
+          "type": "SUPIRMODEL",
+          "links": [
+            100,
+            101
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "SUPIR_VAE",
+          "type": "SUPIRVAE",
+          "links": [
+            94
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SUPIR_model_loader_v2"
+      },
+      "widgets_values": [
+        "SUPIR\\SUPIR-v0Q.ckpt",
+        true,
+        "auto",
+        false
+      ]
+    },
+    {
+      "id": 52,
+      "type": "SUPIR_conditioner",
+      "pos": [
+        2090.111853882686,
+        318.82678272450045
+      ],
+      "size": [
+        401.7200012207031,
+        200.86000061035156
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "SUPIR_model",
+          "type": "SUPIRMODEL",
+          "link": 100,
+          "slot_index": 0
+        },
+        {
+          "name": "latents",
+          "type": "LATENT",
+          "link": 89,
+          "slot_index": 1
+        },
+        {
+          "name": "captions",
+          "type": "STRING",
+          "link": null,
+          "widget": {
+            "name": "captions"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "SUPIR_cond_pos",
+          "links": [
+            87
+          ],
+          "shape": 3
+        },
+        {
+          "name": "negative",
+          "type": "SUPIR_cond_neg",
+          "links": [
+            88
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SUPIR_conditioner"
+      },
+      "widgets_values": [
+        "high quality, detailed, photograph of a girl",
+        "bad quality, blurry, messy",
+        ""
+      ]
+    },
+    {
+      "id": 58,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        1670.1118538826854,
+        118.82678272450052
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            96
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            97
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            98
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "juggernautXL_v9Rdphoto2Lightning.safetensors"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        130,
+        270
+      ],
+      "size": {
+        "0": 520,
+        "1": 470
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            73
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ComfyUI_temp_fugqk_00002_ (11).png",
+        "image"
+      ]
+    },
+    {
+      "id": 59,
+      "type": "PreviewImage",
+      "pos": [
+        1730,
+        650
+      ],
+      "size": [
+        210,
+        250
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 99
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 56,
+      "type": "SetNode",
+      "pos": [
+        1710,
+        540
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "SUPIRVAE",
+          "type": "SUPIRVAE",
+          "link": 94
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            84,
+            90
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Set_SUPIRVAE",
+      "properties": {
+        "previousName": ""
+      },
+      "widgets_values": [
+        "SUPIRVAE"
+      ]
+    },
+    {
+      "id": 53,
+      "type": "SUPIR_decode",
+      "pos": [
+        1690,
+        970
+      ],
+      "size": {
+        "0": 258.0101318359375,
+        "1": 102
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "SUPIR_VAE",
+          "type": "SUPIRVAE",
+          "link": 90,
+          "slot_index": 0
+        },
+        {
+          "name": "latents",
+          "type": "LATENT",
+          "link": 91
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            99
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SUPIR_decode"
+      },
+      "widgets_values": [
+        true,
+        512
+      ]
+    },
+    {
+      "id": 26,
+      "type": "BrushNetInpaint",
+      "pos": [
+        1075.5808315703962,
+        115.59225178311327
+      ],
+      "size": {
+        "0": 315,
+        "1": 194
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "BRPL",
+          "type": "BRPL",
+          "link": 66
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 78
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 83
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Image",
+          "type": "IMAGE",
+          "links": [
+            53,
+            102
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BrushNetInpaint"
+      },
+      "widgets_values": [
+        "garden",
+        687656065871140,
+        "fixed",
+        25,
+        0.9
+      ]
+    },
+    {
+      "id": 60,
+      "type": "JWImageResizeByLongerSide",
+      "pos": [
+        2070,
+        140
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 102
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            103
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "JWImageResizeByLongerSide"
+      },
+      "widgets_values": [
+        2048,
+        "bicubic"
+      ]
+    },
+    {
+      "id": 46,
+      "type": "JWImageResizeByLongerSide",
+      "pos": [
+        195.5808315703965,
+        815.5922517831134
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 73
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            78,
+            80
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "JWImageResizeByLongerSide"
+      },
+      "widgets_values": [
+        1024,
+        "bicubic"
+      ]
+    },
+    {
+      "id": 44,
+      "type": "BrushNetPipeline",
+      "pos": [
+        655.580831570396,
+        125.59225178311323
+      ],
+      "size": {
+        "0": 371.60003662109375,
+        "1": 103.20001220703125
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "brushnet",
+          "type": "BRMODEL",
+          "link": 67
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BRPL",
+          "type": "BRPL",
+          "links": [
+            66
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BrushNetPipeline"
+      },
+      "widgets_values": [
+        "ayumu_I.safetensors"
+      ]
+    }
+  ],
+  "links": [
+    [
+      53,
+      26,
+      0,
+      12,
+      0,
+      "IMAGE"
+    ],
+    [
+      60,
+      31,
+      0,
+      32,
+      0,
+      "IMAGE"
+    ],
+    [
+      66,
+      44,
+      0,
+      26,
+      0,
+      "BRPL"
+    ],
+    [
+      67,
+      24,
+      0,
+      44,
+      0,
+      "BRMODEL"
+    ],
+    [
+      73,
+      1,
+      0,
+      46,
+      0,
+      "IMAGE"
+    ],
+    [
+      78,
+      46,
+      0,
+      26,
+      1,
+      "IMAGE"
+    ],
+    [
+      80,
+      46,
+      0,
+      48,
+      0,
+      "IMAGE"
+    ],
+    [
+      81,
+      48,
+      1,
+      49,
+      0,
+      "MASK"
+    ],
+    [
+      82,
+      49,
+      0,
+      31,
+      0,
+      "MASK"
+    ],
+    [
+      83,
+      49,
+      0,
+      26,
+      2,
+      "MASK"
+    ],
+    [
+      84,
+      56,
+      0,
+      50,
+      0,
+      "SUPIRVAE"
+    ],
+    [
+      86,
+      54,
+      0,
+      51,
+      1,
+      "LATENT"
+    ],
+    [
+      87,
+      52,
+      0,
+      51,
+      2,
+      "SUPIR_cond_pos"
+    ],
+    [
+      88,
+      52,
+      1,
+      51,
+      3,
+      "SUPIR_cond_neg"
+    ],
+    [
+      89,
+      50,
+      2,
+      52,
+      1,
+      "LATENT"
+    ],
+    [
+      90,
+      56,
+      0,
+      53,
+      0,
+      "SUPIRVAE"
+    ],
+    [
+      91,
+      51,
+      0,
+      53,
+      1,
+      "LATENT"
+    ],
+    [
+      92,
+      50,
+      0,
+      54,
+      0,
+      "SUPIRVAE"
+    ],
+    [
+      93,
+      50,
+      1,
+      54,
+      1,
+      "IMAGE"
+    ],
+    [
+      94,
+      57,
+      1,
+      56,
+      0,
+      "*"
+    ],
+    [
+      96,
+      58,
+      0,
+      57,
+      0,
+      "MODEL"
+    ],
+    [
+      97,
+      58,
+      1,
+      57,
+      1,
+      "CLIP"
+    ],
+    [
+      98,
+      58,
+      2,
+      57,
+      2,
+      "VAE"
+    ],
+    [
+      99,
+      53,
+      0,
+      59,
+      0,
+      "IMAGE"
+    ],
+    [
+      100,
+      57,
+      0,
+      52,
+      0,
+      "SUPIRMODEL"
+    ],
+    [
+      101,
+      57,
+      0,
+      51,
+      0,
+      "SUPIRMODEL"
+    ],
+    [
+      102,
+      26,
+      0,
+      60,
+      0,
+      "IMAGE"
+    ],
+    [
+      103,
+      60,
+      0,
+      50,
+      1,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "SUPIR",
+      "bounding": [
+        1590,
+        45,
+        965,
+        1046
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Brushnet",
+      "bounding": [
+        115,
+        41,
+        1454,
+        940
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
