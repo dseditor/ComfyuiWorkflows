@@ -1,1 +1,4 @@
-本區域的工作流用以更換背景
+分享幾個ComfyUI用以更換圖片背景的方法。
+1.	Brushnet：最近新出的Brushnet，可以在Manager裡面找到，需要自己手動配置模型，目前僅能使用SD1.5模型及Diffuser 0.28，會和一些使用Diffuser的模型相衝，透過反轉去背模型的遮罩，可以讓它用來更換背景，以下基本的操作都是如此，Brushnet的缺點也是與原來背景差別甚大，但會讓圖片能更好的融入新背景。
+2.	CosXL_Edit模型(ip2p)：在HuggingFace可找到此模型，需登入才能下載，效果類似Controlnet ip2p，給個變換場景的指令，就能變換整個場景，可良好的保留原場景的要素下去增加背景要素，但在提示詞和變更內容間必須自己調整圖片與指令的cfg，以取得想要的結果。
+3.	Differential Diffusion：差異擴散，ComfyUI內建，使用簡單不用另外安裝模型和節點，類似inpaint模型但融入效果更好，這邊試了兩個模型，一個是Dreamshaper，一個是Playground，可以看出來Playground做出來蠻魔幻的，如果喜歡有創造力的感覺可以玩一下Playground。
