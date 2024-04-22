@@ -1,4 +1,4 @@
 【tiled】SEGtiledupscaler
-兩分鐘內提升畫質與細化。
-此工作流的邏輯是先用Ultrasharp模型將圖形基本銳化，再使用SEG Tiled+SDXL Lighting用以增加細節，過去使用Tile需要很長的時間，但透過SDXL Lighting讓快速提升細節成為可能，目前實測下比較好的模型是Dreamshaper和Juggernaut Photo兩個Lighting模型。
-本工作流的切塊在RTX4070下可以兩分鐘內完成，預設是3072為最長邊，若是Bing生出來，原始為1024的正方形，則會跑9次，可調整圖片LongerSize的尺寸，另外預設沒有細化臉部，因為臉容易被模型改畫，若有需要也可以打開細化臉部的工作流。
+兩分鐘內提升畫質與細化。   
+此工作流的邏輯是先用Ultrasharp模型將圖形基本銳化，再使用SEG Tiled+SDXL Lighting用以增加細節，過去使用Tile需要很長的時間，但透過SDXL Lighting讓快速提升細節成為可能，目前實測下比較好的模型是Dreamshaper和Juggernaut Photo兩個Lighting模型。  
+本工作流的切塊在RTX4070下可以兩分鐘內完成，預設是3072為最長邊，若是Bing生出來，原始為1024的正方形，則會跑9次，可調整圖片LongerSize的尺寸，另外預設沒有細化臉部，因為臉容易被模型改畫，若有需要也可以打開細化臉部的工作流。  
