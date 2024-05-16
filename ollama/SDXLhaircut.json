@@ -1,0 +1,2616 @@
+{
+  "last_node_id": 207,
+  "last_link_id": 291,
+  "nodes": [
+    {
+      "id": 136,
+      "type": "EmptyImage",
+      "pos": [
+        -1254.1147111638961,
+        392.4487821479812
+      ],
+      "size": {
+        "0": 315,
+        "1": 130
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            141
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1,
+        0
+      ]
+    },
+    {
+      "id": 139,
+      "type": "JWImageResizeByLongerSide",
+      "pos": [
+        -854.1147111638968,
+        22.44878214798126
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 143
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            144
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "JWImageResizeByLongerSide"
+      },
+      "widgets_values": [
+        1024,
+        "bicubic"
+      ]
+    },
+    {
+      "id": 154,
+      "type": "ToBasicPipe",
+      "pos": [
+        -363.8354662732452,
+        1257.983902497597
+      ],
+      "size": {
+        "0": 241.79998779296875,
+        "1": 106
+      },
+      "flags": {},
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 237,
+          "slot_index": 0
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 178
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 179
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 217
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 218
+        }
+      ],
+      "outputs": [
+        {
+          "name": "basic_pipe",
+          "type": "BASIC_PIPE",
+          "links": [
+            183
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ToBasicPipe"
+      }
+    },
+    {
+      "id": 137,
+      "type": "LayerUtility: ImageBlendAdvance",
+      "pos": [
+        -854.1147111638968,
+        182.4487821479812
+      ],
+      "size": {
+        "0": 315,
+        "1": 338
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "background_image",
+          "type": "IMAGE",
+          "link": 141
+        },
+        {
+          "name": "layer_image",
+          "type": "IMAGE",
+          "link": 144,
+          "slot_index": 1
+        },
+        {
+          "name": "layer_mask",
+          "type": "MASK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            169,
+            185,
+            222,
+            235
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerUtility: ImageBlendAdvance"
+      },
+      "widgets_values": [
+        true,
+        "normal",
+        100,
+        50,
+        50,
+        "None",
+        1,
+        1,
+        0,
+        "lanczos",
+        0
+      ]
+    },
+    {
+      "id": 142,
+      "type": "Efficient Loader",
+      "pos": [
+        -33.835466273245295,
+        697.9839024975969
+      ],
+      "size": {
+        "0": 350,
+        "1": 590
+      },
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "link": null
+        },
+        {
+          "name": "cnet_stack",
+          "type": "CONTROL_NET_STACK",
+          "link": null,
+          "slot_index": 1
+        },
+        {
+          "name": "positive",
+          "type": "STRING",
+          "link": 164,
+          "widget": {
+            "name": "positive"
+          }
+        },
+        {
+          "name": "negative",
+          "type": "STRING",
+          "link": 165,
+          "widget": {
+            "name": "negative"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            236
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "links": [
+            215
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "links": [
+            216
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [],
+          "shape": 3,
+          "slot_index": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            179
+          ],
+          "shape": 3,
+          "slot_index": 4
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            178
+          ],
+          "shape": 3,
+          "slot_index": 5
+        },
+        {
+          "name": "DEPENDENCIES",
+          "type": "DEPENDENCIES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Efficient Loader"
+      },
+      "widgets_values": [
+        "dreamshaperXL_lightningDPMSDE.safetensors",
+        "Baked VAE",
+        -1,
+        "None",
+        1,
+        1,
+        "",
+        "",
+        "length+mean",
+        "comfy++",
+        1024,
+        1024,
+        1
+      ],
+      "color": "#332233",
+      "bgcolor": "#553355",
+      "shape": 1
+    },
+    {
+      "id": 179,
+      "type": "LayerMask: PersonMaskUltra",
+      "pos": [
+        -1255.421953912652,
+        1142.5888176898561
+      ],
+      "size": {
+        "0": 315,
+        "1": 318
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 235
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            238
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            239
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerMask: PersonMaskUltra"
+      },
+      "widgets_values": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        0.4,
+        16,
+        0.01,
+        0.99,
+        true
+      ]
+    },
+    {
+      "id": 182,
+      "type": "PulidEvaClipLoader",
+      "pos": [
+        -875.4219539126535,
+        1422.5888176898561
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "EVA_CLIP",
+          "type": "EVA_CLIP",
+          "links": [
+            240
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PulidEvaClipLoader"
+      }
+    },
+    {
+      "id": 183,
+      "type": "InstantIDFaceAnalysis",
+      "pos": [
+        -895.4219539126535,
+        1492.5888176898561
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "FACEANALYSIS",
+          "type": "FACEANALYSIS",
+          "links": [
+            241
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "InstantIDFaceAnalysis"
+      },
+      "widgets_values": [
+        "CPU"
+      ]
+    },
+    {
+      "id": 181,
+      "type": "PulidModelLoader",
+      "pos": [
+        -1245.421953912652,
+        1492.5888176898561
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "PULID",
+          "type": "PULID",
+          "links": [
+            242
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PulidModelLoader"
+      },
+      "widgets_values": [
+        "ip-adapter_pulid_sdxl_fp16.safetensors"
+      ]
+    },
+    {
+      "id": 185,
+      "type": "ApplyPulid",
+      "pos": [
+        -895.4219539126535,
+        1142.5888176898561
+      ],
+      "size": {
+        "0": 315,
+        "1": 230
+      },
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 236
+        },
+        {
+          "name": "pulid",
+          "type": "PULID",
+          "link": 242
+        },
+        {
+          "name": "eva_clip",
+          "type": "EVA_CLIP",
+          "link": 240,
+          "slot_index": 2
+        },
+        {
+          "name": "face_analysis",
+          "type": "FACEANALYSIS",
+          "link": 241
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 238
+        },
+        {
+          "name": "attn_mask",
+          "type": "MASK",
+          "link": 239
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            237
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ApplyPulid"
+      },
+      "widgets_values": [
+        "fidelity",
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 187,
+      "type": "CR Comic Panel Templates",
+      "pos": [
+        1897.0485247673676,
+        706.613241409864
+      ],
+      "size": {
+        "0": 315,
+        "1": 366
+      },
+      "flags": {},
+      "order": 39,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 247
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            248
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "show_help",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Comic Panel Templates"
+      },
+      "widgets_values": [
+        2048,
+        3072,
+        "custom",
+        "left to right",
+        5,
+        2,
+        "custom",
+        "custom",
+        "custom",
+        "V33",
+        "#000000",
+        "#000000",
+        "#000000"
+      ]
+    },
+    {
+      "id": 113,
+      "type": "ImageListToBatch+",
+      "pos": [
+        1407.0485247673676,
+        1076.613241409865
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {},
+      "order": 38,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 101
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            247
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageListToBatch+"
+      }
+    },
+    {
+      "id": 111,
+      "type": "LayerUtility: SimpleTextImage",
+      "pos": [
+        897.0485247673674,
+        706.613241409864
+      ],
+      "size": {
+        "0": 400,
+        "1": 380
+      },
+      "flags": {},
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "size_as",
+          "type": "*",
+          "link": 224
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 282,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            99,
+            100
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null,
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerUtility: SimpleTextImage"
+      },
+      "widgets_values": [
+        "text",
+        "TaipeiSansTCBeta-Bold.ttf",
+        "center",
+        30,
+        8,
+        30,
+        "#FFFFFF",
+        0,
+        "#FF8000",
+        40,
+        700,
+        768,
+        200
+      ]
+    },
+    {
+      "id": 188,
+      "type": "PreviewImage",
+      "pos": [
+        1687.0485247673676,
+        1076.613241409865
+      ],
+      "size": {
+        "0": 210,
+        "1": 250
+      },
+      "flags": {},
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 248
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 141,
+      "type": "OllamaVision",
+      "pos": [
+        -890,
+        720
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 163,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "description",
+          "type": "STRING",
+          "links": [
+            148,
+            170
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Ollama Vision (HairStyle)",
+      "properties": {
+        "Node name for S&R": "OllamaVision"
+      },
+      "widgets_values": [
+        "You are a professional hair stylist. Please design six hairstyles for the girl in the photo to make her look different.Keep the key information of the brief above, add more detail and nuance to the prompt.Please use Style as the keyword to separate each style.\nNo words like 'Sure, here are six different hairstyles for the girl in the photo:' in the reply.",
+        "disable",
+        "http://127.0.0.1:11434",
+        "llava-llama3"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 105,
+      "type": "OllamaGenerateAdvance",
+      "pos": [
+        319.7506514256579,
+        59.999969482421896
+      ],
+      "size": {
+        "0": 220,
+        "1": 340
+      },
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "context",
+          "type": "STRING",
+          "link": null,
+          "widget": {
+            "name": "context"
+          }
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 93,
+          "widget": {
+            "name": "prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "response",
+          "type": "STRING",
+          "links": [
+            277
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "context",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaGenerateAdvance"
+      },
+      "widgets_values": [
+        "請寫一個英文故事大綱，共需要八章節，描述小熊在迷宮裡冒險，最後打倒魔王的冒險故事",
+        "enable",
+        "http://127.0.0.1:11434",
+        "llama3",
+        "",
+        185,
+        40,
+        0.9,
+        0.3,
+        1024,
+        1,
+        ""
+      ]
+    },
+    {
+      "id": 201,
+      "type": "StringFunction|pysssss",
+      "pos": [
+        559.750651425658,
+        59.999969482421896
+      ],
+      "size": {
+        "0": 260,
+        "1": 300
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_a",
+          "type": "STRING",
+          "link": 277,
+          "widget": {
+            "name": "text_a"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            278
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StringFunction|pysssss"
+      },
+      "widgets_values": [
+        "replace",
+        "yes",
+        "",
+        "/\\r\\n|\\r|\\n/",
+        "",
+        "1. 上半下半：女孩可以先將頭髮平刷，然后在後腦部聚集一部分頭髮，形成一個低鬈。剩下的頭髮自然落下，創造了一個隨意 chic 的風格。2. 一邊無袖：女孩可以中分頭髮，让一側自由瀉下，而另一側則被肩膊遮住。这種風格給人一個放鬆、不經意的感覺。3. 織 pigtail：女孩需要先將頭髮刷平，然後將頭髮分成兩等部分，繞起來固定在末端。然后，她可以將兩根繩子绕到頭上，固定在小針中。这種風格適合那些想要展現PLAYFUL yet ELEGANT 的look。4. Bob：女孩需要先將頭髮刷平，然后使用梳子將頭髮剪成一個等長的線條，在下巴處。這種風格適合那些想要保持低維護 yet chic 的look。5. 一邊分開：女孩可以先將頭髮刷平，然后使用梳子將頭髮分開一側，让它們自然落下。这種風格給人一個高雅、優雅的感覺。6. 波浪尾：女孩需要先使用捲筒或捲針創造鬆鬆的波浪，然後使用小針固定波浪。这種風格適合那些想要展現趨勢 yet OUTSTANDING 的look。"
+      ]
+    },
+    {
+      "id": 127,
+      "type": "Fast Groups Bypasser (rgthree)",
+      "pos": {
+        "0": -1600,
+        "1": -60,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 250,
+        "1": 270
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "OPT_CONNECTION",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "matchColors": "",
+        "matchTitle": "",
+        "showNav": true,
+        "sort": "position",
+        "customSortAlphabet": "",
+        "toggleRestriction": "default"
+      }
+    },
+    {
+      "id": 202,
+      "type": "StringFunction|pysssss",
+      "pos": [
+        559.750651425658,
+        109.99996948242188
+      ],
+      "size": {
+        "0": 210,
+        "1": 360
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_a",
+          "type": "STRING",
+          "link": 278,
+          "widget": {
+            "name": "text_a"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            279
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StringFunction|pysssss"
+      },
+      "widgets_values": [
+        "replace",
+        "yes",
+        "",
+        "/\\d+\\./",
+        "\\n",
+        "\n 上半下半：女孩可以先將頭髮平刷，然后在後腦部聚集一部分頭髮，形成一個低鬈。剩下的頭髮自然落下，創造了一個隨意 chic 的風格。\n 一邊無袖：女孩可以中分頭髮，让一側自由瀉下，而另一側則被肩膊遮住。这種風格給人一個放鬆、不經意的感覺。\n 織 pigtail：女孩需要先將頭髮刷平，然後將頭髮分成兩等部分，繞起來固定在末端。然后，她可以將兩根繩子绕到頭上，固定在小針中。这種風格適合那些想要展現PLAYFUL yet ELEGANT 的look。\n Bob：女孩需要先將頭髮刷平，然后使用梳子將頭髮剪成一個等長的線條，在下巴處。這種風格適合那些想要保持低維護 yet chic 的look。\n 一邊分開：女孩可以先將頭髮刷平，然后使用梳子將頭髮分開一側，让它們自然落下。这種風格給人一個高雅、優雅的感覺。\n 波浪尾：女孩需要先使用捲筒或捲針創造鬆鬆的波浪，然後使用小針固定波浪。这種風格適合那些想要展現趨勢 yet OUTSTANDING 的look。"
+      ]
+    },
+    {
+      "id": 140,
+      "type": "LayerMask: PersonMaskUltra",
+      "pos": [
+        -1254.1085862570267,
+        685.5755850020245
+      ],
+      "size": {
+        "0": 315,
+        "1": 318
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 169
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            163
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            246
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerMask: PersonMaskUltra"
+      },
+      "widgets_values": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        true,
+        0.4,
+        16,
+        0.01,
+        0.99,
+        true
+      ]
+    },
+    {
+      "id": 120,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -424.7035282360913,
+        -307.1929998291046
+      ],
+      "size": {
+        "0": 290,
+        "1": 140
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 170,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            258,
+            274
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "1. Half Up, Half Down: To achieve this look, the girl can start by brushing her hair straight and then gather a portion of it into a low bun at the back of her head. The rest of her hair will fall naturally around the bun, creating a casual yet chic style.\n\n2. Side Sleevless: For this style, the girl can part her hair in the middle and let one side hang down freely while tucking the other side behind her shoulder. This style gives off a relaxed, effortless vibe.\n\n3. Braided Pigtails: To achieve this look, the girl should start by brushing her hair to remove any tangles or knots. She can then divide her hair into two equal sections and braid them together, securing them with tiny elastic bands at the ends. The girl will then twist the braids around her head and secure them with a small bobby pin. This style is perfect for a playful yet elegant look.\n\n4. Bob: To achieve this classic hairstyle, the girl can start by brushing her hair to detangle any knots. She can then use a comb to cut her hair into an even length at her jawline, cutting a straight line around her face with a slight angle at the ends of each side. This style is perfect for those who want a low-maintenance yet chic look.\n\n5. Side Part: To achieve this timeless hairstyle, the girl can start by brushing her hair to detangle any knots. She can then use a comb to part her hair on one side and let it fall naturally around her face. This style gives off an air of sophistication and elegance.\n\n6. Wavy Ends: To achieve this trendy look, the girl can start by using a curling iron or a curling wand to create loose waves in her hair. She can then use bobby pins to secure the curls into place for a more defined look. This style is perfect for those who want to make a statement and stand out from the crowd."
+      ]
+    },
+    {
+      "id": 200,
+      "type": "CR Prompt List",
+      "pos": [
+        550,
+        180
+      ],
+      "size": {
+        "0": 280,
+        "1": 170
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "multiline_text",
+          "type": "STRING",
+          "link": 279,
+          "widget": {
+            "name": "multiline_text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            276
+          ],
+          "shape": 6,
+          "slot_index": 0
+        },
+        {
+          "name": "body_text",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        },
+        {
+          "name": "show_help",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Prompt List"
+      },
+      "widgets_values": [
+        "",
+        "body_text",
+        "",
+        1,
+        7
+      ]
+    },
+    {
+      "id": 112,
+      "type": "LayerStyle: DropShadow",
+      "pos": [
+        1330,
+        820
+      ],
+      "size": {
+        "0": 315,
+        "1": 266
+      },
+      "flags": {},
+      "order": 37,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "background_image",
+          "type": "IMAGE",
+          "link": 223
+        },
+        {
+          "name": "layer_image",
+          "type": "IMAGE",
+          "link": 100
+        },
+        {
+          "name": "layer_mask",
+          "type": "MASK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            101
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerStyle: DropShadow"
+      },
+      "widgets_values": [
+        true,
+        "normal",
+        50,
+        25,
+        25,
+        6,
+        18,
+        "#000000"
+      ]
+    },
+    {
+      "id": 110,
+      "type": "PreviewImage",
+      "pos": [
+        1660,
+        710
+      ],
+      "size": {
+        "0": 210,
+        "1": 250
+      },
+      "flags": {},
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 99
+        }
+      ],
+      "title": "Texts",
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 148,
+      "type": "SDXLPromptStyler",
+      "pos": [
+        -299.41105127526964,
+        728.135133536802
+      ],
+      "size": {
+        "0": 240,
+        "1": 240
+      },
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_positive",
+          "type": "STRING",
+          "link": 288,
+          "widget": {
+            "name": "text_positive"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text_positive",
+          "type": "STRING",
+          "links": [
+            164
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "text_negative",
+          "type": "STRING",
+          "links": [
+            165
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SDXLPromptStyler"
+      },
+      "widgets_values": [
+        "longhair,girl",
+        "",
+        "base",
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 122,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -100,
+        -330
+      ],
+      "size": {
+        "0": 310,
+        "1": 870
+      },
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 269,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            287
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        " Half Up, Half Down: To achieve this look, the girl can start by brushing her hair straight and then gather a portion of it into a low bun at the back of her head. The rest of her hair will fall naturally around the bun, creating a casual yet chic style.",
+        " Side Sleevless: For this style, the girl can part her hair in the middle and let one side hang down freely while tucking the other side behind her shoulder. This style gives off a relaxed, effortless vibe.",
+        " Braided Pigtails: To achieve this look, the girl should start by brushing her hair to remove any tangles or knots. She can then divide her hair into two equal sections and braid them together, securing them with tiny elastic bands at the ends. The girl will then twist the braids around her head and secure them with a small bobby pin. This style is perfect for a playful yet elegant look.",
+        " Bob: To achieve this classic hairstyle, the girl can start by brushing her hair to detangle any knots. She can then use a comb to cut her hair into an even length at her jawline, cutting a straight line around her face with a slight angle at the ends of each side. This style is perfect for those who want a low-maintenance yet chic look.",
+        " Side Part: To achieve this timeless hairstyle, the girl can start by brushing her hair to detangle any knots. She can then use a comb to part her hair on one side and let it fall naturally around her face. This style gives off an air of sophistication and elegance.",
+        " Wavy Ends: To achieve this trendy look, the girl can start by using a curling iron or a curling wand to create loose waves in her hair. She can then use bobby pins to secure the curls into place for a more defined look. This style is perfect for those who want to make a statement and stand out from the crowd."
+      ]
+    },
+    {
+      "id": 106,
+      "type": "ShowText|pysssss",
+      "pos": [
+        739.750651425658,
+        -330.00003051757807
+      ],
+      "size": {
+        "0": 310,
+        "1": 810
+      },
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 276,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            289
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        " 上半下半：女孩可以先將頭髮平刷，然后在後腦部聚集一部分頭髮，形成一個低鬈。剩下的頭髮自然落下，創造了一個隨意 chic 的風格。",
+        " 一邊無袖：女孩可以中分頭髮，让一側自由瀉下，而另一側則被肩膊遮住。这種風格給人一個放鬆、不經意的感覺。",
+        " 織 pigtail：女孩需要先將頭髮刷平，然後將頭髮分成兩等部分，繞起來固定在末端。然后，她可以將兩根繩子绕到頭上，固定在小針中。这種風格適合那些想要展現PLAYFUL yet ELEGANT 的look。",
+        " Bob：女孩需要先將頭髮刷平，然后使用梳子將頭髮剪成一個等長的線條，在下巴處。這種風格適合那些想要保持低維護 yet chic 的look。",
+        " 一邊分開：女孩可以先將頭髮刷平，然后使用梳子將頭髮分開一側，让它們自然落下。这種風格給人一個高雅、優雅的感覺。",
+        " 波浪尾：女孩需要先使用捲筒或捲針創造鬆鬆的波浪，然後使用小針固定波浪。这種風格適合那些想要展現趨勢 yet OUTSTANDING 的look。"
+      ]
+    },
+    {
+      "id": 157,
+      "type": "PreviewImage",
+      "pos": [
+        440,
+        1350
+      ],
+      "size": {
+        "0": 210,
+        "1": 250
+      },
+      "flags": {},
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 186
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 175,
+      "type": "ControlNetApplyAdvanced",
+      "pos": [
+        90,
+        1350
+      ],
+      "size": {
+        "0": 315,
+        "1": 166
+      },
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 215
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 216
+        },
+        {
+          "name": "control_net",
+          "type": "CONTROL_NET",
+          "link": 220,
+          "slot_index": 2
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 221
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            217
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            218
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ControlNetApplyAdvanced"
+      },
+      "widgets_values": [
+        0.3,
+        0,
+        0.9
+      ]
+    },
+    {
+      "id": 176,
+      "type": "ControlNetLoader",
+      "pos": [
+        120,
+        1570
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "CONTROL_NET",
+          "type": "CONTROL_NET",
+          "links": [
+            220
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ControlNetLoader"
+      },
+      "widgets_values": [
+        "control-lora-canny-rank256.safetensors"
+      ]
+    },
+    {
+      "id": 177,
+      "type": "CannyEdgePreprocessor",
+      "pos": [
+        -330,
+        1570
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 222
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            221
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CannyEdgePreprocessor"
+      },
+      "widgets_values": [
+        100,
+        200,
+        512
+      ]
+    },
+    {
+      "id": 206,
+      "type": "CR Text Concatenate",
+      "pos": [
+        -360,
+        1060
+      ],
+      "size": {
+        "0": 300,
+        "1": 90
+      },
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text1",
+          "type": "STRING",
+          "link": 291,
+          "widget": {
+            "name": "text1"
+          },
+          "slot_index": 0
+        },
+        {
+          "name": "text2",
+          "type": "STRING",
+          "link": 287,
+          "widget": {
+            "name": "text2"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "*",
+          "links": [
+            288
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "show_help",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Text Concatenate"
+      },
+      "widgets_values": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "id": 153,
+      "type": "MaskToSEGS",
+      "pos": [
+        -370,
+        1190
+      ],
+      "size": {
+        "0": 315,
+        "1": 154
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 246
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SEGS",
+          "type": "SEGS",
+          "links": [
+            184
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MaskToSEGS"
+      },
+      "widgets_values": [
+        false,
+        4,
+        false,
+        8,
+        false
+      ]
+    },
+    {
+      "id": 207,
+      "type": "String Literal",
+      "pos": [
+        -360,
+        1420
+      ],
+      "size": {
+        "0": 270,
+        "1": 90
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            291
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "String Literal"
+      },
+      "widgets_values": [
+        "1girl,masterpiece,looking at viewer,"
+      ]
+    },
+    {
+      "id": 156,
+      "type": "DetailerForEachPipe",
+      "pos": [
+        370.58894872473036,
+        708.135133536802
+      ],
+      "size": {
+        "0": 330,
+        "1": 564
+      },
+      "flags": {},
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 185
+        },
+        {
+          "name": "segs",
+          "type": "SEGS",
+          "link": 184
+        },
+        {
+          "name": "basic_pipe",
+          "type": "BASIC_PIPE",
+          "link": 183
+        },
+        {
+          "name": "detailer_hook",
+          "type": "DETAILER_HOOK",
+          "link": null
+        },
+        {
+          "name": "refiner_basic_pipe_opt",
+          "type": "BASIC_PIPE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            186,
+            223,
+            224
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "segs",
+          "type": "SEGS",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "basic_pipe",
+          "type": "BASIC_PIPE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "cnet_images",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DetailerForEachPipe"
+      },
+      "widgets_values": [
+        384,
+        true,
+        1024,
+        832328102034994,
+        "fixed",
+        6,
+        2,
+        "dpmpp_sde",
+        "karras",
+        0.85,
+        5,
+        true,
+        true,
+        "",
+        0.2,
+        1,
+        true,
+        20
+      ]
+    },
+    {
+      "id": 203,
+      "type": "ImpactSwitch",
+      "pos": [
+        1120,
+        320
+      ],
+      "size": {
+        "0": 220,
+        "1": 150
+      },
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input1",
+          "type": "STRING",
+          "link": 290
+        },
+        {
+          "name": "input2",
+          "type": "STRING",
+          "link": 289
+        },
+        {
+          "name": "input3",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            282
+          ],
+          "shape": 3,
+          "label": "STRING",
+          "slot_index": 0
+        },
+        {
+          "name": "selected_label",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "selected_index",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "title": "Switch (Language/1or2)",
+      "properties": {
+        "Node name for S&R": "ImpactSwitch"
+      },
+      "widgets_values": [
+        2,
+        true
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 192,
+      "type": "StringFunction|pysssss",
+      "pos": [
+        -390,
+        -110
+      ],
+      "size": {
+        "0": 260,
+        "1": 300
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_a",
+          "type": "STRING",
+          "link": 258,
+          "widget": {
+            "name": "text_a"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            261
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StringFunction|pysssss"
+      },
+      "widgets_values": [
+        "replace",
+        "yes",
+        "",
+        "/\\r\\n|\\r|\\n/",
+        "",
+        "1. Half Up, Half Down: To achieve this look, the girl can start by brushing her hair straight and then gather a portion of it into a low bun at the back of her head. The rest of her hair will fall naturally around the bun, creating a casual yet chic style.2. Side Sleevless: For this style, the girl can part her hair in the middle and let one side hang down freely while tucking the other side behind her shoulder. This style gives off a relaxed, effortless vibe.3. Braided Pigtails: To achieve this look, the girl should start by brushing her hair to remove any tangles or knots. She can then divide her hair into two equal sections and braid them together, securing them with tiny elastic bands at the ends. The girl will then twist the braids around her head and secure them with a small bobby pin. This style is perfect for a playful yet elegant look.4. Bob: To achieve this classic hairstyle, the girl can start by brushing her hair to detangle any knots. She can then use a comb to cut her hair into an even length at her jawline, cutting a straight line around her face with a slight angle at the ends of each side. This style is perfect for those who want a low-maintenance yet chic look.5. Side Part: To achieve this timeless hairstyle, the girl can start by brushing her hair to detangle any knots. She can then use a comb to part her hair on one side and let it fall naturally around her face. This style gives off an air of sophistication and elegance.6. Wavy Ends: To achieve this trendy look, the girl can start by using a curling iron or a curling wand to create loose waves in her hair. She can then use bobby pins to secure the curls into place for a more defined look. This style is perfect for those who want to make a statement and stand out from the crowd."
+      ]
+    },
+    {
+      "id": 189,
+      "type": "CR Prompt List",
+      "pos": [
+        -390,
+        250
+      ],
+      "size": {
+        "0": 280,
+        "1": 170
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "multiline_text",
+          "type": "STRING",
+          "link": 268,
+          "widget": {
+            "name": "multiline_text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            269,
+            290
+          ],
+          "shape": 6,
+          "slot_index": 0
+        },
+        {
+          "name": "body_text",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        },
+        {
+          "name": "show_help",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Prompt List"
+      },
+      "widgets_values": [
+        "",
+        "body_text",
+        "",
+        1,
+        7
+      ]
+    },
+    {
+      "id": 193,
+      "type": "StringFunction|pysssss",
+      "pos": [
+        -380,
+        30
+      ],
+      "size": {
+        "0": 210,
+        "1": 224
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_a",
+          "type": "STRING",
+          "link": 261,
+          "widget": {
+            "name": "text_a"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            268
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StringFunction|pysssss"
+      },
+      "widgets_values": [
+        "replace",
+        "yes",
+        "",
+        "/\\d[!@#\\$%\\^&\\*\\(\\)_\\+\\-=\\[\\]\\{\\};:\\'\",<>\\.\\/\\?\\\\\\\\|`~]/",
+        "\\n",
+        "\n Half Up, Half Down: To achieve this look, the girl can start by brushing her hair straight and then gather a portion of it into a low bun at the back of her head. The rest of her hair will fall naturally around the bun, creating a casual yet chic style.\n Side Sleevless: For this style, the girl can part her hair in the middle and let one side hang down freely while tucking the other side behind her shoulder. This style gives off a relaxed, effortless vibe.\n Braided Pigtails: To achieve this look, the girl should start by brushing her hair to remove any tangles or knots. She can then divide her hair into two equal sections and braid them together, securing them with tiny elastic bands at the ends. The girl will then twist the braids around her head and secure them with a small bobby pin. This style is perfect for a playful yet elegant look.\n Bob: To achieve this classic hairstyle, the girl can start by brushing her hair to detangle any knots. She can then use a comb to cut her hair into an even length at her jawline, cutting a straight line around her face with a slight angle at the ends of each side. This style is perfect for those who want a low-maintenance yet chic look.\n Side Part: To achieve this timeless hairstyle, the girl can start by brushing her hair to detangle any knots. She can then use a comb to part her hair on one side and let it fall naturally around her face. This style gives off an air of sophistication and elegance.\n Wavy Ends: To achieve this trendy look, the girl can start by using a curling iron or a curling wand to create loose waves in her hair. She can then use bobby pins to secure the curls into place for a more defined look. This style is perfect for those who want to make a statement and stand out from the crowd."
+      ]
+    },
+    {
+      "id": 138,
+      "type": "LoadImage",
+      "pos": [
+        -1241.038570855931,
+        -11.075328304967277
+      ],
+      "size": [
+        320,
+        310
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            143
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "Wuta_20231210_103110_copy_800x800 (3).jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 103,
+      "type": "StringFunction|pysssss",
+      "pos": [
+        305.44191883776233,
+        -344.991295562748
+      ],
+      "size": {
+        "0": 230,
+        "1": 350
+      },
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_b",
+          "type": "STRING",
+          "link": 274,
+          "widget": {
+            "name": "text_b"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            93
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StringFunction|pysssss"
+      },
+      "widgets_values": [
+        "append",
+        "yes",
+        "請翻譯以下內容為簡體中文，不保留英文內容，不可以包含note等補充說明，如果遇到空白內容將不做任何翻譯及輸出",
+        "請翻譯以下內容為繁體中文，添加中文說明，並不要保留任何英文原文：",
+        "不可以有Here is the translation等英文描述",
+        "請翻譯以下內容為簡體中文，不保留英文內容，不可以包含note等補充說明，如果遇到空白內容將不做任何翻譯及輸出, 1. Half Up, Half Down: To achieve this look, the girl can start by brushing her hair straight and then gather a portion of it into a low bun at the back of her head. The rest of her hair will fall naturally around the bun, creating a casual yet chic style.\n\n2. Side Sleevless: For this style, the girl can part her hair in the middle and let one side hang down freely while tucking the other side behind her shoulder. This style gives off a relaxed, effortless vibe.\n\n3. Braided Pigtails: To achieve this look, the girl should start by brushing her hair to remove any tangles or knots. She can then divide her hair into two equal sections and braid them together, securing them with tiny elastic bands at the ends. The girl will then twist the braids around her head and secure them with a small bobby pin. This style is perfect for a playful yet elegant look.\n\n4. Bob: To achieve this classic hairstyle, the girl can start by brushing her hair to detangle any knots. She can then use a comb to cut her hair into an even length at her jawline, cutting a straight line around her face with a slight angle at the ends of each side. This style is perfect for those who want a low-maintenance yet chic look.\n\n5. Side Part: To achieve this timeless hairstyle, the girl can start by brushing her hair to detangle any knots. She can then use a comb to part her hair on one side and let it fall naturally around her face. This style gives off an air of sophistication and elegance.\n\n6. Wavy Ends: To achieve this trendy look, the girl can start by using a curling iron or a curling wand to create loose waves in her hair. She can then use bobby pins to secure the curls into place for a more defined look. This style is perfect for those who want to make a statement and stand out from the crowd., 不可以有Here is the translation等英文描述"
+      ]
+    }
+  ],
+  "links": [
+    [
+      93,
+      103,
+      0,
+      105,
+      1,
+      "STRING"
+    ],
+    [
+      99,
+      111,
+      0,
+      110,
+      0,
+      "IMAGE"
+    ],
+    [
+      100,
+      111,
+      0,
+      112,
+      1,
+      "IMAGE"
+    ],
+    [
+      101,
+      112,
+      0,
+      113,
+      0,
+      "IMAGE"
+    ],
+    [
+      141,
+      136,
+      0,
+      137,
+      0,
+      "IMAGE"
+    ],
+    [
+      143,
+      138,
+      0,
+      139,
+      0,
+      "IMAGE"
+    ],
+    [
+      144,
+      139,
+      0,
+      137,
+      1,
+      "IMAGE"
+    ],
+    [
+      148,
+      141,
+      0,
+      143,
+      0,
+      "STRING"
+    ],
+    [
+      163,
+      140,
+      0,
+      141,
+      0,
+      "IMAGE"
+    ],
+    [
+      164,
+      148,
+      0,
+      142,
+      2,
+      "STRING"
+    ],
+    [
+      165,
+      148,
+      1,
+      142,
+      3,
+      "STRING"
+    ],
+    [
+      169,
+      137,
+      0,
+      140,
+      0,
+      "IMAGE"
+    ],
+    [
+      170,
+      141,
+      0,
+      120,
+      0,
+      "STRING"
+    ],
+    [
+      178,
+      142,
+      5,
+      154,
+      1,
+      "CLIP"
+    ],
+    [
+      179,
+      142,
+      4,
+      154,
+      2,
+      "VAE"
+    ],
+    [
+      183,
+      154,
+      0,
+      156,
+      2,
+      "BASIC_PIPE"
+    ],
+    [
+      184,
+      153,
+      0,
+      156,
+      1,
+      "SEGS"
+    ],
+    [
+      185,
+      137,
+      0,
+      156,
+      0,
+      "IMAGE"
+    ],
+    [
+      186,
+      156,
+      0,
+      157,
+      0,
+      "IMAGE"
+    ],
+    [
+      215,
+      142,
+      1,
+      175,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      216,
+      142,
+      2,
+      175,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      217,
+      175,
+      0,
+      154,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      218,
+      175,
+      1,
+      154,
+      4,
+      "CONDITIONING"
+    ],
+    [
+      220,
+      176,
+      0,
+      175,
+      2,
+      "CONTROL_NET"
+    ],
+    [
+      221,
+      177,
+      0,
+      175,
+      3,
+      "IMAGE"
+    ],
+    [
+      222,
+      137,
+      0,
+      177,
+      0,
+      "IMAGE"
+    ],
+    [
+      223,
+      156,
+      0,
+      112,
+      0,
+      "IMAGE"
+    ],
+    [
+      224,
+      156,
+      0,
+      111,
+      0,
+      "*"
+    ],
+    [
+      235,
+      137,
+      0,
+      179,
+      0,
+      "IMAGE"
+    ],
+    [
+      236,
+      142,
+      0,
+      185,
+      0,
+      "MODEL"
+    ],
+    [
+      237,
+      185,
+      0,
+      154,
+      0,
+      "MODEL"
+    ],
+    [
+      238,
+      179,
+      0,
+      185,
+      4,
+      "IMAGE"
+    ],
+    [
+      239,
+      179,
+      1,
+      185,
+      5,
+      "MASK"
+    ],
+    [
+      240,
+      182,
+      0,
+      185,
+      2,
+      "EVA_CLIP"
+    ],
+    [
+      241,
+      183,
+      0,
+      185,
+      3,
+      "FACEANALYSIS"
+    ],
+    [
+      242,
+      181,
+      0,
+      185,
+      1,
+      "PULID"
+    ],
+    [
+      246,
+      140,
+      1,
+      153,
+      0,
+      "MASK"
+    ],
+    [
+      247,
+      113,
+      0,
+      187,
+      0,
+      "IMAGE"
+    ],
+    [
+      248,
+      187,
+      0,
+      188,
+      0,
+      "IMAGE"
+    ],
+    [
+      258,
+      120,
+      0,
+      192,
+      0,
+      "STRING"
+    ],
+    [
+      261,
+      192,
+      0,
+      193,
+      0,
+      "STRING"
+    ],
+    [
+      268,
+      193,
+      0,
+      189,
+      0,
+      "STRING"
+    ],
+    [
+      269,
+      189,
+      0,
+      122,
+      0,
+      "STRING"
+    ],
+    [
+      274,
+      120,
+      0,
+      103,
+      0,
+      "STRING"
+    ],
+    [
+      276,
+      200,
+      0,
+      106,
+      0,
+      "STRING"
+    ],
+    [
+      277,
+      105,
+      0,
+      201,
+      0,
+      "STRING"
+    ],
+    [
+      278,
+      201,
+      0,
+      202,
+      0,
+      "STRING"
+    ],
+    [
+      279,
+      202,
+      0,
+      200,
+      0,
+      "STRING"
+    ],
+    [
+      282,
+      203,
+      0,
+      111,
+      1,
+      "STRING"
+    ],
+    [
+      287,
+      122,
+      0,
+      206,
+      1,
+      "STRING"
+    ],
+    [
+      288,
+      206,
+      0,
+      148,
+      0,
+      "STRING"
+    ],
+    [
+      289,
+      106,
+      0,
+      203,
+      1,
+      "STRING"
+    ],
+    [
+      290,
+      189,
+      0,
+      203,
+      0,
+      "STRING"
+    ],
+    [
+      291,
+      207,
+      0,
+      206,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Prompt(指令)",
+      "bounding": [
+        -455,
+        -416,
+        702,
+        996
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Text",
+      "bounding": [
+        862,
+        621,
+        1347,
+        884
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Translate (翻譯)",
+      "bounding": [
+        300,
+        -415,
+        770,
+        938
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Image",
+      "bounding": [
+        -1264,
+        -92,
+        735,
+        624
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Style",
+      "bounding": [
+        -407,
+        629,
+        1219,
+        1067
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "HairStyle",
+      "bounding": [
+        -1264,
+        612,
+        804,
+        432
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "PULID",
+      "bounding": [
+        -1265,
+        1068,
+        695,
+        492
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9646149645000015,
+      "offset": [
+        337.42056474653555,
+        561.9042366572521
+      ]
+    }
+  },
+  "version": 0.4
+}

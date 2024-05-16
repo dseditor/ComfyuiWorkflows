@@ -1,0 +1,2503 @@
+{
+  "last_node_id": 218,
+  "last_link_id": 314,
+  "nodes": [
+    {
+      "id": 136,
+      "type": "EmptyImage",
+      "pos": [
+        -1254.1147111638961,
+        392.4487821479812
+      ],
+      "size": {
+        "0": 315,
+        "1": 130
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            141
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1,
+        0
+      ]
+    },
+    {
+      "id": 137,
+      "type": "LayerUtility: ImageBlendAdvance",
+      "pos": [
+        -854.1147111638968,
+        182.4487821479812
+      ],
+      "size": {
+        "0": 315,
+        "1": 338
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "background_image",
+          "type": "IMAGE",
+          "link": 141
+        },
+        {
+          "name": "layer_image",
+          "type": "IMAGE",
+          "link": 144,
+          "slot_index": 1
+        },
+        {
+          "name": "layer_mask",
+          "type": "MASK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            169,
+            185,
+            235
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerUtility: ImageBlendAdvance"
+      },
+      "widgets_values": [
+        true,
+        "normal",
+        100,
+        50,
+        50,
+        "None",
+        1,
+        1,
+        0,
+        "lanczos",
+        0
+      ]
+    },
+    {
+      "id": 141,
+      "type": "OllamaVision",
+      "pos": [
+        -890,
+        720
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 163,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "description",
+          "type": "STRING",
+          "links": [
+            148,
+            170
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Ollama Vision (HairStyle)",
+      "properties": {
+        "Node name for S&R": "OllamaVision"
+      },
+      "widgets_values": [
+        "You are a professional hair stylist. Please design six hairstyles for the girl in the photo to make her look different.Keep the key information of the brief above, add more detail and nuance to the prompt.Please use Style as the keyword to separate each style.\nNo words like 'Sure, here are six different hairstyles for the girl in the photo:' in the reply.",
+        "disable",
+        "http://127.0.0.1:11434",
+        "llava-llama3"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 105,
+      "type": "OllamaGenerateAdvance",
+      "pos": [
+        319.7506514256579,
+        59.999969482421896
+      ],
+      "size": {
+        "0": 220,
+        "1": 340
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "context",
+          "type": "STRING",
+          "link": null,
+          "widget": {
+            "name": "context"
+          }
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 93,
+          "widget": {
+            "name": "prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "response",
+          "type": "STRING",
+          "links": [
+            277
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "context",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaGenerateAdvance"
+      },
+      "widgets_values": [
+        "請寫一個英文故事大綱，共需要八章節，描述小熊在迷宮裡冒險，最後打倒魔王的冒險故事",
+        "enable",
+        "http://127.0.0.1:11434",
+        "llama3",
+        "",
+        185,
+        40,
+        0.9,
+        0.3,
+        1024,
+        1,
+        ""
+      ]
+    },
+    {
+      "id": 201,
+      "type": "StringFunction|pysssss",
+      "pos": [
+        559.750651425658,
+        59.999969482421896
+      ],
+      "size": {
+        "0": 260,
+        "1": 300
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_a",
+          "type": "STRING",
+          "link": 277,
+          "widget": {
+            "name": "text_a"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            278
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StringFunction|pysssss"
+      },
+      "widgets_values": [
+        "replace",
+        "yes",
+        "",
+        "/\\r\\n|\\r|\\n/",
+        "",
+        "1. Sleevless Bob：女孩的頭髮剪短為波碧式，末端留長鬆亂，給她一個 chic 和無拘束的外觀。2. Updo Braid：女孩的頭髮盤起並在一旁盤成辫子，添加了一絲優雅和高級感她的外觀。3. Half-Up Half-Down Waves：女孩的頭髮盤起半部分，並以鬆亂波浪下降的方式下降，給她一個柔軟和自然的外觀。4. Side-Swept Wavy Bob：女孩的頭髮剪短為波碧式，末端留長鬆亂，並向一旁掃動，給她一個隨和風格的外觀。5. Buns and Braids：女孩的頭髮盤起兩個球狀並在頭頂兩側，末端盤成辫子，創造了一個複雜和吸睛的髮型。6. Side- Swept Waves with Bangs：女孩的頭髮鬆亂波浪下降一旁，而前部則剪短為瀏海，給她一個隨和青春的外觀。"
+      ]
+    },
+    {
+      "id": 103,
+      "type": "StringFunction|pysssss",
+      "pos": [
+        305.44191883776233,
+        -344.991295562748
+      ],
+      "size": [
+        230,
+        350
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_b",
+          "type": "STRING",
+          "link": 274,
+          "widget": {
+            "name": "text_b"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            93
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StringFunction|pysssss"
+      },
+      "widgets_values": [
+        "append",
+        "yes",
+        "請翻譯以下內容為繁體中文，不保留英文內容，不可以包含note等補充說明，如果遇到空白內容將不做任何翻譯及輸出",
+        "請翻譯以下內容為繁體中文，添加中文說明，並不要保留任何英文原文：",
+        "不可以有Here is the translation等英文描述",
+        "請翻譯以下內容為繁體中文，不保留英文內容，不可以包含note等補充說明，如果遇到空白內容將不做任何翻譯及輸出, 1. Sleevless Bob: The girl's hair is cut to a bob style, with the ends left long and loose, giving her a chic and effortless look.\n2. Updo Braid: The girl's hair is styled into an updo and braided on one side, adding a touch of elegance and sophistication to her appearance.\n3. Half-Up Half-Down Waves: The girl's hair is styled in a half-up half-down fashion, with the top section styled upwards and the bottom section cascading down in loose waves.\n4. Side-Swept Wavy Bob: The girl's hair is cut into a bob style, with the ends left long and loose, and swept to one side for a casual yet stylish look.\n5. Buns and Braids: The girl's hair is styled into two buns on either side of her head, and braided on the ends, creating an intricate and eye-catching hairstyle.\n6. Side-Swept Waves with Bangs: The girl's hair is styled in loose waves that cascade down one side, while the front section is cut into bangs for a playful and youthful look., 不可以有Here is the translation等英文描述"
+      ]
+    },
+    {
+      "id": 202,
+      "type": "StringFunction|pysssss",
+      "pos": [
+        559.750651425658,
+        109.99996948242188
+      ],
+      "size": [
+        210,
+        360
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_a",
+          "type": "STRING",
+          "link": 278,
+          "widget": {
+            "name": "text_a"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            279
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StringFunction|pysssss"
+      },
+      "widgets_values": [
+        "replace",
+        "yes",
+        "",
+        "/\\d+\\./",
+        "\\n",
+        "\n Sleevless Bob：女孩的頭髮剪短為波碧式，末端留長鬆亂，給她一個 chic 和無拘束的外觀。\n Updo Braid：女孩的頭髮盤起並在一旁盤成辫子，添加了一絲優雅和高級感她的外觀。\n Half-Up Half-Down Waves：女孩的頭髮盤起半部分，並以鬆亂波浪下降的方式下降，給她一個柔軟和自然的外觀。\n Side-Swept Wavy Bob：女孩的頭髮剪短為波碧式，末端留長鬆亂，並向一旁掃動，給她一個隨和風格的外觀。\n Buns and Braids：女孩的頭髮盤起兩個球狀並在頭頂兩側，末端盤成辫子，創造了一個複雜和吸睛的髮型。\n Side- Swept Waves with Bangs：女孩的頭髮鬆亂波浪下降一旁，而前部則剪短為瀏海，給她一個隨和青春的外觀。"
+      ]
+    },
+    {
+      "id": 120,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -424.7035282360913,
+        -307.1929998291046
+      ],
+      "size": [
+        290,
+        140
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 170,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            258,
+            274
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "1. Sleevless Bob: The girl's hair is cut to a bob style, with the ends left long and loose, giving her a chic and effortless look.\n2. Updo Braid: The girl's hair is styled into an updo and braided on one side, adding a touch of elegance and sophistication to her appearance.\n3. Half-Up Half-Down Waves: The girl's hair is styled in a half-up half-down fashion, with the top section styled upwards and the bottom section cascading down in loose waves.\n4. Side-Swept Wavy Bob: The girl's hair is cut into a bob style, with the ends left long and loose, and swept to one side for a casual yet stylish look.\n5. Buns and Braids: The girl's hair is styled into two buns on either side of her head, and braided on the ends, creating an intricate and eye-catching hairstyle.\n6. Side-Swept Waves with Bangs: The girl's hair is styled in loose waves that cascade down one side, while the front section is cut into bangs for a playful and youthful look."
+      ]
+    },
+    {
+      "id": 200,
+      "type": "CR Prompt List",
+      "pos": [
+        550,
+        180
+      ],
+      "size": [
+        280,
+        170
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "multiline_text",
+          "type": "STRING",
+          "link": 279,
+          "widget": {
+            "name": "multiline_text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            276
+          ],
+          "shape": 6,
+          "slot_index": 0
+        },
+        {
+          "name": "body_text",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        },
+        {
+          "name": "show_help",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Prompt List"
+      },
+      "widgets_values": [
+        "",
+        "body_text",
+        "",
+        1,
+        7
+      ]
+    },
+    {
+      "id": 148,
+      "type": "SDXLPromptStyler",
+      "pos": [
+        -299.41105127526964,
+        728.135133536802
+      ],
+      "size": {
+        "0": 240,
+        "1": 240
+      },
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_positive",
+          "type": "STRING",
+          "link": 288,
+          "widget": {
+            "name": "text_positive"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text_positive",
+          "type": "STRING",
+          "links": [
+            164
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "text_negative",
+          "type": "STRING",
+          "links": [
+            165
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SDXLPromptStyler"
+      },
+      "widgets_values": [
+        "longhair,girl",
+        "",
+        "base",
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 122,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -100,
+        -330
+      ],
+      "size": {
+        "0": 310,
+        "1": 870
+      },
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 269,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            287
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        " Sleevless Bob: The girl's hair is cut to a bob style, with the ends left long and loose, giving her a chic and effortless look.",
+        " Updo Braid: The girl's hair is styled into an updo and braided on one side, adding a touch of elegance and sophistication to her appearance.",
+        " Half-Up Half-Down Waves: The girl's hair is styled in a half-up half-down fashion, with the top section styled upwards and the bottom section cascading down in loose waves.",
+        " Side-Swept Wavy Bob: The girl's hair is cut into a bob style, with the ends left long and loose, and swept to one side for a casual yet stylish look.",
+        " Buns and Braids: The girl's hair is styled into two buns on either side of her head, and braided on the ends, creating an intricate and eye-catching hairstyle.",
+        " Side-Swept Waves with Bangs: The girl's hair is styled in loose waves that cascade down one side, while the front section is cut into bangs for a playful and youthful look."
+      ]
+    },
+    {
+      "id": 106,
+      "type": "ShowText|pysssss",
+      "pos": [
+        739.750651425658,
+        -330.00003051757807
+      ],
+      "size": {
+        "0": 310,
+        "1": 810
+      },
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 276,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            289
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        " Sleevless Bob：女孩的頭髮剪短為波碧式，末端留長鬆亂，給她一個 chic 和無拘束的外觀。",
+        " Updo Braid：女孩的頭髮盤起並在一旁盤成辫子，添加了一絲優雅和高級感她的外觀。",
+        " Half-Up Half-Down Waves：女孩的頭髮盤起半部分，並以鬆亂波浪下降的方式下降，給她一個柔軟和自然的外觀。",
+        " Side-Swept Wavy Bob：女孩的頭髮剪短為波碧式，末端留長鬆亂，並向一旁掃動，給她一個隨和風格的外觀。",
+        " Buns and Braids：女孩的頭髮盤起兩個球狀並在頭頂兩側，末端盤成辫子，創造了一個複雜和吸睛的髮型。",
+        " Side- Swept Waves with Bangs：女孩的頭髮鬆亂波浪下降一旁，而前部則剪短為瀏海，給她一個隨和青春的外觀。"
+      ]
+    },
+    {
+      "id": 189,
+      "type": "CR Prompt List",
+      "pos": [
+        -420,
+        70
+      ],
+      "size": [
+        280,
+        170
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "multiline_text",
+          "type": "STRING",
+          "link": 268,
+          "widget": {
+            "name": "multiline_text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            269,
+            290
+          ],
+          "shape": 6,
+          "slot_index": 0
+        },
+        {
+          "name": "body_text",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        },
+        {
+          "name": "show_help",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Prompt List"
+      },
+      "widgets_values": [
+        "",
+        "body_text",
+        "",
+        1,
+        7
+      ]
+    },
+    {
+      "id": 206,
+      "type": "CR Text Concatenate",
+      "pos": [
+        -360,
+        1060
+      ],
+      "size": [
+        300,
+        90
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text1",
+          "type": "STRING",
+          "link": 291,
+          "widget": {
+            "name": "text1"
+          },
+          "slot_index": 0
+        },
+        {
+          "name": "text2",
+          "type": "STRING",
+          "link": 287,
+          "widget": {
+            "name": "text2"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "*",
+          "links": [
+            288
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "show_help",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Text Concatenate"
+      },
+      "widgets_values": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "id": 207,
+      "type": "String Literal",
+      "pos": [
+        -360,
+        1420
+      ],
+      "size": [
+        270,
+        90
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            291
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "String Literal"
+      },
+      "widgets_values": [
+        "1girl,masterpiece,looking at viewer,"
+      ]
+    },
+    {
+      "id": 127,
+      "type": "Fast Groups Bypasser (rgthree)",
+      "pos": {
+        "0": -1600,
+        "1": -60,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 250,
+        "1": 270
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "OPT_CONNECTION",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "matchColors": "",
+        "matchTitle": "",
+        "showNav": true,
+        "sort": "position",
+        "customSortAlphabet": "",
+        "toggleRestriction": "default"
+      }
+    },
+    {
+      "id": 154,
+      "type": "ToBasicPipe",
+      "pos": [
+        20,
+        1280
+      ],
+      "size": {
+        "0": 241.79998779296875,
+        "1": 106
+      },
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 303,
+          "slot_index": 0
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 178
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 179
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 304
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 305
+        }
+      ],
+      "outputs": [
+        {
+          "name": "basic_pipe",
+          "type": "BASIC_PIPE",
+          "links": [
+            183
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ToBasicPipe"
+      }
+    },
+    {
+      "id": 139,
+      "type": "JWImageResizeByLongerSide",
+      "pos": [
+        -854.1147111638968,
+        22.44878214798126
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 143
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            144
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "JWImageResizeByLongerSide"
+      },
+      "widgets_values": [
+        1024,
+        "bicubic"
+      ]
+    },
+    {
+      "id": 153,
+      "type": "MaskToSEGS",
+      "pos": [
+        -370,
+        1190
+      ],
+      "size": {
+        "0": 315,
+        "1": 154
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 246
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SEGS",
+          "type": "SEGS",
+          "links": [
+            312
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MaskToSEGS"
+      },
+      "widgets_values": [
+        false,
+        4,
+        false,
+        8,
+        false
+      ]
+    },
+    {
+      "id": 209,
+      "type": "IPAdapterUnifiedLoaderFaceID",
+      "pos": [
+        -820,
+        1540
+      ],
+      "size": {
+        "0": 315,
+        "1": 126
+      },
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 295
+        },
+        {
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "links": [
+            292
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "IPAdapterUnifiedLoaderFaceID"
+      },
+      "widgets_values": [
+        "FACEID PLUS V2",
+        1,
+        "CPU"
+      ]
+    },
+    {
+      "id": 179,
+      "type": "LayerMask: PersonMaskUltra",
+      "pos": [
+        -1230,
+        1180
+      ],
+      "size": {
+        "0": 315,
+        "1": 318
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 235
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            296
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            297
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerMask: PersonMaskUltra"
+      },
+      "widgets_values": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        0.4,
+        16,
+        0.01,
+        0.99,
+        true
+      ]
+    },
+    {
+      "id": 157,
+      "type": "PreviewImage",
+      "pos": [
+        390,
+        1350
+      ],
+      "size": [
+        350,
+        260
+      ],
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 186
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 113,
+      "type": "ImageListToBatch+",
+      "pos": [
+        868.1533360056528,
+        1196.0578282604095
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {},
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 101
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            247
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageListToBatch+"
+      }
+    },
+    {
+      "id": 112,
+      "type": "LayerStyle: DropShadow",
+      "pos": [
+        1158.1533360056528,
+        1176.0578282604095
+      ],
+      "size": {
+        "0": 315,
+        "1": 266
+      },
+      "flags": {},
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "background_image",
+          "type": "IMAGE",
+          "link": 223
+        },
+        {
+          "name": "layer_image",
+          "type": "IMAGE",
+          "link": 100
+        },
+        {
+          "name": "layer_mask",
+          "type": "MASK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            101
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerStyle: DropShadow"
+      },
+      "widgets_values": [
+        true,
+        "normal",
+        50,
+        25,
+        25,
+        6,
+        18,
+        "#000000"
+      ]
+    },
+    {
+      "id": 188,
+      "type": "PreviewImage",
+      "pos": [
+        1558.1533360056528,
+        1196.0578282604095
+      ],
+      "size": {
+        "0": 210,
+        "1": 250
+      },
+      "flags": {},
+      "order": 37,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 248
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 142,
+      "type": "Efficient Loader",
+      "pos": [
+        -30,
+        720
+      ],
+      "size": [
+        320,
+        460
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "link": null
+        },
+        {
+          "name": "cnet_stack",
+          "type": "CONTROL_NET_STACK",
+          "link": null,
+          "slot_index": 1
+        },
+        {
+          "name": "positive",
+          "type": "STRING",
+          "link": 164,
+          "widget": {
+            "name": "positive"
+          }
+        },
+        {
+          "name": "negative",
+          "type": "STRING",
+          "link": 165,
+          "widget": {
+            "name": "negative"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            294,
+            295
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "links": [
+            304
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "links": [
+            305
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [],
+          "shape": 3,
+          "slot_index": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            179
+          ],
+          "shape": 3,
+          "slot_index": 4
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            178
+          ],
+          "shape": 3,
+          "slot_index": 5
+        },
+        {
+          "name": "DEPENDENCIES",
+          "type": "DEPENDENCIES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Efficient Loader"
+      },
+      "widgets_values": [
+        "majicmixRealistic_v7.safetensors",
+        "Baked VAE",
+        -1,
+        "hypersd\\Hyper-SD15-8steps-lora.safetensors",
+        1,
+        1,
+        "",
+        "",
+        "length+mean",
+        "comfy++",
+        1024,
+        1024,
+        1
+      ],
+      "color": "#332233",
+      "bgcolor": "#553355",
+      "shape": 1
+    },
+    {
+      "id": 140,
+      "type": "LayerMask: PersonMaskUltra",
+      "pos": [
+        -1254.1085862570267,
+        685.5755850020245
+      ],
+      "size": {
+        "0": 315,
+        "1": 318
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 169
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            163
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            246
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerMask: PersonMaskUltra"
+      },
+      "widgets_values": [
+        false,
+        true,
+        false,
+        false,
+        false,
+        true,
+        0.4,
+        16,
+        0.01,
+        0.99,
+        true
+      ]
+    },
+    {
+      "id": 156,
+      "type": "DetailerForEachPipe",
+      "pos": [
+        370.58894872473036,
+        708.135133536802
+      ],
+      "size": {
+        "0": 330,
+        "1": 564
+      },
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 185
+        },
+        {
+          "name": "segs",
+          "type": "SEGS",
+          "link": 312
+        },
+        {
+          "name": "basic_pipe",
+          "type": "BASIC_PIPE",
+          "link": 183
+        },
+        {
+          "name": "detailer_hook",
+          "type": "DETAILER_HOOK",
+          "link": null
+        },
+        {
+          "name": "refiner_basic_pipe_opt",
+          "type": "BASIC_PIPE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            186,
+            223,
+            224
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "segs",
+          "type": "SEGS",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "basic_pipe",
+          "type": "BASIC_PIPE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "cnet_images",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DetailerForEachPipe"
+      },
+      "widgets_values": [
+        384,
+        true,
+        1024,
+        832328102034994,
+        "fixed",
+        8,
+        1,
+        "dpmpp_sde",
+        "AYS SD1",
+        0.75,
+        5,
+        true,
+        true,
+        "",
+        0.2,
+        1,
+        true,
+        20
+      ]
+    },
+    {
+      "id": 218,
+      "type": "PerturbedAttentionGuidance",
+      "pos": [
+        -390,
+        1570
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 314
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            313
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PerturbedAttentionGuidance"
+      },
+      "widgets_values": [
+        3
+      ]
+    },
+    {
+      "id": 208,
+      "type": "IPAdapterFaceID",
+      "pos": [
+        -850,
+        1160
+      ],
+      "size": {
+        "0": 317.4000244140625,
+        "1": 322
+      },
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 294
+        },
+        {
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "link": 292,
+          "slot_index": 1
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 296
+        },
+        {
+          "name": "image_negative",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "attn_mask",
+          "type": "MASK",
+          "link": 297
+        },
+        {
+          "name": "clip_vision",
+          "type": "CLIP_VISION",
+          "link": null
+        },
+        {
+          "name": "insightface",
+          "type": "INSIGHTFACE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            314
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "face_image",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "IPAdapterFaceID"
+      },
+      "widgets_values": [
+        1,
+        1,
+        "weak input",
+        "concat",
+        0,
+        1,
+        "V only"
+      ]
+    },
+    {
+      "id": 212,
+      "type": "PatchModelAddDownscale",
+      "pos": [
+        -40,
+        1460
+      ],
+      "size": {
+        "0": 315,
+        "1": 202
+      },
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 313
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            303
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PatchModelAddDownscale"
+      },
+      "widgets_values": [
+        3,
+        2,
+        0,
+        0.35,
+        true,
+        "bicubic",
+        "bicubic"
+      ]
+    },
+    {
+      "id": 111,
+      "type": "LayerUtility: SimpleTextImage",
+      "pos": [
+        845.2018607730203,
+        722.6710696702736
+      ],
+      "size": [
+        300,
+        370
+      ],
+      "flags": {},
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "size_as",
+          "type": "*",
+          "link": 224
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 282,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            99,
+            100
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null,
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerUtility: SimpleTextImage"
+      },
+      "widgets_values": [
+        "text",
+        "TaipeiSansTCBeta-Bold.ttf",
+        "center",
+        30,
+        8,
+        30,
+        "#FFFFFF",
+        0,
+        "#FF8000",
+        40,
+        700,
+        768,
+        200
+      ]
+    },
+    {
+      "id": 110,
+      "type": "PreviewImage",
+      "pos": [
+        1208.1533360056528,
+        766.0578282604096
+      ],
+      "size": {
+        "0": 210,
+        "1": 250
+      },
+      "flags": {},
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 99
+        }
+      ],
+      "title": "Texts",
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 187,
+      "type": "CR Comic Panel Templates",
+      "pos": [
+        1448.1533360056528,
+        746.0578282604096
+      ],
+      "size": {
+        "0": 315,
+        "1": 366
+      },
+      "flags": {},
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 247
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            248
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "show_help",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Comic Panel Templates"
+      },
+      "widgets_values": [
+        2048,
+        3072,
+        "custom",
+        "left to right",
+        5,
+        2,
+        "custom",
+        "custom",
+        "custom",
+        "V33",
+        "#000000",
+        "#000000",
+        "#000000"
+      ]
+    },
+    {
+      "id": 203,
+      "type": "ImpactSwitch",
+      "pos": [
+        1140,
+        370
+      ],
+      "size": [
+        220,
+        150
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input1",
+          "type": "STRING",
+          "link": 290
+        },
+        {
+          "name": "input2",
+          "type": "STRING",
+          "link": 289
+        },
+        {
+          "name": "input3",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            282
+          ],
+          "shape": 3,
+          "label": "STRING",
+          "slot_index": 0
+        },
+        {
+          "name": "selected_label",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "selected_index",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "title": "Switch (Language/1or2)",
+      "properties": {
+        "Node name for S&R": "ImpactSwitch"
+      },
+      "widgets_values": [
+        2,
+        true
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 192,
+      "type": "StringFunction|pysssss",
+      "pos": [
+        -390,
+        -110
+      ],
+      "size": {
+        "0": 260,
+        "1": 300
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_a",
+          "type": "STRING",
+          "link": 258,
+          "widget": {
+            "name": "text_a"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            261
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StringFunction|pysssss"
+      },
+      "widgets_values": [
+        "replace",
+        "yes",
+        "",
+        "/\\r\\n|\\r|\\n/",
+        "",
+        "1. Sleevless Bob: The girl's hair is cut to a bob style, with the ends left long and loose, giving her a chic and effortless look.2. Updo Braid: The girl's hair is styled into an updo and braided on one side, adding a touch of elegance and sophistication to her appearance.3. Half-Up Half-Down Waves: The girl's hair is styled in a half-up half-down fashion, with the top section styled upwards and the bottom section cascading down in loose waves.4. Side-Swept Wavy Bob: The girl's hair is cut into a bob style, with the ends left long and loose, and swept to one side for a casual yet stylish look.5. Buns and Braids: The girl's hair is styled into two buns on either side of her head, and braided on the ends, creating an intricate and eye-catching hairstyle.6. Side-Swept Waves with Bangs: The girl's hair is styled in loose waves that cascade down one side, while the front section is cut into bangs for a playful and youthful look."
+      ]
+    },
+    {
+      "id": 193,
+      "type": "StringFunction|pysssss",
+      "pos": [
+        -400,
+        -20
+      ],
+      "size": {
+        "0": 210,
+        "1": 224
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_a",
+          "type": "STRING",
+          "link": 261,
+          "widget": {
+            "name": "text_a"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            268
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StringFunction|pysssss"
+      },
+      "widgets_values": [
+        "replace",
+        "yes",
+        "",
+        "/\\d[!@#\\$%\\^&\\*\\(\\)_\\+\\-=\\[\\]\\{\\};:\\'\",<>\\.\\/\\?\\\\\\\\|`~]/",
+        "\\n",
+        "\n Sleevless Bob: The girl's hair is cut to a bob style, with the ends left long and loose, giving her a chic and effortless look.\n Updo Braid: The girl's hair is styled into an updo and braided on one side, adding a touch of elegance and sophistication to her appearance.\n Half-Up Half-Down Waves: The girl's hair is styled in a half-up half-down fashion, with the top section styled upwards and the bottom section cascading down in loose waves.\n Side-Swept Wavy Bob: The girl's hair is cut into a bob style, with the ends left long and loose, and swept to one side for a casual yet stylish look.\n Buns and Braids: The girl's hair is styled into two buns on either side of her head, and braided on the ends, creating an intricate and eye-catching hairstyle.\n Side-Swept Waves with Bangs: The girl's hair is styled in loose waves that cascade down one side, while the front section is cut into bangs for a playful and youthful look."
+      ]
+    },
+    {
+      "id": 138,
+      "type": "LoadImage",
+      "pos": [
+        -1241.038570855931,
+        -11.075328304967277
+      ],
+      "size": [
+        320,
+        310
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            143
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ComfyUI_00058_ (2).png",
+        "image"
+      ]
+    }
+  ],
+  "links": [
+    [
+      93,
+      103,
+      0,
+      105,
+      1,
+      "STRING"
+    ],
+    [
+      99,
+      111,
+      0,
+      110,
+      0,
+      "IMAGE"
+    ],
+    [
+      100,
+      111,
+      0,
+      112,
+      1,
+      "IMAGE"
+    ],
+    [
+      101,
+      112,
+      0,
+      113,
+      0,
+      "IMAGE"
+    ],
+    [
+      141,
+      136,
+      0,
+      137,
+      0,
+      "IMAGE"
+    ],
+    [
+      143,
+      138,
+      0,
+      139,
+      0,
+      "IMAGE"
+    ],
+    [
+      144,
+      139,
+      0,
+      137,
+      1,
+      "IMAGE"
+    ],
+    [
+      148,
+      141,
+      0,
+      143,
+      0,
+      "STRING"
+    ],
+    [
+      163,
+      140,
+      0,
+      141,
+      0,
+      "IMAGE"
+    ],
+    [
+      164,
+      148,
+      0,
+      142,
+      2,
+      "STRING"
+    ],
+    [
+      165,
+      148,
+      1,
+      142,
+      3,
+      "STRING"
+    ],
+    [
+      169,
+      137,
+      0,
+      140,
+      0,
+      "IMAGE"
+    ],
+    [
+      170,
+      141,
+      0,
+      120,
+      0,
+      "STRING"
+    ],
+    [
+      178,
+      142,
+      5,
+      154,
+      1,
+      "CLIP"
+    ],
+    [
+      179,
+      142,
+      4,
+      154,
+      2,
+      "VAE"
+    ],
+    [
+      183,
+      154,
+      0,
+      156,
+      2,
+      "BASIC_PIPE"
+    ],
+    [
+      185,
+      137,
+      0,
+      156,
+      0,
+      "IMAGE"
+    ],
+    [
+      186,
+      156,
+      0,
+      157,
+      0,
+      "IMAGE"
+    ],
+    [
+      223,
+      156,
+      0,
+      112,
+      0,
+      "IMAGE"
+    ],
+    [
+      224,
+      156,
+      0,
+      111,
+      0,
+      "*"
+    ],
+    [
+      235,
+      137,
+      0,
+      179,
+      0,
+      "IMAGE"
+    ],
+    [
+      246,
+      140,
+      1,
+      153,
+      0,
+      "MASK"
+    ],
+    [
+      247,
+      113,
+      0,
+      187,
+      0,
+      "IMAGE"
+    ],
+    [
+      248,
+      187,
+      0,
+      188,
+      0,
+      "IMAGE"
+    ],
+    [
+      258,
+      120,
+      0,
+      192,
+      0,
+      "STRING"
+    ],
+    [
+      261,
+      192,
+      0,
+      193,
+      0,
+      "STRING"
+    ],
+    [
+      268,
+      193,
+      0,
+      189,
+      0,
+      "STRING"
+    ],
+    [
+      269,
+      189,
+      0,
+      122,
+      0,
+      "STRING"
+    ],
+    [
+      274,
+      120,
+      0,
+      103,
+      0,
+      "STRING"
+    ],
+    [
+      276,
+      200,
+      0,
+      106,
+      0,
+      "STRING"
+    ],
+    [
+      277,
+      105,
+      0,
+      201,
+      0,
+      "STRING"
+    ],
+    [
+      278,
+      201,
+      0,
+      202,
+      0,
+      "STRING"
+    ],
+    [
+      279,
+      202,
+      0,
+      200,
+      0,
+      "STRING"
+    ],
+    [
+      282,
+      203,
+      0,
+      111,
+      1,
+      "STRING"
+    ],
+    [
+      287,
+      122,
+      0,
+      206,
+      1,
+      "STRING"
+    ],
+    [
+      288,
+      206,
+      0,
+      148,
+      0,
+      "STRING"
+    ],
+    [
+      289,
+      106,
+      0,
+      203,
+      1,
+      "STRING"
+    ],
+    [
+      290,
+      189,
+      0,
+      203,
+      0,
+      "STRING"
+    ],
+    [
+      291,
+      207,
+      0,
+      206,
+      0,
+      "STRING"
+    ],
+    [
+      292,
+      209,
+      1,
+      208,
+      1,
+      "IPADAPTER"
+    ],
+    [
+      294,
+      142,
+      0,
+      208,
+      0,
+      "MODEL"
+    ],
+    [
+      295,
+      142,
+      0,
+      209,
+      0,
+      "MODEL"
+    ],
+    [
+      296,
+      179,
+      0,
+      208,
+      2,
+      "IMAGE"
+    ],
+    [
+      297,
+      179,
+      1,
+      208,
+      4,
+      "MASK"
+    ],
+    [
+      303,
+      212,
+      0,
+      154,
+      0,
+      "MODEL"
+    ],
+    [
+      304,
+      142,
+      1,
+      154,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      305,
+      142,
+      2,
+      154,
+      4,
+      "CONDITIONING"
+    ],
+    [
+      312,
+      153,
+      0,
+      156,
+      1,
+      "SEGS"
+    ],
+    [
+      313,
+      218,
+      0,
+      212,
+      0,
+      "MODEL"
+    ],
+    [
+      314,
+      208,
+      0,
+      218,
+      0,
+      "MODEL"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Prompt(指令)",
+      "bounding": [
+        -455,
+        -416,
+        702,
+        996
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Text",
+      "bounding": [
+        810,
+        637,
+        956,
+        910
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Translate (翻譯)",
+      "bounding": [
+        300,
+        -415,
+        770,
+        938
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Image",
+      "bounding": [
+        -1264,
+        -92,
+        735,
+        624
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Style",
+      "bounding": [
+        -407,
+        629,
+        1179,
+        1061
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "HairStyle",
+      "bounding": [
+        -1264,
+        612,
+        804,
+        432
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Group",
+      "bounding": [
+        -1268,
+        1073,
+        819,
+        636
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.5445000000000015,
+      "offset": [
+        931.9964539712047,
+        -313.42436176228284
+      ]
+    }
+  },
+  "version": 0.4
+}
