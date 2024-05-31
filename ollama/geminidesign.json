@@ -1,0 +1,698 @@
+{
+  "last_node_id": 13,
+  "last_link_id": 15,
+  "nodes": [
+    {
+      "id": 9,
+      "type": "KSampler (Efficient)",
+      "pos": [
+        1870,
+        350
+      ],
+      "size": {
+        "0": 330,
+        "1": 680
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 11
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 12
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 5
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 6
+        },
+        {
+          "name": "optional_vae",
+          "type": "VAE",
+          "link": 7
+        },
+        {
+          "name": "script",
+          "type": "SCRIPT",
+          "link": null,
+          "slot_index": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            13
+          ],
+          "shape": 3,
+          "slot_index": 5
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler (Efficient)"
+      },
+      "widgets_values": [
+        598594553031658,
+        null,
+        10,
+        1,
+        "euler_ancestral",
+        "sgm_uniform",
+        1,
+        "auto",
+        "true"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159",
+      "shape": 1
+    },
+    {
+      "id": 7,
+      "type": "SDXLPromptStyler",
+      "pos": [
+        1230,
+        420
+      ],
+      "size": {
+        "0": 230,
+        "1": 300
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_positive",
+          "type": "STRING",
+          "link": 8,
+          "widget": {
+            "name": "text_positive"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text_positive",
+          "type": "STRING",
+          "links": [
+            9
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "text_negative",
+          "type": "STRING",
+          "links": [
+            10
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SDXLPromptStyler"
+      },
+      "widgets_values": [
+        "",
+        "",
+        "ads-real estate",
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 8,
+      "type": "Efficient Loader",
+      "pos": [
+        1490,
+        410
+      ],
+      "size": {
+        "0": 310,
+        "1": 560
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "link": null
+        },
+        {
+          "name": "cnet_stack",
+          "type": "CONTROL_NET_STACK",
+          "link": null,
+          "slot_index": 1
+        },
+        {
+          "name": "positive",
+          "type": "STRING",
+          "link": 9,
+          "widget": {
+            "name": "positive"
+          }
+        },
+        {
+          "name": "negative",
+          "type": "STRING",
+          "link": 10,
+          "widget": {
+            "name": "negative"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            11
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "links": [
+            12
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "links": [
+            5
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            6
+          ],
+          "shape": 3,
+          "slot_index": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            7
+          ],
+          "shape": 3,
+          "slot_index": 4
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [],
+          "shape": 3,
+          "slot_index": 5
+        },
+        {
+          "name": "DEPENDENCIES",
+          "type": "DEPENDENCIES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Efficient Loader"
+      },
+      "widgets_values": [
+        "aiartistHyperrayXLXL_hypersdxl.safetensors",
+        "Baked VAE",
+        -1,
+        "None",
+        1,
+        1,
+        "",
+        "(deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch), text, close up, cropped, out of frame, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, deformed, blurry, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck, cropped, zoomed in, deformed arms, long hair, bra, bad hands, extra hands, bad fingers, paintings, sketches, (worst quality:2), (low quality:2), (normal quality:2), lowres, normal quality, ((monochrome)), ((grayscale)), skin spots, acnes, skin blemishes, age spot, glans, multiple characters, (big breasts:1.1), ",
+        "length+mean",
+        "comfy++",
+        1024,
+        1024,
+        1
+      ],
+      "color": "#332233",
+      "bgcolor": "#553355",
+      "shape": 1
+    },
+    {
+      "id": 4,
+      "type": "TextSplitByDelimiter",
+      "pos": [
+        360,
+        820
+      ],
+      "size": {
+        "0": 300,
+        "1": 142
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 3,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            4
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TextSplitByDelimiter"
+      },
+      "widgets_values": [
+        "",
+        "Chapter",
+        0,
+        0,
+        10
+      ]
+    },
+    {
+      "id": 3,
+      "type": "ShowText|pysssss",
+      "pos": [
+        710,
+        550
+      ],
+      "size": {
+        "0": 220,
+        "1": 390
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 15,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            3
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        " Chapter 1:玄關玄關\n\nThe entrance玄關玄關 is a small space that connects the outside world to the inside of the home. In this design, the玄關玄關 is defined by a change in flooring material and a half-wall with a mirror. The mirror helps to reflect light and make the space feel larger. A shoe cabinet is also built-in to the half-wall, providing storage for shoes and other items.\n\nChapter 2:客廳The living room is the largest room in the house and is where people will likely spend most of their time. In this design, the living room is open-concept and flows into the dining room and kitchen. The living room is furnished with a large sofa, two armchairs, and a coffee table. A rug helps to define the space and add a touch of warmth.\n\nChapter 3:餐廳The dining room is located next to the kitchen and is a great place to entertain guests. In this design, the dining room is furnished with a large dining table and six chairs. A buffet is also built-in to the wall, providing additional storage space.\n\nChapter 4:廚房The kitchen is located at the back of the house and is a great place to cook and prepare meals. In this design, the kitchen is furnished with a large island, plenty of counter space, and a full range of appliances. A breakfast bar is also located at the island, providing a casual seating area.\n\nChapter 5:主臥室The master bedroom is located at the front of the house and is a private retreat for the homeowners. In this design, the master bedroom is furnished with a large bed, two nightstands, and a dresser. A walk-in closet is also located in the master bedroom, providing plenty of storage space.\n\nChapter 6:次臥室AThe second bedroom is located next to the master bedroom and is a great place for guests or children. In this design, the second bedroom is furnished with a twin bed, a desk, and a dresser. A built-in closet is also located in the second bedroom, providing storage space.\n\nChapter 7:次臥室BThe third bedroom is located at the back of the house and is a great place for a home office or gym. In this design, the third bedroom is furnished with a desk, a filing cabinet, and a treadmill. A built-in closet is also located in the third bedroom, providing storage space.\n\nChapter 8:衛浴The bathroom is located between the second and third bedrooms and is a shared space for both rooms. In this design, the bathroom is furnished with a vanity, a toilet, and a shower. A linen closet is also located in the bathroom, providing storage space."
+      ]
+    },
+    {
+      "id": 1,
+      "type": "OllamaVision",
+      "pos": [
+        10,
+        550
+      ],
+      "size": {
+        "0": 300,
+        "1": 220
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": null,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "description",
+          "type": "STRING",
+          "links": [],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaVision"
+      },
+      "widgets_values": [
+        "This is an interior design drawing. Please describe its design in detail and describe it in five chapters.\nThere must be the introductory word Chapter before the beginning of each paragraph.",
+        "enable",
+        "http://127.0.0.1:11434",
+        null,
+        5
+      ]
+    },
+    {
+      "id": 11,
+      "type": "PreviewImage",
+      "pos": [
+        200,
+        1040
+      ],
+      "size": [
+        600,
+        630
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 13
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 6,
+      "type": "ShowText|pysssss",
+      "pos": [
+        980,
+        420
+      ],
+      "size": [
+        230,
+        670
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 4,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            8
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        " 1:玄關玄關\n\nThe entrance玄關玄關 is a small space that connects the outside world to the inside of the home. In this design, the玄關玄關 is defined by a change in flooring material and a half-wall with a mirror. The mirror helps to reflect light and make the space feel larger. A shoe cabinet is also built-in to the half-wall, providing storage for shoes and other items.\n\n",
+        " 2:客廳The living room is the largest room in the house and is where people will likely spend most of their time. In this design, the living room is open-concept and flows into the dining room and kitchen. The living room is furnished with a large sofa, two armchairs, and a coffee table. A rug helps to define the space and add a touch of warmth.\n\n",
+        " 3:餐廳The dining room is located next to the kitchen and is a great place to entertain guests. In this design, the dining room is furnished with a large dining table and six chairs. A buffet is also built-in to the wall, providing additional storage space.\n\n",
+        " 4:廚房The kitchen is located at the back of the house and is a great place to cook and prepare meals. In this design, the kitchen is furnished with a large island, plenty of counter space, and a full range of appliances. A breakfast bar is also located at the island, providing a casual seating area.\n\n",
+        " 5:主臥室The master bedroom is located at the front of the house and is a private retreat for the homeowners. In this design, the master bedroom is furnished with a large bed, two nightstands, and a dresser. A walk-in closet is also located in the master bedroom, providing plenty of storage space.\n\n",
+        " 6:次臥室AThe second bedroom is located next to the master bedroom and is a great place for guests or children. In this design, the second bedroom is furnished with a twin bed, a desk, and a dresser. A built-in closet is also located in the second bedroom, providing storage space.\n\n",
+        " 7:次臥室BThe third bedroom is located at the back of the house and is a great place for a home office or gym. In this design, the third bedroom is furnished with a desk, a filing cabinet, and a treadmill. A built-in closet is also located in the third bedroom, providing storage space.\n\n",
+        " 8:衛浴The bathroom is located between the second and third bedrooms and is a shared space for both rooms. In this design, the bathroom is furnished with a vanity, a toilet, and a shower. A linen closet is also located in the bathroom, providing storage space."
+      ]
+    },
+    {
+      "id": 2,
+      "type": "LoadImage",
+      "pos": [
+        -520,
+        1060
+      ],
+      "size": [
+        690,
+        600
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            14
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "潤泰文樺-平系_頁面_1-2048x1448.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 13,
+      "type": "Gemini_API_Zho",
+      "pos": [
+        350,
+        550
+      ],
+      "size": [
+        310,
+        200
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            15
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Gemini_API_Zho"
+      },
+      "widgets_values": [
+        "This is an interior design drawing. Please describe its design in detail by each room and describe it in eight chapters in English.\nThere must be the introductory word Chapter before the beginning of each paragraph.",
+        "gemini-pro-vision",
+        false,
+        ""
+      ]
+    }
+  ],
+  "links": [
+    [
+      3,
+      3,
+      0,
+      4,
+      0,
+      "STRING"
+    ],
+    [
+      4,
+      4,
+      0,
+      6,
+      0,
+      "STRING"
+    ],
+    [
+      5,
+      8,
+      2,
+      9,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      6,
+      8,
+      3,
+      9,
+      3,
+      "LATENT"
+    ],
+    [
+      7,
+      8,
+      4,
+      9,
+      4,
+      "VAE"
+    ],
+    [
+      8,
+      6,
+      0,
+      7,
+      0,
+      "STRING"
+    ],
+    [
+      9,
+      7,
+      0,
+      8,
+      2,
+      "STRING"
+    ],
+    [
+      10,
+      7,
+      1,
+      8,
+      3,
+      "STRING"
+    ],
+    [
+      11,
+      8,
+      0,
+      9,
+      0,
+      "MODEL"
+    ],
+    [
+      12,
+      8,
+      1,
+      9,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      13,
+      9,
+      5,
+      11,
+      0,
+      "IMAGE"
+    ],
+    [
+      14,
+      2,
+      0,
+      13,
+      0,
+      "IMAGE"
+    ],
+    [
+      15,
+      13,
+      0,
+      3,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8769226950000023,
+      "offset": [
+        310.44724976703543,
+        -318.1036268932019
+      ]
+    }
+  },
+  "version": 0.4
+}
