@@ -1,0 +1,715 @@
+{
+  "last_node_id": 25,
+  "last_link_id": 32,
+  "nodes": [
+    {
+      "id": 24,
+      "type": "PreviewImage",
+      "pos": [
+        1250,
+        630
+      ],
+      "size": [
+        480,
+        500
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 32
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 23,
+      "type": "VAEDecode",
+      "pos": [
+        920,
+        610
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 30
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 31
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            32
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 11,
+      "type": "PreviewImage",
+      "pos": [
+        1240,
+        -30
+      ],
+      "size": [
+        490,
+        520
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 14
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 10,
+      "type": "KSampler //Inspire",
+      "pos": [
+        890,
+        80
+      ],
+      "size": {
+        "0": 317.4000244140625,
+        "1": 402
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 24
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 10
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 11
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 13
+        },
+        {
+          "name": "scheduler_func_opt",
+          "type": "SCHEDULER_FUNC",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            12
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler //Inspire"
+      },
+      "widgets_values": [
+        3359523742,
+        "randomize",
+        20,
+        4,
+        "ipndm_v",
+        "GITS[coeff=1.2]",
+        1,
+        "GPU(=A1111)",
+        "incremental",
+        0,
+        0,
+        "linear"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        930,
+        -20
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 12
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            14
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 20,
+      "type": "PerturbedAttentionGuidance",
+      "pos": [
+        910,
+        -120
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 23
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            24
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PerturbedAttentionGuidance"
+      },
+      "widgets_values": [
+        1
+      ]
+    },
+    {
+      "id": 21,
+      "type": "KSampler //Inspire",
+      "pos": [
+        890,
+        730
+      ],
+      "size": {
+        "0": 317.4000244140625,
+        "1": 402
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 28
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 25
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 26
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 29
+        },
+        {
+          "name": "scheduler_func_opt",
+          "type": "SCHEDULER_FUNC",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            30
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler //Inspire"
+      },
+      "widgets_values": [
+        3359523742,
+        "randomize",
+        20,
+        4,
+        "euler_ancestral_pp",
+        "ddim_uniform",
+        1,
+        "GPU(=A1111)",
+        "incremental",
+        0,
+        0,
+        "linear"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [
+        390,
+        610
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            13,
+            29
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        350,
+        460
+      ],
+      "size": [
+        410,
+        90
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            11,
+            26
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "(worst quality, low quality, normal quality), disabled body, (ugly), sketches, (manicure:1.2), lowres, watermark,"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        350,
+        210
+      ],
+      "size": [
+        430,
+        190
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            10,
+            25
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "Highly detailed, digital art, dynamic lighting, intricate, concept art, beautiful, ominous, mystical, masterpiece, smooth, sharp focus, illustration, award winning, HDR, by artgerm and greg rutkowski and alphonse mucha\nA young Asian woman standing in a bathroom. She is wearing a purple robe with a floral pattern and has long black hair tied up in a ponytail. The woman is posing with one hand on her chin and the other resting on her hand. She has a pink flower in her hair and is looking directly at the camera with a slight smile on her face. The background of the image is decorated with gold and blue patterns on the walls and a gold chandelier hanging from the ceiling."
+      ]
+    },
+    {
+      "id": 22,
+      "type": "GlobalSeed //Inspire",
+      "pos": [
+        60,
+        600
+      ],
+      "size": [
+        290,
+        130
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "properties": {
+        "Node name for S&R": "GlobalSeed //Inspire"
+      },
+      "widgets_values": [
+        3359523742,
+        true,
+        "randomize",
+        1894334205
+      ]
+    },
+    {
+      "id": 4,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -50,
+        320
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            23,
+            28
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            3,
+            5
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            8,
+            31
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "xxmix9realisticsdxl_v10.safetensors"
+      ]
+    },
+    {
+      "id": 25,
+      "type": "Fast Groups Bypasser (rgthree)",
+      "pos": {
+        "0": -30,
+        "1": 130,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 250,
+        "1": 80
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "OPT_CONNECTION",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "matchColors": "",
+        "matchTitle": "",
+        "showNav": true,
+        "sort": "position",
+        "customSortAlphabet": "",
+        "toggleRestriction": "default"
+      }
+    }
+  ],
+  "links": [
+    [
+      3,
+      4,
+      1,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      5,
+      4,
+      1,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      8,
+      4,
+      2,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      10,
+      6,
+      0,
+      10,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      11,
+      7,
+      0,
+      10,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      12,
+      10,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      13,
+      5,
+      0,
+      10,
+      3,
+      "LATENT"
+    ],
+    [
+      14,
+      8,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ],
+    [
+      23,
+      4,
+      0,
+      20,
+      0,
+      "MODEL"
+    ],
+    [
+      24,
+      20,
+      0,
+      10,
+      0,
+      "MODEL"
+    ],
+    [
+      25,
+      6,
+      0,
+      21,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      26,
+      7,
+      0,
+      21,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      28,
+      4,
+      0,
+      21,
+      0,
+      "MODEL"
+    ],
+    [
+      29,
+      5,
+      0,
+      21,
+      3,
+      "LATENT"
+    ],
+    [
+      30,
+      21,
+      0,
+      23,
+      0,
+      "LATENT"
+    ],
+    [
+      31,
+      4,
+      2,
+      23,
+      1,
+      "VAE"
+    ],
+    [
+      32,
+      23,
+      0,
+      24,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "EulerPP+DDIM",
+      "bounding": [
+        880,
+        530,
+        860,
+        606
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "GITS+IPDMV",
+      "bounding": [
+        880,
+        -194,
+        860,
+        694
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6588450000000016,
+      "offset": [
+        502.57901704314065,
+        234.195428322018
+      ]
+    }
+  },
+  "version": 0.4
+}
