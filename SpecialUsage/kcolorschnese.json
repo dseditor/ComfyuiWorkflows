@@ -1,0 +1,775 @@
+{
+  "last_node_id": 136,
+  "last_link_id": 224,
+  "nodes": [
+    {
+      "id": 59,
+      "type": "MZ_KolorsUNETLoader",
+      "pos": [
+        500,
+        450
+      ],
+      "size": {
+        "0": 320,
+        "1": 80
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            119
+          ],
+          "shape": 3,
+          "label": "model",
+          "slot_index": 0
+        },
+        {
+          "name": "hid_proj",
+          "type": "TorchLinear",
+          "links": [
+            79,
+            87
+          ],
+          "shape": 3,
+          "label": "hid_proj",
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MZ_KolorsUNETLoader"
+      },
+      "widgets_values": [
+        "kcolors\\diffusion_pytorch_model.fp16.safetensors"
+      ]
+    },
+    {
+      "id": 66,
+      "type": "MZ_ChatGLM3Loader",
+      "pos": [
+        500,
+        570
+      ],
+      "size": {
+        "0": 320,
+        "1": 60
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "chatglm3_model",
+          "type": "CHATGLM3MODEL",
+          "links": [
+            84,
+            86
+          ],
+          "shape": 3,
+          "label": "chatglm3_model"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MZ_ChatGLM3Loader"
+      },
+      "widgets_values": [
+        "chatglm3-4bit.safetensors"
+      ]
+    },
+    {
+      "id": 62,
+      "type": "MZ_ChatGLM3",
+      "pos": [
+        1000,
+        680
+      ],
+      "size": {
+        "0": 510,
+        "1": 120
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "chatglm3_model",
+          "type": "CHATGLM3MODEL",
+          "link": 84,
+          "label": "chatglm3_model",
+          "slot_index": 0
+        },
+        {
+          "name": "hid_proj",
+          "type": "TorchLinear",
+          "link": 79,
+          "label": "hid_proj"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            219
+          ],
+          "shape": 3,
+          "label": "CONDITIONING",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MZ_ChatGLM3"
+      },
+      "widgets_values": [
+        "错误的肢体，错误的人体结构"
+      ],
+      "color": "#af3535"
+    },
+    {
+      "id": 84,
+      "type": "ModelMergeSimple",
+      "pos": [
+        1000,
+        350
+      ],
+      "size": {
+        "0": 315,
+        "1": 78
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model1",
+          "type": "MODEL",
+          "link": 119,
+          "label": "model1"
+        },
+        {
+          "name": "model2",
+          "type": "MODEL",
+          "link": 209,
+          "label": "model2"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            178
+          ],
+          "shape": 3,
+          "label": "MODEL",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModelMergeSimple"
+      },
+      "widgets_values": [
+        0.7000000000000001
+      ]
+    },
+    {
+      "id": 67,
+      "type": "MZ_ChatGLM3",
+      "pos": [
+        1000,
+        500
+      ],
+      "size": {
+        "0": 510,
+        "1": 140
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "chatglm3_model",
+          "type": "CHATGLM3MODEL",
+          "link": 86,
+          "label": "chatglm3_model",
+          "slot_index": 0
+        },
+        {
+          "name": "hid_proj",
+          "type": "TorchLinear",
+          "link": 87,
+          "label": "hid_proj"
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 222,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            218
+          ],
+          "shape": 3,
+          "label": "CONDITIONING",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MZ_ChatGLM3"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "color": "#346434"
+    },
+    {
+      "id": 133,
+      "type": "EmptyLatentImage",
+      "pos": [
+        1040,
+        870
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            220
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 70,
+      "type": "VAELoader",
+      "pos": [
+        1410,
+        980
+      ],
+      "size": {
+        "0": 360,
+        "1": 60
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            92
+          ],
+          "shape": 3,
+          "label": "VAE",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "sdxl_vae.safetensors"
+      ]
+    },
+    {
+      "id": 125,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        500,
+        690
+      ],
+      "size": {
+        "0": 320,
+        "1": 100
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            209
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "SDXL\\mklanRealistic_mklan230realHyperSD.safetensors"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "VAEDecode",
+      "pos": [
+        1720,
+        230
+      ],
+      "size": {
+        "0": 250,
+        "1": 46
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 217,
+          "label": "samples"
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 92,
+          "label": "vae",
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            215
+          ],
+          "shape": 3,
+          "label": "IMAGE",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 130,
+      "type": "SaveImage",
+      "pos": [
+        1910,
+        350
+      ],
+      "size": {
+        "0": 690,
+        "1": 710
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 215
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 132,
+      "type": "KSampler //Inspire",
+      "pos": [
+        1560,
+        510
+      ],
+      "size": {
+        "0": 317.4000244140625,
+        "1": 402
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 221
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 218
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 219
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 220
+        },
+        {
+          "name": "scheduler_func_opt",
+          "type": "SCHEDULER_FUNC",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            217
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler //Inspire"
+      },
+      "widgets_values": [
+        262019042496118,
+        "randomize",
+        18,
+        4,
+        "dpmpp_2m",
+        "AYS SDXL",
+        1,
+        "GPU(=A1111)",
+        "incremental",
+        0,
+        0,
+        "linear"
+      ]
+    },
+    {
+      "id": 94,
+      "type": "Automatic CFG - Preset Loader",
+      "pos": [
+        1340,
+        270
+      ],
+      "size": {
+        "0": 362.79998779296875,
+        "1": 170
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 178,
+          "label": "model"
+        },
+        {
+          "name": "join_global_parameters",
+          "type": "ATTNMOD",
+          "link": null,
+          "label": "join_global_parameters"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Model",
+          "type": "MODEL",
+          "links": [
+            221
+          ],
+          "shape": 3,
+          "label": "Model",
+          "slot_index": 0
+        },
+        {
+          "name": "Preset name",
+          "type": "STRING",
+          "links": null,
+          "shape": 3,
+          "label": "Preset name"
+        },
+        {
+          "name": "Parameters as string",
+          "type": "STRING",
+          "links": null,
+          "shape": 3,
+          "label": "Parameters as string"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Automatic CFG - Preset Loader"
+      },
+      "widgets_values": [
+        "SDXL_Photorealistic_helper",
+        0,
+        true,
+        "From preset"
+      ]
+    },
+    {
+      "id": 134,
+      "type": "GoogleTranslateTextNode",
+      "pos": [
+        500,
+        850
+      ],
+      "size": {
+        "0": 490,
+        "1": 190
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            222,
+            224
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GoogleTranslateTextNode"
+      },
+      "widgets_values": [
+        "zh-tw",
+        "zh-cn",
+        false,
+        "Manual Trasnlate",
+        "美麗的夜晚，一名穿著水手服的雙馬尾高中少女，手上握著金色的，上面鑲有愛心圖案的魔法棒，長著純白的翅膀，開滿花朵，真實的巴洛克宮廷"
+      ]
+    },
+    {
+      "id": 136,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1084.9119677080485,
+        1020.1831683254127
+      ],
+      "size": {
+        "0": 320,
+        "1": 80
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 224,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        [
+          "美丽的夜晚，一名穿着水手服的双马尾高中少女，手上握着金色的，上面镶有爱心图案的魔法棒，长着纯白的翅膀，开满花朵，真实的巴洛克宫廷"
+        ],
+        "美丽的夜晚，一名穿着水手服的双马尾高中少女，手上握着金色的，上面镶有爱心图案的魔法棒，长着纯白的翅膀，开满花朵，真实的巴洛克宫廷"
+      ]
+    }
+  ],
+  "links": [
+    [
+      79,
+      59,
+      1,
+      62,
+      1,
+      "TorchLinear"
+    ],
+    [
+      84,
+      66,
+      0,
+      62,
+      0,
+      "CHATGLM3MODEL"
+    ],
+    [
+      86,
+      66,
+      0,
+      67,
+      0,
+      "CHATGLM3MODEL"
+    ],
+    [
+      87,
+      59,
+      1,
+      67,
+      1,
+      "TorchLinear"
+    ],
+    [
+      92,
+      70,
+      0,
+      10,
+      1,
+      "VAE"
+    ],
+    [
+      119,
+      59,
+      0,
+      84,
+      0,
+      "MODEL"
+    ],
+    [
+      178,
+      84,
+      0,
+      94,
+      0,
+      "MODEL"
+    ],
+    [
+      209,
+      125,
+      0,
+      84,
+      1,
+      "MODEL"
+    ],
+    [
+      215,
+      10,
+      0,
+      130,
+      0,
+      "IMAGE"
+    ],
+    [
+      217,
+      132,
+      0,
+      10,
+      0,
+      "LATENT"
+    ],
+    [
+      218,
+      67,
+      0,
+      132,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      219,
+      62,
+      0,
+      132,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      220,
+      133,
+      0,
+      132,
+      3,
+      "LATENT"
+    ],
+    [
+      221,
+      94,
+      0,
+      132,
+      0,
+      "MODEL"
+    ],
+    [
+      222,
+      134,
+      0,
+      67,
+      2,
+      "STRING"
+    ],
+    [
+      224,
+      134,
+      0,
+      136,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7247295000000004,
+      "offset": {
+        "0": -176.6229248046875,
+        "1": -107.29047393798828
+      }
+    }
+  },
+  "version": 0.4
+}
