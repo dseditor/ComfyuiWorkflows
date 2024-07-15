@@ -1,0 +1,915 @@
+{
+  "last_node_id": 47,
+  "last_link_id": 76,
+  "nodes": [
+    {
+      "id": 17,
+      "type": "OllamaGenerate",
+      "pos": [
+        -500,
+        -130
+      ],
+      "size": {
+        "0": 360,
+        "1": 130
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 38,
+          "widget": {
+            "name": "prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "response",
+          "type": "STRING",
+          "links": [
+            36
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaGenerate"
+      },
+      "widgets_values": [
+        "You are a graphic designer. Please creatively design a poster with the theme of firechicken. The layout should primarily include related text and images.\n\nWhen writing the text, follow this example format: Position of the text (write the word \"firechicken\"). Use parentheses () for emphasis.\n\nStart with the design layout first, then describe the design concept.\n\nIn the design layout, the text must be at the very beginning. When writing text, it must be placed on a sign.\n\nThe color of the text should closely match the theme and aesthetic of the design.\n\nThere should be large text titles as well as small text copy that align with the design principles and theme content.\n\nText can be combined with images, placed on color blocks; the color blocks and text can be transparent, gradient, or outlined.\n\nAim for an advanced level of typography and design. Make the final result look unique and distinctive. Be sure to include the text.",
+        "enable",
+        "http://127.0.0.1:11434",
+        "llama3:latest",
+        5
+      ]
+    },
+    {
+      "id": 18,
+      "type": "ImpactSwitch",
+      "pos": [
+        -90,
+        -350
+      ],
+      "size": {
+        "0": 210,
+        "1": 122
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input1",
+          "type": "STRING",
+          "link": 35
+        },
+        {
+          "name": "input2",
+          "type": "STRING",
+          "link": 36
+        },
+        {
+          "name": "input3",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            34,
+            41
+          ],
+          "shape": 3,
+          "slot_index": 0,
+          "label": "STRING"
+        },
+        {
+          "name": "selected_label",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "selected_index",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImpactSwitch"
+      },
+      "widgets_values": [
+        1,
+        true
+      ]
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        520,
+        -560
+      ],
+      "size": {
+        "0": 290,
+        "1": 60
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 9
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 32,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            30
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 14,
+      "type": "CLIPTextEncode",
+      "pos": [
+        520,
+        -410
+      ],
+      "size": {
+        "0": 300,
+        "1": 76
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 27
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            26
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 16,
+      "type": "SaveImage",
+      "pos": [
+        1080,
+        -250
+      ],
+      "size": [
+        760,
+        790
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 33
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "postertest/ComfyUI"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "Gemini_API_Zho",
+      "pos": [
+        -510,
+        -340
+      ],
+      "size": {
+        "0": 370,
+        "1": 150
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 74,
+          "widget": {
+            "name": "prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            35
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Gemini_API_Zho"
+      },
+      "widgets_values": [
+        "You are a graphic designer. Please creatively design a poster with the theme of firechicken. The layout should primarily include related text and images.\n\nWhen writing the text, follow this example format: Position of the text (write the word \"firechicken\"). Use parentheses () for emphasis.\n\nStart with the design layout first, then describe the design concept.\n\nIn the design layout, the text must be at the very beginning. When writing text, it must be placed on a sign.\n\nThe color of the text should closely match the theme and aesthetic of the design.\n\nThere should be large text titles as well as small text copy that align with the design principles and theme content.\n\nText can be combined with images, placed on color blocks; the color blocks and text can be transparent, gradient, or outlined.\n\nAim for an advanced level of typography and design. Make the final result look unique and distinctive. Be sure to include the text.",
+        "gemini-pro",
+        false,
+        ""
+      ]
+    },
+    {
+      "id": 46,
+      "type": "Note",
+      "pos": [
+        -90,
+        -470
+      ],
+      "size": [
+        220,
+        70
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Switch\n1.Gemini (need API)\n2.ollama"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 19,
+      "type": "String Literal",
+      "pos": [
+        -880,
+        -130
+      ],
+      "size": {
+        "0": 340,
+        "1": 430
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            37
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "String Literal"
+      },
+      "widgets_values": [
+        "You are a graphic designer. Please creatively design a poster with the theme of firechicken. The layout should primarily include related text and images.\n\nWhen writing the text, follow this example format: Position of the text (write the word \"firechicken\"). Use parentheses () for emphasis.\n\nStart with the design layout first, then describe the design concept.\n\nIn the design layout, the text must be at the very beginning. When writing text, it must be placed on a sign.\n\nThe color of the text should closely match the theme and aesthetic of the design.\n\nThere should be large text titles as well as small text copy that align with the design principles and theme content.\n\nText can be combined with images, placed on color blocks; the color blocks and text can be transparent, gradient, or outlined.\n\nAim for an advanced level of typography and design. Make the final result look unique and distinctive. Be sure to include the text."
+      ]
+    },
+    {
+      "id": 20,
+      "type": "StringFunction|pysssss",
+      "pos": [
+        -490,
+        60
+      ],
+      "size": {
+        "0": 260,
+        "1": 194
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_a",
+          "type": "STRING",
+          "link": 37,
+          "widget": {
+            "name": "text_a"
+          }
+        },
+        {
+          "name": "text_c",
+          "type": "STRING",
+          "link": 75,
+          "widget": {
+            "name": "text_c"
+          },
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            38,
+            74
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StringFunction|pysssss"
+      },
+      "widgets_values": [
+        "replace",
+        "yes",
+        "",
+        "firechicken",
+        "instantnoodle",
+        "You are a graphic designer. Please creatively design a poster with the theme of Popcorn. The layout should primarily include related text and images. When writing the text, follow this example format: Position of the text (write the word \"Popcorn\"). Use parentheses () for emphasis. Start with the design layout first, then describe the design concept. In the design layout, the text must be at the very beginning. When writing text, it must be placed on a sign. The color of the text should closely match the theme and aesthetic of the design. There should be large text titles as well as small text copy that align with the design principles and theme content. Text can be combined with images, placed on color blocks; the color blocks and text can be transparent, gradient, or outlined. Aim for an advanced level of typography and design. Make the final result look unique and distinctive. Be sure to include the text."
+      ]
+    },
+    {
+      "id": 45,
+      "type": "String Literal",
+      "pos": [
+        -910,
+        -340
+      ],
+      "size": [
+        360,
+        100
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "string",
+          "type": "STRING",
+          "link": 76,
+          "widget": {
+            "name": "string"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            75
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "YourConcept",
+      "properties": {
+        "Node name for S&R": "String Literal"
+      },
+      "widgets_values": [
+        "japanese greentea"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 11,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -120,
+        -90
+      ],
+      "size": [
+        270,
+        350
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 34,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "**Layout:**\n\n* A vibrant, slightly transparent gradient background with shades of orange and yellow, reminiscent of the colors of popcorn kernels.\n* A large, stylized cutout image of a popcorn kernel in the center, with the text \"Popcorn\" written on it in bold, playful typography.\n* Under the popcorn kernel, a smaller sign with the text \"A magical treat for all ages\" in a smaller, more elegant font.\n* Around the popcorn kernel, a cluster of smaller popcorn kernels scattered in a playful manner. Each kernel has a small word related to popcorn written on it, such as \"buttery,\" \"crunchy,\" or \"munchy.\"\n\n**Concept:**\n\nThe poster captures the joy and excitement associated with popcorn, a universally beloved treat. The vibrant colors, playful typography, and scattered popcorn kernels evoke a sense of celebration and nostalgia. The smaller text sign reinforces the idea that popcorn is a treat that can be enjoyed by everyone, regardless of age.\n\n**Text:**\n\n* Popcorn (Large, bold heading on the popcorn kernel)\n* A magical treat for all ages (Smaller, elegant text on the sign beneath the popcorn kernel)\n* Buttery (Small text on one of the scattered popcorn kernels)\n* Crunchy (Small text on another popcorn kernel)\n* Munchy (Small text on another popcorn kernel)"
+      ]
+    },
+    {
+      "id": 47,
+      "type": "GoogleTranslateTextNode",
+      "pos": [
+        -1210,
+        -370
+      ],
+      "size": [
+        260,
+        172.0000057220459
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            76
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GoogleTranslateTextNode"
+      },
+      "widgets_values": [
+        "auto",
+        "en",
+        false,
+        "Manual Trasnlate",
+        "爆米花"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        180,
+        -520
+      ],
+      "size": {
+        "0": 290,
+        "1": 100
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            7
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            9,
+            27
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            8
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "SD3\\sd3_medium_incl_clips_t5xxlfp8.safetensors"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "EmptySD3LatentImage",
+      "pos": [
+        190,
+        -20
+      ],
+      "size": {
+        "0": 260,
+        "1": 110
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            6
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptySD3LatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 15,
+      "type": "SDXLPromptStyler",
+      "pos": [
+        180,
+        -340
+      ],
+      "size": {
+        "0": 230,
+        "1": 240
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_positive",
+          "type": "STRING",
+          "link": 41,
+          "widget": {
+            "name": "text_positive"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text_positive",
+          "type": "STRING",
+          "links": [
+            32
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "text_negative",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SDXLPromptStyler"
+      },
+      "widgets_values": [
+        "",
+        "",
+        "game-mario",
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 3,
+      "type": "KSampler (Efficient)",
+      "pos": [
+        500,
+        -250
+      ],
+      "size": {
+        "0": 530,
+        "1": 870
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 7
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 30
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 26
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 6
+        },
+        {
+          "name": "optional_vae",
+          "type": "VAE",
+          "link": 8
+        },
+        {
+          "name": "script",
+          "type": "SCRIPT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            33
+          ],
+          "shape": 3,
+          "slot_index": 5
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler (Efficient)"
+      },
+      "widgets_values": [
+        -1,
+        null,
+        30,
+        6,
+        "dpmpp_2m",
+        "sgm_uniform",
+        1,
+        "auto",
+        "true"
+      ],
+      "color": "#443322",
+      "bgcolor": "#665533",
+      "shape": 1
+    }
+  ],
+  "links": [
+    [
+      6,
+      4,
+      0,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      7,
+      5,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      8,
+      5,
+      2,
+      3,
+      4,
+      "VAE"
+    ],
+    [
+      9,
+      5,
+      1,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      26,
+      14,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      27,
+      5,
+      1,
+      14,
+      0,
+      "CLIP"
+    ],
+    [
+      30,
+      7,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      32,
+      15,
+      0,
+      7,
+      1,
+      "STRING"
+    ],
+    [
+      33,
+      3,
+      5,
+      16,
+      0,
+      "IMAGE"
+    ],
+    [
+      34,
+      18,
+      0,
+      11,
+      0,
+      "STRING"
+    ],
+    [
+      35,
+      10,
+      0,
+      18,
+      0,
+      "STRING"
+    ],
+    [
+      36,
+      17,
+      0,
+      18,
+      1,
+      "STRING"
+    ],
+    [
+      37,
+      19,
+      0,
+      20,
+      0,
+      "STRING"
+    ],
+    [
+      38,
+      20,
+      0,
+      17,
+      0,
+      "STRING"
+    ],
+    [
+      41,
+      18,
+      0,
+      15,
+      0,
+      "STRING"
+    ],
+    [
+      74,
+      20,
+      0,
+      10,
+      1,
+      "STRING"
+    ],
+    [
+      75,
+      45,
+      0,
+      20,
+      1,
+      "STRING"
+    ],
+    [
+      76,
+      47,
+      0,
+      45,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.544500000000007,
+      "offset": [
+        825.0736823012058,
+        621.8815864990028
+      ]
+    }
+  },
+  "version": 0.4
+}
