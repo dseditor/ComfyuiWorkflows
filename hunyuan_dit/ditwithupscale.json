@@ -1,0 +1,1112 @@
+{
+  "last_node_id": 66,
+  "last_link_id": 102,
+  "nodes": [
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        930,
+        240
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 28
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            38,
+            50
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        560,
+        20
+      ],
+      "size": {
+        "0": 340,
+        "1": 80
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            69
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "CLIP Text Encode (Negative Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "不真实的，背景模糊，文字，多余的手指，错误的肢体"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 4,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        590,
+        -240
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            32
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            3,
+            5
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            8
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "hunyuan_dit_comfyui\\hunyuan_dit_1.2.safetensors"
+      ]
+    },
+    {
+      "id": 23,
+      "type": "Efficient Loader",
+      "pos": [
+        80,
+        390
+      ],
+      "size": {
+        "0": 310,
+        "1": 480
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "link": null
+        },
+        {
+          "name": "cnet_stack",
+          "type": "CONTROL_NET_STACK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            40
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "links": [
+            36
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "links": [
+            37
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            41
+          ],
+          "shape": 3,
+          "slot_index": 4
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "DEPENDENCIES",
+          "type": "DEPENDENCIES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Efficient Loader"
+      },
+      "widgets_values": [
+        "realvisxlV40_v40LightningBakedvae.safetensors",
+        "Baked VAE",
+        -1,
+        "None",
+        1,
+        1,
+        "high quality photography",
+        "(octane render, render, drawing, anime, bad photo, bad photography:1.3), (worst quality, low quality, blurry:1.2), (bad teeth, deformed teeth, deformed lips), (bad anatomy, bad proportions:1.1), (deformed iris, deformed pupils), (deformed eyes, bad eyes), (deformed face, ugly face, bad face), (deformed hands, bad hands, fused fingers), morbid, mutilated, mutation, disfigured",
+        "none",
+        "comfy",
+        512,
+        512,
+        1
+      ],
+      "color": "#332233",
+      "bgcolor": "#553355",
+      "shape": 1
+    },
+    {
+      "id": 30,
+      "type": "FL_SDUltimate_Slices",
+      "pos": [
+        100,
+        940
+      ],
+      "size": {
+        "0": 315,
+        "1": 142
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 50
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            49
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "slice_width",
+          "type": "INT",
+          "links": [
+            46
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "slice_height",
+          "type": "INT",
+          "links": [
+            47
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "multiplier",
+          "type": "FLOAT",
+          "links": [
+            48
+          ],
+          "shape": 3,
+          "slot_index": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FL_SDUltimate_Slices"
+      },
+      "widgets_values": [
+        "2x2",
+        2
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 24,
+      "type": "SD_4XUpscale_Conditioning",
+      "pos": [
+        420,
+        420
+      ],
+      "size": {
+        "0": 290,
+        "1": 122
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 38
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 36
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 37
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            34
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            35
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SD_4XUpscale_Conditioning"
+      },
+      "widgets_values": [
+        2,
+        0.5
+      ]
+    },
+    {
+      "id": 26,
+      "type": "KSamplerSelect",
+      "pos": [
+        420,
+        600
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            42
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "dpmpp_sde_gpu"
+      ]
+    },
+    {
+      "id": 27,
+      "type": "UpscaleModelLoader",
+      "pos": [
+        420,
+        720
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "UPSCALE_MODEL",
+          "type": "UPSCALE_MODEL",
+          "links": [
+            43
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UpscaleModelLoader"
+      },
+      "widgets_values": [
+        "4x-UltraSharp.pth"
+      ]
+    },
+    {
+      "id": 28,
+      "type": "AlignYourStepsScheduler",
+      "pos": [
+        430,
+        830
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            44
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AlignYourStepsScheduler"
+      },
+      "widgets_values": [
+        "SDXL",
+        15,
+        0.3
+      ]
+    },
+    {
+      "id": 25,
+      "type": "UltimateSDUpscaleCustomSample",
+      "pos": [
+        760,
+        410
+      ],
+      "size": {
+        "0": 320,
+        "1": 650
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 49
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 40
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 34
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 35
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 41
+        },
+        {
+          "name": "upscale_model",
+          "type": "UPSCALE_MODEL",
+          "link": 43,
+          "slot_index": 5
+        },
+        {
+          "name": "custom_sampler",
+          "type": "SAMPLER",
+          "link": 42,
+          "slot_index": 6
+        },
+        {
+          "name": "custom_sigmas",
+          "type": "SIGMAS",
+          "link": 44,
+          "slot_index": 7
+        },
+        {
+          "name": "upscale_by",
+          "type": "FLOAT",
+          "link": 48,
+          "widget": {
+            "name": "upscale_by"
+          }
+        },
+        {
+          "name": "tile_width",
+          "type": "INT",
+          "link": 46,
+          "widget": {
+            "name": "tile_width"
+          }
+        },
+        {
+          "name": "tile_height",
+          "type": "INT",
+          "link": 47,
+          "widget": {
+            "name": "tile_height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            45
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UltimateSDUpscaleCustomSample"
+      },
+      "widgets_values": [
+        2,
+        0,
+        "fixed",
+        4,
+        2,
+        "dpmpp_sde",
+        "normal",
+        0.2,
+        "Linear",
+        512,
+        512,
+        8,
+        32,
+        "None",
+        1,
+        64,
+        8,
+        16,
+        true,
+        false
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        560,
+        -90
+      ],
+      "size": {
+        "0": 330,
+        "1": 70
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 3
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 100,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            79
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "a bottle with a 彩虹星系 inside it on top of a wooden table on a snowy mountain top with the ocean and clouds in the background\n"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 57,
+      "type": "Note",
+      "pos": [
+        330,
+        -370
+      ],
+      "size": {
+        "0": 210,
+        "1": 370
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "title": "StyleIndex",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "0.日漫动画,\n1.写实,\n2.漫画,\n3.水墨画,\n4.莫奈,\n5.扁平插画,\n6.像素插画,\n7.儿童绘本,\n8.黑白漫画,\n9.赛博朋克,\n10.青花瓷,\n11.怪兽风格,\n12.暗黑风格,\n13.复古动漫,\n14.游戏卡通手绘,\n15.2.5D,\n16.水彩画,\n17.古典肖像画,\n18.油画\n19.马赛克\n20.新年花艺\n21.毕加索\n22.蒸汽波\n23.厚涂风格\n24.霓虹"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 55,
+      "type": "FL_PromptSelector",
+      "pos": [
+        320,
+        60
+      ],
+      "size": {
+        "0": 220,
+        "1": 210
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "append_text",
+          "type": "STRING",
+          "link": 101,
+          "widget": {
+            "name": "append_text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            100
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FL_PromptSelector"
+      },
+      "widgets_values": [
+        "",
+        "日漫动画,\n写实,\n漫画,\n水墨画,\n莫奈,\n扁平插画,\n像素插画,\n儿童绘本,\n黑白漫画,\n赛博朋克,\n青花瓷,\n怪兽风格,\n暗黑风格,\n复古动漫,\n游戏卡通手绘,\n2.5D,\n水彩画,\n古典肖像画,\n油画,\n马赛克,\n新年花艺,\n毕加索,\n蒸汽波,\n厚涂风格,\n霓虹,",
+        "一个穿个高中制服的双马尾亚洲女孩在水上的魔法商店，背后是商店的水池，水面上浮着花瓣，戴着心型发饰，长着粉红色的天使翅膀，面对镜头，充满细节的照片，清新明亮，8K",
+        1
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 20,
+      "type": "KSampler //Inspire",
+      "pos": [
+        910,
+        -220
+      ],
+      "size": {
+        "0": 250,
+        "1": 402
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 32
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 79
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 69
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 80
+        },
+        {
+          "name": "scheduler_func_opt",
+          "type": "SCHEDULER_FUNC",
+          "link": null,
+          "slot_index": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            28
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler //Inspire"
+      },
+      "widgets_values": [
+        251766703551626,
+        "randomize",
+        20,
+        5,
+        "dpmpp_2m_sde_gpu",
+        "AYS SDXL",
+        1,
+        "GPU(=A1111)",
+        "incremental",
+        0,
+        0,
+        "linear"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [
+        570,
+        160
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            80
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 65,
+      "type": "GoogleTranslateTextNode",
+      "pos": [
+        20,
+        50
+      ],
+      "size": [
+        270,
+        220
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            101
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GoogleTranslateTextNode"
+      },
+      "widgets_values": [
+        "auto",
+        "zh-cn",
+        false,
+        "Manual Trasnlate",
+        "穿著華麗刺繡婚紗，長直髮瀏海的20歲亞洲女孩，她站在水池中，有著美麗的大眼睛，頭髮濕潤，水面上浮著七彩繽紛的花瓣和落葉，天花板上滿滿升起的氣球，面對鏡頭，充滿細節的半身照片，清新明亮，水中燈光，8K"
+      ]
+    },
+    {
+      "id": 29,
+      "type": "SaveImage",
+      "pos": [
+        1190,
+        -280
+      ],
+      "size": {
+        "0": 1280,
+        "1": 1330
+      },
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 45
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "dit/comfyui"
+      ]
+    }
+  ],
+  "links": [
+    [
+      3,
+      4,
+      1,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      5,
+      4,
+      1,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      8,
+      4,
+      2,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      28,
+      20,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      32,
+      4,
+      0,
+      20,
+      0,
+      "MODEL"
+    ],
+    [
+      34,
+      24,
+      0,
+      25,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      35,
+      24,
+      1,
+      25,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      36,
+      23,
+      1,
+      24,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      37,
+      23,
+      2,
+      24,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      38,
+      8,
+      0,
+      24,
+      0,
+      "IMAGE"
+    ],
+    [
+      40,
+      23,
+      0,
+      25,
+      1,
+      "MODEL"
+    ],
+    [
+      41,
+      23,
+      4,
+      25,
+      4,
+      "VAE"
+    ],
+    [
+      42,
+      26,
+      0,
+      25,
+      6,
+      "SAMPLER"
+    ],
+    [
+      43,
+      27,
+      0,
+      25,
+      5,
+      "UPSCALE_MODEL"
+    ],
+    [
+      44,
+      28,
+      0,
+      25,
+      7,
+      "SIGMAS"
+    ],
+    [
+      45,
+      25,
+      0,
+      29,
+      0,
+      "IMAGE"
+    ],
+    [
+      46,
+      30,
+      1,
+      25,
+      9,
+      "INT"
+    ],
+    [
+      47,
+      30,
+      2,
+      25,
+      10,
+      "INT"
+    ],
+    [
+      48,
+      30,
+      3,
+      25,
+      8,
+      "FLOAT"
+    ],
+    [
+      49,
+      30,
+      0,
+      25,
+      0,
+      "IMAGE"
+    ],
+    [
+      50,
+      8,
+      0,
+      30,
+      0,
+      "IMAGE"
+    ],
+    [
+      69,
+      7,
+      0,
+      20,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      79,
+      6,
+      0,
+      20,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      80,
+      5,
+      0,
+      20,
+      3,
+      "LATENT"
+    ],
+    [
+      100,
+      55,
+      0,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      101,
+      65,
+      0,
+      55,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Upscale",
+      "bounding": [
+        70,
+        320,
+        1040,
+        790
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.4950000000000005,
+      "offset": [
+        127.1347573269686,
+        353.4664217222043
+      ]
+    }
+  },
+  "version": 0.4
+}
