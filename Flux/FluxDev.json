@@ -1,0 +1,1172 @@
+{
+  "last_node_id": 43,
+  "last_link_id": 69,
+  "nodes": [
+    {
+      "id": 37,
+      "type": "Efficient Loader",
+      "pos": [
+        -370,
+        220
+      ],
+      "size": [
+        320,
+        550
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "link": null
+        },
+        {
+          "name": "cnet_stack",
+          "type": "CONTROL_NET_STACK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            67
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "links": [
+            64
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "links": [
+            65
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            68
+          ],
+          "shape": 3,
+          "slot_index": 4
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "DEPENDENCIES",
+          "type": "DEPENDENCIES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Efficient Loader"
+      },
+      "widgets_values": [
+        "realvisxlV40_v40LightningBakedvae.safetensors",
+        "Baked VAE",
+        -1,
+        "None",
+        1,
+        1,
+        "high quality photography",
+        "(octane render, render, drawing, anime, bad photo, bad photography:1.3), (worst quality, low quality, blurry:1.2), (bad teeth, deformed teeth, deformed lips), (bad anatomy, bad proportions:1.1), (deformed iris, deformed pupils), (deformed eyes, bad eyes), (deformed face, ugly face, bad face), (deformed hands, bad hands, fused fingers), morbid, mutilated, mutation, disfigured",
+        "none",
+        "comfy",
+        512,
+        512,
+        1
+      ],
+      "color": "#332233",
+      "bgcolor": "#553355",
+      "shape": 1
+    },
+    {
+      "id": 42,
+      "type": "FL_SDUltimate_Slices",
+      "pos": [
+        -340,
+        830
+      ],
+      "size": {
+        "0": 270,
+        "1": 142
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 66
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            56
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "slice_width",
+          "type": "INT",
+          "links": [
+            60
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "slice_height",
+          "type": "INT",
+          "links": [
+            61
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "multiplier",
+          "type": "FLOAT",
+          "links": [
+            62
+          ],
+          "shape": 3,
+          "slot_index": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FL_SDUltimate_Slices"
+      },
+      "widgets_values": [
+        "2x2",
+        2
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 40,
+      "type": "UpscaleModelLoader",
+      "pos": [
+        0,
+        240
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "UPSCALE_MODEL",
+          "type": "UPSCALE_MODEL",
+          "links": [
+            59
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UpscaleModelLoader"
+      },
+      "widgets_values": [
+        "4x-UltraSharp.pth"
+      ]
+    },
+    {
+      "id": 41,
+      "type": "SD_4XUpscale_Conditioning",
+      "pos": [
+        0,
+        350
+      ],
+      "size": {
+        "0": 315,
+        "1": 122
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 63
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 64
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 65
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            57
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            58
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SD_4XUpscale_Conditioning"
+      },
+      "widgets_values": [
+        2,
+        0.4
+      ]
+    },
+    {
+      "id": 43,
+      "type": "UltimateSDUpscale",
+      "pos": [
+        -20,
+        520
+      ],
+      "size": {
+        "0": 320,
+        "1": 610
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 56
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 67
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 57
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 58
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 68
+        },
+        {
+          "name": "upscale_model",
+          "type": "UPSCALE_MODEL",
+          "link": 59,
+          "slot_index": 5
+        },
+        {
+          "name": "tile_width",
+          "type": "INT",
+          "link": 60,
+          "widget": {
+            "name": "tile_width"
+          }
+        },
+        {
+          "name": "tile_height",
+          "type": "INT",
+          "link": 61,
+          "widget": {
+            "name": "tile_height"
+          }
+        },
+        {
+          "name": "upscale_by",
+          "type": "FLOAT",
+          "link": 62,
+          "widget": {
+            "name": "upscale_by"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            69
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UltimateSDUpscale"
+      },
+      "widgets_values": [
+        2,
+        0,
+        "fixed",
+        5,
+        2,
+        "dpmpp_2m",
+        "sgm_uniform",
+        0.25,
+        "Linear",
+        512,
+        512,
+        8,
+        32,
+        "None",
+        1,
+        64,
+        8,
+        16,
+        true,
+        false
+      ]
+    },
+    {
+      "id": 29,
+      "type": "workflow/flux",
+      "pos": [
+        -10,
+        -310
+      ],
+      "size": {
+        "0": 290,
+        "1": 420
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 44,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            63,
+            66
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "workflow/flux"
+      },
+      "widgets_values": [
+        "flux1-dev-fp8.safetensors",
+        "default",
+        "FLUX1\\ae.sft",
+        1024,
+        1024,
+        4,
+        443007268219730,
+        "randomize",
+        "dpmpp_2m",
+        "Flux\\clip_l.safetensors",
+        "Flux\\t5xxl_fp8_e4m3fn.safetensors",
+        "flux",
+        "simple",
+        20,
+        1,
+        "cute anime girl with massive fluffy fennec ears and a big fluffy tail blonde messy long hair blue eyes wearing a maid outfit with a long black dress with a gold leaf pattern and a white apron eating a slice of an apple pie in the kitchen of an old dark victorian mansion with a bright window and very expensive stuff everywhere"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "SaveImage",
+      "pos": [
+        350,
+        -320
+      ],
+      "size": {
+        "0": 985.3012084960938,
+        "1": 1060.3828125
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 69
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "0802/comfyui"
+      ]
+    },
+    {
+      "id": 26,
+      "type": "SDXLPromptStyler",
+      "pos": [
+        -360,
+        -300
+      ],
+      "size": {
+        "0": 320,
+        "1": 410
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "text_positive",
+          "type": "STRING",
+          "links": [
+            44
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "text_negative",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SDXLPromptStyler"
+      },
+      "widgets_values": [
+        "A 20-year-old Asian girl with long straight hair, half of her body image, has metallic mechanical wings, holds a light sword in hand. Her eyes gaze at the camera, located in an outer space laboratory with gigantic machinery trees wrapped in electrical wires, covered with glowing electronic flowers. Behind her is a spaceship flying away, and above the ceiling are colorful pipelines dangling from the sky, radiating a bright cyberpunk atmosphere.",
+        "",
+        "futuristic-biomechanical cyberpunk",
+        true,
+        true,
+        true
+      ]
+    }
+  ],
+  "links": [
+    [
+      44,
+      26,
+      0,
+      29,
+      0,
+      "STRING"
+    ],
+    [
+      56,
+      42,
+      0,
+      43,
+      0,
+      "IMAGE"
+    ],
+    [
+      57,
+      41,
+      0,
+      43,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      58,
+      41,
+      1,
+      43,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      59,
+      40,
+      0,
+      43,
+      5,
+      "UPSCALE_MODEL"
+    ],
+    [
+      60,
+      42,
+      1,
+      43,
+      6,
+      "INT"
+    ],
+    [
+      61,
+      42,
+      2,
+      43,
+      7,
+      "INT"
+    ],
+    [
+      62,
+      42,
+      3,
+      43,
+      8,
+      "FLOAT"
+    ],
+    [
+      63,
+      29,
+      1,
+      41,
+      0,
+      "IMAGE"
+    ],
+    [
+      64,
+      37,
+      1,
+      41,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      65,
+      37,
+      2,
+      41,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      66,
+      29,
+      1,
+      42,
+      0,
+      "IMAGE"
+    ],
+    [
+      67,
+      37,
+      0,
+      43,
+      1,
+      "MODEL"
+    ],
+    [
+      68,
+      37,
+      4,
+      43,
+      4,
+      "VAE"
+    ],
+    [
+      69,
+      43,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1,
+      "offset": [
+        291.30340345477157,
+        193.97264430996552
+      ]
+    },
+    "groupNodes": {
+      "flux": {
+        "nodes": [
+          {
+            "type": "UNETLoader",
+            "pos": [
+              10,
+              40
+            ],
+            "size": {
+              "0": 315,
+              "1": 82
+            },
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "outputs": [
+              {
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": [],
+                "shape": 3,
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "UNETLoader"
+            },
+            "widgets_values": [
+              "flux1-dev-fp8.safetensors",
+              "default"
+            ],
+            "index": 0
+          },
+          {
+            "type": "VAELoader",
+            "pos": [
+              800,
+              210
+            ],
+            "size": {
+              "0": 315,
+              "1": 58
+            },
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "outputs": [
+              {
+                "name": "VAE",
+                "type": "VAE",
+                "links": [],
+                "shape": 3,
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "VAELoader"
+            },
+            "widgets_values": [
+              "FLUX1\\ae.sft"
+            ],
+            "index": 1
+          },
+          {
+            "type": "EmptyLatentImage",
+            "pos": [
+              410,
+              280
+            ],
+            "size": {
+              "0": 315,
+              "1": 106
+            },
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "outputs": [
+              {
+                "name": "LATENT",
+                "type": "LATENT",
+                "links": [],
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "EmptyLatentImage"
+            },
+            "widgets_values": [
+              1024,
+              1024,
+              1
+            ],
+            "index": 2
+          },
+          {
+            "type": "RandomNoise",
+            "pos": [
+              410,
+              430
+            ],
+            "size": {
+              "0": 315,
+              "1": 82
+            },
+            "flags": {},
+            "order": 3,
+            "mode": 0,
+            "outputs": [
+              {
+                "name": "NOISE",
+                "type": "NOISE",
+                "links": [],
+                "shape": 3
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "RandomNoise"
+            },
+            "widgets_values": [
+              1009309723483165,
+              "randomize"
+            ],
+            "index": 3
+          },
+          {
+            "type": "KSamplerSelect",
+            "pos": [
+              400,
+              570
+            ],
+            "size": {
+              "0": 315,
+              "1": 58
+            },
+            "flags": {},
+            "order": 4,
+            "mode": 0,
+            "outputs": [
+              {
+                "name": "SAMPLER",
+                "type": "SAMPLER",
+                "links": [],
+                "shape": 3
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "KSamplerSelect"
+            },
+            "widgets_values": [
+              "dpmpp_2m"
+            ],
+            "index": 4
+          },
+          {
+            "type": "DualCLIPLoader",
+            "pos": [
+              20,
+              180
+            ],
+            "size": {
+              "0": 290,
+              "1": 110
+            },
+            "flags": {},
+            "order": 6,
+            "mode": 0,
+            "outputs": [
+              {
+                "name": "CLIP",
+                "type": "CLIP",
+                "links": [],
+                "shape": 3,
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "DualCLIPLoader"
+            },
+            "widgets_values": [
+              "SD3\\t5xxl_fp8_e4m3fn.safetensors",
+              "SD3\\clip_l.safetensors",
+              "flux"
+            ],
+            "index": 5
+          },
+          {
+            "type": "BasicScheduler",
+            "pos": [
+              800,
+              330
+            ],
+            "size": {
+              "0": 315,
+              "1": 106
+            },
+            "flags": {},
+            "order": 7,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "model",
+                "type": "MODEL",
+                "link": null,
+                "slot_index": 0
+              }
+            ],
+            "outputs": [
+              {
+                "name": "SIGMAS",
+                "type": "SIGMAS",
+                "links": [],
+                "shape": 3
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "BasicScheduler"
+            },
+            "widgets_values": [
+              "sgm_uniform",
+              20,
+              1
+            ],
+            "index": 6
+          },
+          {
+            "type": "CLIPTextEncode",
+            "pos": [
+              370,
+              160
+            ],
+            "size": {
+              "0": 360,
+              "1": 60
+            },
+            "flags": {},
+            "order": 9,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "clip",
+                "type": "CLIP",
+                "link": null
+              },
+              {
+                "name": "text",
+                "type": "STRING",
+                "link": null,
+                "widget": {
+                  "name": "text"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "name": "CONDITIONING",
+                "type": "CONDITIONING",
+                "links": [],
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "CLIPTextEncode"
+            },
+            "widgets_values": [
+              "cute anime girl with massive fluffy fennec ears and a big fluffy tail blonde messy long hair blue eyes wearing a maid outfit with a long black dress with a gold leaf pattern and a white apron eating a slice of an apple pie in the kitchen of an old dark victorian mansion with a bright window and very expensive stuff everywhere"
+            ],
+            "index": 7
+          },
+          {
+            "type": "BasicGuider",
+            "pos": [
+              380,
+              50
+            ],
+            "size": {
+              "0": 241.79998779296875,
+              "1": 46
+            },
+            "flags": {},
+            "order": 10,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "model",
+                "type": "MODEL",
+                "link": null,
+                "slot_index": 0
+              },
+              {
+                "name": "conditioning",
+                "type": "CONDITIONING",
+                "link": null,
+                "slot_index": 1
+              }
+            ],
+            "outputs": [
+              {
+                "name": "GUIDER",
+                "type": "GUIDER",
+                "links": [],
+                "shape": 3,
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "BasicGuider"
+            },
+            "index": 8
+          },
+          {
+            "type": "SamplerCustomAdvanced",
+            "pos": [
+              780,
+              40
+            ],
+            "size": {
+              "0": 355.20001220703125,
+              "1": 106
+            },
+            "flags": {},
+            "order": 11,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "noise",
+                "type": "NOISE",
+                "link": null,
+                "slot_index": 0
+              },
+              {
+                "name": "guider",
+                "type": "GUIDER",
+                "link": null,
+                "slot_index": 1
+              },
+              {
+                "name": "sampler",
+                "type": "SAMPLER",
+                "link": null,
+                "slot_index": 2
+              },
+              {
+                "name": "sigmas",
+                "type": "SIGMAS",
+                "link": null,
+                "slot_index": 3
+              },
+              {
+                "name": "latent_image",
+                "type": "LATENT",
+                "link": null,
+                "slot_index": 4
+              }
+            ],
+            "outputs": [
+              {
+                "name": "output",
+                "type": "LATENT",
+                "links": [],
+                "shape": 3,
+                "slot_index": 0
+              },
+              {
+                "name": "denoised_output",
+                "type": "LATENT",
+                "links": null,
+                "shape": 3
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "SamplerCustomAdvanced"
+            },
+            "index": 9
+          },
+          {
+            "type": "VAEDecode",
+            "pos": [
+              1248,
+              192
+            ],
+            "size": {
+              "0": 210,
+              "1": 46
+            },
+            "flags": {},
+            "order": 12,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "samples",
+                "type": "LATENT",
+                "link": null
+              },
+              {
+                "name": "vae",
+                "type": "VAE",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "IMAGE",
+                "type": "IMAGE",
+                "links": [],
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "VAEDecode"
+            },
+            "index": 10
+          }
+        ],
+        "links": [
+          [
+            0,
+            0,
+            6,
+            0,
+            12,
+            "MODEL"
+          ],
+          [
+            5,
+            0,
+            7,
+            0,
+            11,
+            "CLIP"
+          ],
+          [
+            null,
+            0,
+            7,
+            1,
+            26,
+            "STRING"
+          ],
+          [
+            0,
+            0,
+            8,
+            0,
+            12,
+            "MODEL"
+          ],
+          [
+            7,
+            0,
+            8,
+            1,
+            6,
+            "CONDITIONING"
+          ],
+          [
+            3,
+            0,
+            9,
+            0,
+            25,
+            "NOISE"
+          ],
+          [
+            8,
+            0,
+            9,
+            1,
+            22,
+            "GUIDER"
+          ],
+          [
+            4,
+            0,
+            9,
+            2,
+            16,
+            "SAMPLER"
+          ],
+          [
+            6,
+            0,
+            9,
+            3,
+            17,
+            "SIGMAS"
+          ],
+          [
+            2,
+            0,
+            9,
+            4,
+            5,
+            "LATENT"
+          ],
+          [
+            9,
+            0,
+            10,
+            0,
+            13,
+            "LATENT"
+          ],
+          [
+            1,
+            0,
+            10,
+            1,
+            10,
+            "VAE"
+          ]
+        ],
+        "external": [
+          [
+            10,
+            0,
+            "IMAGE"
+          ]
+        ]
+      }
+    }
+  },
+  "version": 0.4
+}
