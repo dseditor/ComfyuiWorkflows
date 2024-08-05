@@ -1,0 +1,1078 @@
+{
+  "last_node_id": 56,
+  "last_link_id": 124,
+  "nodes": [
+    {
+      "id": 47,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -390,
+        80
+      ],
+      "size": [
+        270,
+        70
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 92
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 98,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            99
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 46,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -400,
+        -80
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            91
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            92,
+            93
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            97
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "Flux\\flux1-dev-fp8.safetensors"
+      ]
+    },
+    {
+      "id": 48,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -390,
+        210
+      ],
+      "size": [
+        270,
+        90
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 93
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            95
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -380,
+        350
+      ],
+      "size": [
+        250,
+        110
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            96
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 49,
+      "type": "FluxGuidance",
+      "pos": [
+        -70,
+        360
+      ],
+      "size": {
+        "0": 317.4000244140625,
+        "1": 58
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 99
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            100
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FluxGuidance"
+      },
+      "widgets_values": [
+        3.5
+      ]
+    },
+    {
+      "id": 51,
+      "type": "Efficient Loader",
+      "pos": [
+        330,
+        -90
+      ],
+      "size": [
+        320,
+        460
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "link": null
+        },
+        {
+          "name": "cnet_stack",
+          "type": "CONTROL_NET_STACK",
+          "link": null
+        },
+        {
+          "name": "negative",
+          "type": "STRING",
+          "link": 122,
+          "widget": {
+            "name": "negative"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            105
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "links": [
+            108
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "links": [
+            109
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            106
+          ],
+          "shape": 3,
+          "slot_index": 4
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "DEPENDENCIES",
+          "type": "DEPENDENCIES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Efficient Loader"
+      },
+      "widgets_values": [
+        "realvisxlV40_v40LightningBakedvae.safetensors",
+        "Baked VAE",
+        -1,
+        "None",
+        1,
+        1,
+        "highly detailed,realistic,masterpiece",
+        "blurry,",
+        "none",
+        "comfy",
+        512,
+        512,
+        1
+      ],
+      "color": "#332233",
+      "bgcolor": "#553355",
+      "shape": 1
+    },
+    {
+      "id": 54,
+      "type": "KSamplerSelect",
+      "pos": [
+        330,
+        420
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            115
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "dpmpp_2m_sde_gpu"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "SaveImage",
+      "pos": [
+        1060,
+        -170
+      ],
+      "size": {
+        "0": 610,
+        "1": 680
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 114
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "0802/comfyui"
+      ]
+    },
+    {
+      "id": 26,
+      "type": "SDXLPromptStyler",
+      "pos": [
+        -750,
+        -70
+      ],
+      "size": [
+        320,
+        420
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "text_positive",
+          "type": "STRING",
+          "links": [
+            98
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "text_negative",
+          "type": "STRING",
+          "links": [
+            122
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SDXLPromptStyler"
+      },
+      "widgets_values": [
+        "A 20-year-old Asian girl with long straight hair, No make-up,half-body shot, She has metallic mechanical wings, holds a light sword in hand. Her eyes gaze at the viewer, located in an outer space laboratory with gigantic machinery trees wrapped in electrical wires, covered with glowing electronic flowers. Behind her is a spaceship flying away, and above the ceiling are colorful pipelines dangling from the sky, radiating a bright cyberpunk atmosphere,highly detailed image.",
+        "",
+        "photo-hdr",
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 53,
+      "type": "SD_4XUpscale_Conditioning",
+      "pos": [
+        320,
+        -270
+      ],
+      "size": {
+        "0": 315,
+        "1": 122
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 112
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 108
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 109
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            110
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            111
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SD_4XUpscale_Conditioning"
+      },
+      "widgets_values": [
+        4,
+        0
+      ]
+    },
+    {
+      "id": 56,
+      "type": "FL_SDUltimate_Slices",
+      "pos": [
+        330,
+        -480
+      ],
+      "size": {
+        "0": 315,
+        "1": 142
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 123
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            124
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "slice_width",
+          "type": "INT",
+          "links": [
+            117
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "slice_height",
+          "type": "INT",
+          "links": [
+            118
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "multiplier",
+          "type": "FLOAT",
+          "links": [
+            119
+          ],
+          "shape": 3,
+          "slot_index": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FL_SDUltimate_Slices"
+      },
+      "widgets_values": [
+        "2x2",
+        2
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 55,
+      "type": "AlignYourStepsScheduler",
+      "pos": [
+        330,
+        530
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            116
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AlignYourStepsScheduler"
+      },
+      "widgets_values": [
+        "SDXL",
+        15,
+        0.3
+      ]
+    },
+    {
+      "id": 50,
+      "type": "UltimateSDUpscaleCustomSample",
+      "pos": [
+        710,
+        -140
+      ],
+      "size": [
+        320,
+        650
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 124
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 105
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 110
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 111
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 106
+        },
+        {
+          "name": "upscale_model",
+          "type": "UPSCALE_MODEL",
+          "link": 107,
+          "slot_index": 5
+        },
+        {
+          "name": "custom_sampler",
+          "type": "SAMPLER",
+          "link": 115,
+          "slot_index": 6
+        },
+        {
+          "name": "custom_sigmas",
+          "type": "SIGMAS",
+          "link": 116
+        },
+        {
+          "name": "upscale_by",
+          "type": "FLOAT",
+          "link": 119,
+          "widget": {
+            "name": "upscale_by"
+          }
+        },
+        {
+          "name": "tile_width",
+          "type": "INT",
+          "link": 117,
+          "widget": {
+            "name": "tile_width"
+          }
+        },
+        {
+          "name": "tile_height",
+          "type": "INT",
+          "link": 118,
+          "widget": {
+            "name": "tile_height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            114
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UltimateSDUpscaleCustomSample"
+      },
+      "widgets_values": [
+        2,
+        164486792318373,
+        "randomize",
+        5,
+        2,
+        "euler",
+        "beta",
+        0.2,
+        "Linear",
+        512,
+        512,
+        8,
+        32,
+        "None",
+        1,
+        64,
+        8,
+        16,
+        true,
+        false
+      ]
+    },
+    {
+      "id": 52,
+      "type": "UpscaleModelLoader",
+      "pos": [
+        700,
+        -270
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "UPSCALE_MODEL",
+          "type": "UPSCALE_MODEL",
+          "links": [
+            107
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UpscaleModelLoader"
+      },
+      "widgets_values": [
+        "4x-UltraSharp.pth"
+      ]
+    },
+    {
+      "id": 45,
+      "type": "KSampler (Efficient)",
+      "pos": [
+        -50,
+        -90
+      ],
+      "size": [
+        300,
+        390
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 91
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 100
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 95
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 96
+        },
+        {
+          "name": "optional_vae",
+          "type": "VAE",
+          "link": 97
+        },
+        {
+          "name": "script",
+          "type": "SCRIPT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            112,
+            123
+          ],
+          "shape": 3,
+          "slot_index": 5
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler (Efficient)"
+      },
+      "widgets_values": [
+        -1,
+        null,
+        20,
+        1,
+        "dpmpp_2m",
+        "simple",
+        1,
+        "none",
+        "true"
+      ],
+      "color": "#223322",
+      "bgcolor": "#335533",
+      "shape": 1
+    }
+  ],
+  "links": [
+    [
+      91,
+      46,
+      0,
+      45,
+      0,
+      "MODEL"
+    ],
+    [
+      92,
+      46,
+      1,
+      47,
+      0,
+      "CLIP"
+    ],
+    [
+      93,
+      46,
+      1,
+      48,
+      0,
+      "CLIP"
+    ],
+    [
+      95,
+      48,
+      0,
+      45,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      96,
+      5,
+      0,
+      45,
+      3,
+      "LATENT"
+    ],
+    [
+      97,
+      46,
+      2,
+      45,
+      4,
+      "VAE"
+    ],
+    [
+      98,
+      26,
+      0,
+      47,
+      1,
+      "STRING"
+    ],
+    [
+      99,
+      47,
+      0,
+      49,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      100,
+      49,
+      0,
+      45,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      105,
+      51,
+      0,
+      50,
+      1,
+      "MODEL"
+    ],
+    [
+      106,
+      51,
+      4,
+      50,
+      4,
+      "VAE"
+    ],
+    [
+      107,
+      52,
+      0,
+      50,
+      5,
+      "UPSCALE_MODEL"
+    ],
+    [
+      108,
+      51,
+      1,
+      53,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      109,
+      51,
+      2,
+      53,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      110,
+      53,
+      0,
+      50,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      111,
+      53,
+      1,
+      50,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      112,
+      45,
+      5,
+      53,
+      0,
+      "IMAGE"
+    ],
+    [
+      114,
+      50,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      115,
+      54,
+      0,
+      50,
+      6,
+      "SAMPLER"
+    ],
+    [
+      116,
+      55,
+      0,
+      50,
+      7,
+      "SIGMAS"
+    ],
+    [
+      117,
+      56,
+      1,
+      50,
+      9,
+      "INT"
+    ],
+    [
+      118,
+      56,
+      2,
+      50,
+      10,
+      "INT"
+    ],
+    [
+      119,
+      56,
+      3,
+      50,
+      8,
+      "FLOAT"
+    ],
+    [
+      122,
+      26,
+      1,
+      51,
+      2,
+      "STRING"
+    ],
+    [
+      123,
+      45,
+      5,
+      56,
+      0,
+      "IMAGE"
+    ],
+    [
+      124,
+      56,
+      0,
+      50,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.4090909090909095,
+      "offset": [
+        1171.9722179548296,
+        809.736369525104
+      ]
+    },
+    "groupNodes": {}
+  },
+  "version": 0.4
+}
