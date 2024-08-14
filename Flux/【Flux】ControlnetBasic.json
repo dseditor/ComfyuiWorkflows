@@ -1,0 +1,776 @@
+{
+  "last_node_id": 38,
+  "last_link_id": 75,
+  "nodes": [
+    {
+      "id": 27,
+      "type": "CheckpointLoaderNF4",
+      "pos": [
+        -200,
+        -40
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            53
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            54,
+            55
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            56
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderNF4"
+      },
+      "widgets_values": [
+        "flux1-dev-bnb-nf4.safetensors"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "LoadImage",
+      "pos": [
+        -90,
+        570
+      ],
+      "size": {
+        "0": 451.34429931640625,
+        "1": 677.6255493164062
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            67,
+            73
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "comfyui_00124_ (1).png",
+        "image"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        140,
+        -70
+      ],
+      "size": [
+        400,
+        140
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 54
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            34
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "A HDR photo of An Asian young girl in a flowing pink dress, gracefully interacting with water while delicate flower petals rain down and sunshine around her. \n\nShe has long, black hair that cascades down her back, catching the light and flowing freely, seemingly lifted by an unseen breeze. Her expression is radiant, with a joyful smile and sparkling eyes that suggest pure happiness. \n\nThe dress itself is a vision of elegance. It's a light, airy blue, possibly tulle or chiffon, with a bodice adorned with shimmering embellishments that catch the light. The skirt of the dress fans out around her in the water, creating beautiful, rippling folds.\n\nThe overall atmosphere is magical and whimsical. The falling flower petals, the play of light and water, and the woman's serene expression all contribute to a sense of enchantment and joy. It's as if she's living a fairytale moment captured in time. \n"
+      ]
+    },
+    {
+      "id": 19,
+      "type": "PreviewImage",
+      "pos": [
+        420,
+        670
+      ],
+      "size": {
+        "0": 484.8939514160156,
+        "1": 511.15423583984375
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 71
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 9,
+      "type": "SaveImage",
+      "pos": [
+        950,
+        590
+      ],
+      "size": {
+        "0": 532.2479248046875,
+        "1": 593.6461181640625
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 9
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        150,
+        130
+      ],
+      "size": [
+        320,
+        90
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 55
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            37
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 12,
+      "type": "ControlNetLoader",
+      "pos": [
+        130,
+        180
+      ],
+      "size": {
+        "0": 422,
+        "1": 58
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "CONTROL_NET",
+          "type": "CONTROL_NET",
+          "links": [
+            41
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ControlNetLoader"
+      },
+      "widgets_values": [
+        "Flux\\flux-depth-controlnet.safetensors"
+      ]
+    },
+    {
+      "id": 35,
+      "type": "AIO_Preprocessor",
+      "pos": [
+        150,
+        300
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 67
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            71,
+            72
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AIO_Preprocessor"
+      },
+      "widgets_values": [
+        "DepthAnythingV2Preprocessor",
+        1024
+      ]
+    },
+    {
+      "id": 22,
+      "type": "EmptySD3LatentImage",
+      "pos": [
+        530,
+        380
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            43
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptySD3LatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 23,
+      "type": "ControlNetApplyAdvanced",
+      "pos": [
+        590,
+        140
+      ],
+      "size": {
+        "0": 315,
+        "1": 166
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 38
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 37
+        },
+        {
+          "name": "control_net",
+          "type": "CONTROL_NET",
+          "link": 41,
+          "slot_index": 2
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 72,
+          "slot_index": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            39
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            40
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ControlNetApplyAdvanced"
+      },
+      "widgets_values": [
+        0.7000000000000001,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 21,
+      "type": "FluxGuidance",
+      "pos": [
+        580,
+        -50
+      ],
+      "size": {
+        "0": 317.4000244140625,
+        "1": 58
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 34
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            38
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FluxGuidance"
+      },
+      "widgets_values": [
+        4
+      ]
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        950,
+        140
+      ],
+      "size": [
+        270,
+        280
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 53
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 39
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 40
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 43
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            22
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        272563734628776,
+        "randomize",
+        20,
+        1,
+        "euler",
+        "beta",
+        1
+      ]
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        930,
+        -30
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 22
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 56,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            9
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 37,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -610,
+        310
+      ],
+      "size": [
+        430,
+        250
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 75,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "The picture captures a young woman in a flowing blue dress, gracefully interacting with water while delicate flower petals rain down around her. \n\nShe has long, dark hair that cascades down her back, catching the light and flowing freely, seemingly lifted by an unseen breeze. Her expression is radiant, with a joyful smile and sparkling eyes that suggest pure happiness. \n\nThe dress itself is a vision of elegance. It's a light, airy blue, possibly tulle or chiffon, with a bodice adorned with shimmering embellishments that catch the light. The skirt of the dress fans out around her in the water, creating beautiful, rippling folds.\n\nThe overall atmosphere is magical and whimsical. The falling flower petals, the play of light and water, and the woman's serene expression all contribute to a sense of enchantment and joy. It's as if she's living a fairytale moment captured in time. \n"
+      ]
+    },
+    {
+      "id": 36,
+      "type": "Gemini_API_Zho",
+      "pos": [
+        -610,
+        80
+      ],
+      "size": [
+        390,
+        160
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 73
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            75
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Gemini_API_Zho"
+      },
+      "widgets_values": [
+        "Describe the picture in detail",
+        "gemini-1.5-pro-latest",
+        false,
+        ""
+      ]
+    }
+  ],
+  "links": [
+    [
+      9,
+      8,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      22,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      34,
+      6,
+      0,
+      21,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      37,
+      7,
+      0,
+      23,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      38,
+      21,
+      0,
+      23,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      39,
+      23,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      40,
+      23,
+      1,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      41,
+      12,
+      0,
+      23,
+      2,
+      "CONTROL_NET"
+    ],
+    [
+      43,
+      22,
+      0,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      53,
+      27,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      54,
+      27,
+      1,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      55,
+      27,
+      1,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      56,
+      27,
+      2,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      67,
+      11,
+      0,
+      35,
+      0,
+      "IMAGE"
+    ],
+    [
+      71,
+      35,
+      0,
+      19,
+      0,
+      "IMAGE"
+    ],
+    [
+      72,
+      35,
+      0,
+      23,
+      3,
+      "IMAGE"
+    ],
+    [
+      73,
+      11,
+      0,
+      36,
+      0,
+      "IMAGE"
+    ],
+    [
+      75,
+      36,
+      0,
+      37,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6588450000000035,
+      "offset": {
+        "0": 849.828774299858,
+        "1": 145.73853001980623
+      }
+    }
+  },
+  "version": 0.4
+}
