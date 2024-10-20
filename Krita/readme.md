@@ -1,1 +1,2 @@
-這裡放Krita專用的Workflow，使用方法是配製模型後，於Krita的Graph功能中載入
+這裡放Krita專用的Workflow，使用方法是安裝模型後，於Krita的Graph功能中載入
+All Models不用安裝任何模型，可直接導入採用
