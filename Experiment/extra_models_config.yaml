@@ -1,0 +1,86 @@
+# ComfyUI extra_model_paths.yaml for win32
+a111:
+  base_path: 【C:\Users\dseditor\stable-diffusion-webui】
+  checkpoints: models/Stable-diffusion
+  configs: models/Stable-diffusion
+  vae: models/VAE
+  loras: |
+    models/Lora
+    models/LyCORIS
+  upscale_models: |
+    models/ESRGAN
+    models/RealESRGAN
+    models/SwinIR
+  embeddings: embeddings
+  hypernetworks: models/hypernetworks
+  controlnet: models/ControlNet
+comfyui_migration:
+  checkpoints: models\checkpoints\
+  classifiers: models\classifiers\
+  clip: models\clip\
+  clip_vision: models\clip_vision\
+  configs: models\configs\
+  controlnet: models\controlnet\
+  diffusers: models\diffusers\
+  diffusion_models: models\diffusion_models\
+  embeddings: models\embeddings\
+  gligen: models\gligen\
+  hypernetworks: models\hypernetworks\
+  loras: models\loras\
+  photomaker: models\photomaker\
+  style_models: models\style_models\
+  unet: models\unet\
+  upscale_models: models\upscale_models\
+  vae: models\vae\
+  vae_approx: models\vae_approx\
+  animatediff_models: models\animatediff_models\
+  animatediff_motion_lora: models\animatediff_motion_lora\
+  animatediff_video_formats: models\animatediff_video_formats\
+  ipadapter: models\ipadapter\
+  liveportrait: models\liveportrait\
+  insightface: models\insightface\
+  layerstyle: models\layerstyle\
+  LLM: models\LLM\
+  Joy_caption: models\Joy_caption\
+  sams: models\sams\
+  blip: models\blip\
+  CogVideo: models\CogVideo\
+  xlabs: models\xlabs\
+  instantid: models\instantid\
+  base_path: 【C:\Users\dseditor\CUI\ComfyUI】
+comfyui_desktop:
+  is_default: "true"
+  checkpoints: models\checkpoints\
+  classifiers: models\classifiers\
+  clip: models\clip\
+  clip_vision: models\clip_vision\
+  configs: models\configs\
+  controlnet: models\controlnet\
+  diffusers: models\diffusers\
+  diffusion_models: models\diffusion_models\
+  embeddings: models\embeddings\
+  gligen: models\gligen\
+  hypernetworks: models\hypernetworks\
+  loras: models\loras\
+  photomaker: models\photomaker\
+  style_models: models\style_models\
+  unet: models\unet\
+  upscale_models: models\upscale_models\
+  vae: models\vae\
+  vae_approx: models\vae_approx\
+  animatediff_models: models\animatediff_models\
+  animatediff_motion_lora: models\animatediff_motion_lora\
+  animatediff_video_formats: models\animatediff_video_formats\
+  ipadapter: models\ipadapter\
+  liveportrait: models\liveportrait\
+  insightface: models\insightface\
+  layerstyle: models\layerstyle\
+  LLM: models\LLM\
+  Joy_caption: models\Joy_caption\
+  sams: models\sams\
+  blip: models\blip\
+  CogVideo: models\CogVideo\
+  xlabs: models\xlabs\
+  instantid: models\instantid\
+  custom_nodes: custom_nodes/
+  base_path: 【E:\CUI\ComfyUI】 
