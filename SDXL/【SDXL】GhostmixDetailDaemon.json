@@ -1,0 +1,946 @@
+{
+  "last_node_id": 125,
+  "last_link_id": 236,
+  "nodes": [
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -839.6439819335938,
+        1054.935791015625
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            213
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 106,
+      "type": "DualCLIPLoader",
+      "pos": [
+        -180,
+        930
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            206,
+            207
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "ViT-L-14-BEST-smooth-GmP-TE-only-HF-format.safetensors",
+        "SD3\\clip_g.safetensors",
+        "sdxl"
+      ]
+    },
+    {
+      "id": 30,
+      "type": "RandomNoise",
+      "pos": [
+        -829.6439819335938,
+        904.9351196289062
+      ],
+      "size": [
+        315.3865661621094,
+        82
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            212
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        374913880300766,
+        "randomize"
+      ]
+    },
+    {
+      "id": 104,
+      "type": "CLIPTextEncode",
+      "pos": [
+        170,
+        760
+      ],
+      "size": [
+        330,
+        80
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 206
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 233,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            208
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "A 25-year-old Taiwanese woman with short hair styled in two ponytails, showcasing her graceful body curves, is dressed in a meticulously designed, intricately detailed, strapless multicolored classical Hanfu. She is cooking in a beautifully decorated kitchen, where charming decor and well-arranged ingredients create a visually appealing environment. Her bright, large eyes radiate enthusiasm and concentration as she prepares her dish, and the camera captures her from a direct angle that highlights the vibrant colors of her attire and the inviting atmosphere of the kitchen. Soft, warm lighting fills the space, casting gentle shadows that enhance the textures of her clothing and the fresh produce around her, resulting in a lively and engaging scene that draws the viewer into this delightful moment of culinary artistry.",
+        true
+      ]
+    },
+    {
+      "id": 105,
+      "type": "CLIPTextEncode",
+      "pos": [
+        170,
+        900
+      ],
+      "size": [
+        340,
+        170
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 207
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            209
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "(octane render, render, drawing, anime, bad photo, bad photography:1.3), (worst quality, low quality, blurry:1.2), (bad teeth, deformed teeth, deformed lips), (bad anatomy, bad proportions:1.1), (deformed iris, deformed pupils), (deformed eyes, bad eyes), (deformed face, ugly face, bad face), (deformed hands, bad hands, fused fingers), morbid, mutilated, mutation, disfigured",
+        true
+      ]
+    },
+    {
+      "id": 109,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        580,
+        1050
+      ],
+      "size": [
+        236.8000030517578,
+        106
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 212
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 216
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 214
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 215
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 213
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            217
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": [],
+          "slot_index": 1,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 103,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -180,
+        770
+      ],
+      "size": [
+        315,
+        98
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            210,
+            211
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": null
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            218
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "ghostxl_v10BakedVAE.safetensors"
+      ]
+    },
+    {
+      "id": 111,
+      "type": "CFGGuider",
+      "pos": [
+        550,
+        740
+      ],
+      "size": [
+        315,
+        98
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 210
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 208
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 209
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            216
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CFGGuider"
+      },
+      "widgets_values": [
+        6
+      ]
+    },
+    {
+      "id": 28,
+      "type": "KSamplerSelect",
+      "pos": [
+        -829.6439819335938,
+        794.9351196289062
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            151,
+            214
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "uni_pc"
+      ]
+    },
+    {
+      "id": 110,
+      "type": "BasicScheduler",
+      "pos": [
+        560,
+        890
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 211,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            215
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler"
+      },
+      "widgets_values": [
+        "karras",
+        30,
+        1
+      ]
+    },
+    {
+      "id": 107,
+      "type": "VAEDecode",
+      "pos": [
+        580,
+        1220
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 217
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 218
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            225
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 80,
+      "type": "DetailDaemonSamplerNode",
+      "pos": [
+        -469.64385986328125,
+        804.9351196289062
+      ],
+      "size": [
+        228.84759521484375,
+        274
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 151
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DetailDaemonSamplerNode"
+      },
+      "widgets_values": [
+        0.2,
+        0.1,
+        0.9,
+        0.5,
+        0.3,
+        0,
+        0,
+        0,
+        true,
+        0
+      ]
+    },
+    {
+      "id": 115,
+      "type": "SDXLPromptStylerbyOriginal",
+      "pos": [
+        -840,
+        1250
+      ],
+      "size": [
+        340,
+        174
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_positive",
+          "type": "STRING",
+          "link": 234,
+          "widget": {
+            "name": "text_positive"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive_prompt_text_g",
+          "type": "STRING",
+          "links": [
+            233
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "negative_prompt_text_g",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SDXLPromptStylerbyOriginal"
+      },
+      "widgets_values": [
+        "A 25-year-old Taiwanese woman with short hair styled in two ponytails, showcasing her graceful body curves, is dressed in a meticulously designed, intricately detailed, strapless multicolored classical Hanfu. She is cooking in a beautifully decorated kitchen, where charming decor and well-arranged ingredients create a visually appealing environment. Her bright, large eyes radiate enthusiasm and concentration as she prepares her dish, and the camera captures her from a direct angle that highlights the vibrant colors of her attire and the inviting atmosphere of the kitchen. Soft, warm lighting fills the space, casting gentle shadows that enhance the textures of her clothing and the fresh produce around her, resulting in a lively and engaging scene that draws the viewer into this delightful moment of culinary artistry.",
+        "",
+        "sai-anime",
+        "No",
+        true,
+        true
+      ]
+    },
+    {
+      "id": 124,
+      "type": "Florence2Run",
+      "pos": [
+        -1150,
+        800
+      ],
+      "size": [
+        260,
+        357
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 235
+        },
+        {
+          "name": "florence2_model",
+          "type": "FL2MODEL",
+          "link": 236
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "name": "caption",
+          "type": "STRING",
+          "links": [
+            234
+          ],
+          "slot_index": 2
+        },
+        {
+          "name": "data",
+          "type": "JSON",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Florence2Run"
+      },
+      "widgets_values": [
+        "",
+        "more_detailed_caption",
+        true,
+        false,
+        1024,
+        3,
+        true,
+        "",
+        264717423340907,
+        "randomize",
+        true
+      ]
+    },
+    {
+      "id": 125,
+      "type": "DownloadAndLoadFlorence2Model",
+      "pos": [
+        -1560,
+        800
+      ],
+      "size": [
+        365.4000244140625,
+        106
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora",
+          "type": "PEFTLORA",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "florence2_model",
+          "type": "FL2MODEL",
+          "links": [
+            236
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DownloadAndLoadFlorence2Model"
+      },
+      "widgets_values": [
+        "MiaoshouAI/Florence-2-base-PromptGen-v2.0",
+        "fp16",
+        "sdpa"
+      ]
+    },
+    {
+      "id": 123,
+      "type": "LoadImage",
+      "pos": [
+        -1520,
+        970
+      ],
+      "size": [
+        320,
+        310
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            235
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ComfyUI_temp_bscjs_00023_.png",
+        "image"
+      ]
+    },
+    {
+      "id": 116,
+      "type": "LayerUtility: SaveImagePlus",
+      "pos": [
+        930,
+        770
+      ],
+      "size": [
+        350,
+        460
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 225
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "LayerUtility: SaveImagePlus"
+      },
+      "widgets_values": [
+        "C:\\Users\\dseditor\\Desktop\\ghostmixplay",
+        "comfyui",
+        "None",
+        "jpg",
+        80,
+        false,
+        "",
+        false,
+        true
+      ],
+      "color": "rgba(38, 73, 116, 0.7)"
+    }
+  ],
+  "links": [
+    [
+      151,
+      28,
+      0,
+      80,
+      0,
+      "SAMPLER"
+    ],
+    [
+      206,
+      106,
+      0,
+      104,
+      0,
+      "CLIP"
+    ],
+    [
+      207,
+      106,
+      0,
+      105,
+      0,
+      "CLIP"
+    ],
+    [
+      208,
+      104,
+      0,
+      111,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      209,
+      105,
+      0,
+      111,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      210,
+      103,
+      0,
+      111,
+      0,
+      "MODEL"
+    ],
+    [
+      211,
+      103,
+      0,
+      110,
+      0,
+      "MODEL"
+    ],
+    [
+      212,
+      30,
+      0,
+      109,
+      0,
+      "NOISE"
+    ],
+    [
+      213,
+      5,
+      0,
+      109,
+      4,
+      "LATENT"
+    ],
+    [
+      214,
+      28,
+      0,
+      109,
+      2,
+      "SAMPLER"
+    ],
+    [
+      215,
+      110,
+      0,
+      109,
+      3,
+      "SIGMAS"
+    ],
+    [
+      216,
+      111,
+      0,
+      109,
+      1,
+      "GUIDER"
+    ],
+    [
+      217,
+      109,
+      0,
+      107,
+      0,
+      "LATENT"
+    ],
+    [
+      218,
+      103,
+      2,
+      107,
+      1,
+      "VAE"
+    ],
+    [
+      225,
+      107,
+      0,
+      116,
+      0,
+      "IMAGE"
+    ],
+    [
+      233,
+      115,
+      0,
+      104,
+      1,
+      "STRING"
+    ],
+    [
+      234,
+      124,
+      2,
+      115,
+      0,
+      "STRING"
+    ],
+    [
+      235,
+      123,
+      0,
+      124,
+      0,
+      "IMAGE"
+    ],
+    [
+      236,
+      125,
+      0,
+      124,
+      1,
+      "FL2MODEL"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "SDXLLightning",
+      "bounding": [
+        -190,
+        670,
+        1550,
+        600
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Detailer",
+      "bounding": [
+        -849.6439819335938,
+        714.9351196289062,
+        619,
+        450
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6588450000000002,
+      "offset": [
+        1509.8361602781563,
+        -461.42853206427264
+      ]
+    }
+  },
+  "version": 0.4
+}
