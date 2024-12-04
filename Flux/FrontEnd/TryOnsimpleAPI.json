@@ -1,0 +1,322 @@
+{
+  "3": {
+    "inputs": {
+      "seed": 846745413171847,
+      "steps": 8,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "139",
+        0
+      ],
+      "positive": [
+        "38",
+        0
+      ],
+      "negative": [
+        "38",
+        1
+      ],
+      "latent_image": [
+        "38",
+        2
+      ]
+    },
+    "class_type": "KSampler"
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "32",
+        0
+      ]
+    },
+    "class_type": "VAEDecode"
+  },
+  "23": {
+    "inputs": {
+      "text": "The pair of images highlights a clothing and its styling on a model, high resolution, 4K, 8K; [IMAGE1] Detailed product shot of a clothing [IMAGE2] The same cloth is worn by a model in a lifestyle setting.",
+      "clip": [
+        "72",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "26": {
+    "inputs": {
+      "guidance": 30,
+      "conditioning": [
+        "79",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance"
+  },
+  "32": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader"
+  },
+  "38": {
+    "inputs": {
+      "noise_mask": true,
+      "positive": [
+        "26",
+        0
+      ],
+      "negative": [
+        "74",
+        0
+      ],
+      "vae": [
+        "32",
+        0
+      ],
+      "pixels": [
+        "49",
+        0
+      ],
+      "mask": [
+        "49",
+        1
+      ]
+    },
+    "class_type": "InpaintModelConditioning"
+  },
+  "49": {
+    "inputs": {
+      "patch_mode": "patch_right",
+      "output_length": 1536,
+      "patch_color": "#FF0000",
+      "first_image": [
+        "50",
+        0
+      ],
+      "second_image": [
+        "59",
+        0
+      ],
+      "second_mask": [
+        "115",
+        0
+      ]
+    },
+    "class_type": "AddMaskForICLora"
+  },
+  "50": {
+    "inputs": {
+      "image": "clothes.jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage"
+  },
+  "59": {
+    "inputs": {
+      "image": "people.jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage"
+  },
+  "71": {
+    "inputs": {
+      "unet_name": "flux1-fill-dev-Q8_0.gguf"
+    },
+    "class_type": "UnetLoaderGGUF"
+  },
+  "72": {
+    "inputs": {
+      "clip_name1": "t5-v1_1-xxl-encoder-Q8_0.gguf",
+      "clip_name2": "clip_l.safetensors",
+      "type": "flux"
+    },
+    "class_type": "DualCLIPLoaderGGUF"
+  },
+  "74": {
+    "inputs": {
+      "conditioning": [
+        "26",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut"
+  },
+  "75": {
+    "inputs": {
+      "face": false,
+      "hair": false,
+      "body": true,
+      "clothes": true,
+      "accessories": false,
+      "background": false,
+      "confidence": 0.4,
+      "detail_method": "VITMatte",
+      "detail_erode": 6,
+      "detail_dilate": 6,
+      "black_point": 0.01,
+      "white_point": 0.99,
+      "process_detail": true,
+      "device": "cuda",
+      "max_megapixels": 2,
+      "images": [
+        "59",
+        0
+      ]
+    },
+    "class_type": "LayerMask: PersonMaskUltra V2"
+  },
+  "77": {
+    "inputs": {
+      "lora_name": "Catviton.safetensors",
+      "strength_model": 1,
+      "model": [
+        "71",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly"
+  },
+  "79": {
+    "inputs": {
+      "image_strength": "highest",
+      "conditioning": [
+        "23",
+        0
+      ],
+      "style_model": [
+        "80",
+        0
+      ],
+      "clip_vision_output": [
+        "81",
+        0
+      ]
+    },
+    "class_type": "StyleModelApplySimple"
+  },
+  "80": {
+    "inputs": {
+      "style_model_name": "flux1-redux-dev.safetensors"
+    },
+    "class_type": "StyleModelLoader"
+  },
+  "81": {
+    "inputs": {
+      "crop": "none",
+      "clip_vision": [
+        "82",
+        0
+      ],
+      "image": [
+        "50",
+        0
+      ]
+    },
+    "class_type": "CLIPVisionEncode"
+  },
+  "82": {
+    "inputs": {
+      "clip_name": "sigclip_vision_patch14_384.safetensors"
+    },
+    "class_type": "CLIPVisionLoader"
+  },
+  "88": {
+    "inputs": {
+      "width": [
+        "49",
+        4
+      ],
+      "height": [
+        "49",
+        5
+      ],
+      "position": "top-left",
+      "x_offset": [
+        "49",
+        2
+      ],
+      "y_offset": [
+        "49",
+        3
+      ],
+      "image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+"
+  },
+  "115": {
+    "inputs": {
+      "grow": 20,
+      "blur": 7,
+      "mask": [
+        "75",
+        1
+      ]
+    },
+    "class_type": "INPAINT_ExpandMask"
+  },
+  "139": {
+    "inputs": {
+      "lora_name": "ali-flux-8step.safetensors",
+      "strength_model": 1,
+      "model": [
+        "77",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly"
+  },
+  "140": {
+    "inputs": {
+      "model_name": "4xNomosWebPhoto_RealPLKSR.pth"
+    },
+    "class_type": "UpscaleModelLoader"
+  },
+  "141": {
+    "inputs": {
+      "upscale_model": [
+        "140",
+        0
+      ],
+      "image": [
+        "88",
+        0
+      ]
+    },
+    "class_type": "ImageUpscaleWithModel"
+  },
+  "142": {
+    "inputs": {
+      "width": 1200,
+      "height": 1200,
+      "interpolation": "bilinear",
+      "method": "keep proportion",
+      "condition": "always",
+      "multiple_of": 0,
+      "image": [
+        "141",
+        0
+      ]
+    },
+    "class_type": "ImageResize+"
+  },
+  "143": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "142",
+        0
+      ]
+    },
+    "class_type": "SaveImage"
+  }
+}
