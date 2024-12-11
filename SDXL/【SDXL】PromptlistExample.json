@@ -1,0 +1,697 @@
+{
+  "last_node_id": 38,
+  "last_link_id": 40,
+  "nodes": [
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        330,
+        30
+      ],
+      "size": [
+        420,
+        160
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 3
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 36,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            4
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "beautiful scenery nature glass bottle landscape, , purple galaxy bottle,",
+        true
+      ]
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        790,
+        30
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 1
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 4
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 6
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            7
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        996129452939076,
+        "randomize",
+        6,
+        2,
+        "dpmpp_2m",
+        "sgm_uniform",
+        1
+      ]
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        330,
+        250
+      ],
+      "size": [
+        420,
+        110
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            6
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "text, watermark",
+        true
+      ]
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1150,
+        40
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 7
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            39
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 38,
+      "type": "FL_ImageNotes",
+      "pos": [
+        790,
+        360
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 39
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 38,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            40
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FL_ImageNotes"
+      },
+      "widgets_values": [
+        "Text Here",
+        50,
+        24
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 37,
+      "type": "PreviewImage",
+      "pos": [
+        1170,
+        160
+      ],
+      "size": [
+        790,
+        570
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 40
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 35,
+      "type": "Random Number",
+      "pos": [
+        -1020,
+        150
+      ],
+      "size": [
+        315,
+        194
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NUMBER",
+          "type": "NUMBER",
+          "links": null,
+          "slot_index": 0
+        },
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            34
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Random Number"
+      },
+      "widgets_values": [
+        "integer",
+        0,
+        30,
+        920534914885801,
+        "randomize"
+      ]
+    },
+    {
+      "id": 34,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -370,
+        -30
+      ],
+      "size": [
+        320,
+        330
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 33,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            36,
+            38
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "Nate Berkus, grasscloth wallpapered walls, herringbone wood floors, classic molded ceilings, French doors, vintage crystal chandeliers, mix of antique and contemporary furniture, neutral palette with metallic accents, warm ambient lighting",
+        "Jonathan Adler, lacquered walls, needlepoint rugs, Pop Art ceilings, porthole mirrors, Sputnik chandeliers, mid-century modern furniture with a twist, bold colors and graphic patterns, playful accent lighting",
+        "India Mahdavi, velvet-upholstered walls, terrazzo floors, domed ceilings, arched windows, candy-colored glass pendants, curvaceous custom furniture, pastel color blocking, soft glowing illumination",
+        "Tom Dixon, copper-clad walls, parquet floors, mirrored ceilings, warehouse windows, clustered metallic pendants, industrial-chic furniture, warm metallics with black accents, moody atmospheric lighting",
+        "David Chipperfield, limestone walls, oak plank floors, planar ceilings, full-height sliding doors, recessed linear lighting, minimalist bespoke furniture, subdued earthy palette, carefully controlled natural light",
+        "Ilse Crawford, lime-washed walls, wide-plank pine floors, pitched ceilings, steel-framed windows, overscale paper lanterns, comfortable upholstered furniture, warm neutrals with tactile textures, cozy layered lighting"
+      ]
+    },
+    {
+      "id": 31,
+      "type": "CR Prompt List",
+      "pos": [
+        -670,
+        30
+      ],
+      "size": [
+        270,
+        200
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "multiline_text",
+          "type": "STRING",
+          "link": 30,
+          "widget": {
+            "name": "multiline_text"
+          }
+        },
+        {
+          "name": "start_index",
+          "type": "INT",
+          "link": 34,
+          "widget": {
+            "name": "start_index"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            33
+          ],
+          "shape": 6,
+          "slot_index": 0
+        },
+        {
+          "name": "body_text",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        },
+        {
+          "name": "show_help",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Prompt List"
+      },
+      "widgets_values": [
+        "",
+        "body_text",
+        "",
+        1686,
+        6,
+        true
+      ]
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -10,
+        240
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -10,
+        60
+      ],
+      "size": [
+        320,
+        100
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            3,
+            5
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            8
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "SDXL\\realvisxlV50_v50LightningBakedvae.safetensors"
+      ]
+    },
+    {
+      "id": 27,
+      "type": "Text Multiline",
+      "pos": [
+        -1030,
+        -90
+      ],
+      "size": [
+        330,
+        160
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            30
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "RandomStylePrompt",
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "Zaha Hadid, fluid curved walls, glossy epoxy floors, undulating ceilings, angled windows, sculptural light fixtures, futuristic furniture with organic forms, white and silver color scheme, diffused ambient lighting\nFrank Lloyd Wright, natural stone walls, hardwood floors, coffered ceilings, stained glass windows, prairie-style chandeliers, built-in furniture with geometric patterns, earth tones with pops of red, warm indirect lighting\nLe Corbusier, exposed concrete walls, terrazzo floors, flat ceilings, ribbon windows, industrial-style lamps, modular furniture with primary colors, white base with bold color accents, abundant natural light\nMies van der Rohe, glass walls, travertine floors, minimalist ceilings, floor-to-ceiling windows, recessed lighting, Barcelona chairs and daybeds, black and cream palette, clean and uncluttered spaces\nEero Saarinen, curved plaster walls, carpet floors, acoustic tile ceilings, panoramic windows, tulip-shaped light fixtures, organic furniture forms, shades of white and gray, soft diffused lighting\nCharles and Ray Eames, wood-paneled walls, cork floors, exposed beam ceilings, large picture windows, colorful hanging lamps, molded plywood furniture, vibrant color blocking, playful natural light\nEileen Gray, lacquered walls, rubber floors, mirrored ceilings, circular windows, adjustable wall sconces, tubular steel furniture, black and chrome with pops of red, dramatic spot lighting\nArne Jacobsen, textured white walls, linoleum floors, drop ceilings, clerestory windows, egg-shaped pendant lights, iconic chairs in various colors, monochromatic scheme with wood accents, balanced ambient light\nIsamu Noguchi, shoji screen walls, tatami mat floors, bamboo ceilings, sliding paper doors, Akari light sculptures, low-profile furniture, neutral tones with subtle patterns, soft filtered light\nMarcel Breuer, board-formed concrete walls, slate floors, wood-slatted ceilings, corner windows, cantilevered task lamps, tubular steel and leather furniture, grayscale palette with natural textures, focused task lighting\nRay Kappe, exposed timber walls, polished concrete floors, sloped wood ceilings, clerestory windows, track lighting systems, built-in seating and storage, warm wood tones with glass, layered daylighting\nVerner Panton, curved plastic walls, epoxy floors, illuminated ceilings, porthole windows, flowerpot pendant lamps, molded plastic furniture, psychedelic color schemes, immersive colorful lighting\nJean Prouvé, prefab metal walls, linoleum floors, folded plate ceilings, pivot windows, industrial pendant lights, utilitarian furniture with raw materials, primary colors with metallic finishes, functional task lighting\nEttore Sottsass, laminate walls with geometric patterns, terrazzo floors, suspended grid ceilings, asymmetrical windows, Memphis-style table lamps, quirky postmodern furniture, bold clashing colors, theatrical lighting effects\nTadao Ando, smooth concrete walls, wooden floors, skylights, narrow slit windows, concealed LED strips, minimalist custom furniture, monochromatic gray scheme, ethereal natural light\nKelly Wearstler, textured plaster walls, marble inlay floors, coffered ceilings, arched windows, oversized sculptural chandeliers, eclectic mix of vintage and modern furniture, black and gold color palette, dramatic layered lighting\nPatricia Urquiola, colorful tiled walls, patterned cement floors, perforated metal ceilings, floor-to-ceiling glass, woven pendant lights, playful modular furniture, mix of pastels and bold hues, soft diffused illumination\nKarim Rashid, molded polymer walls, resin floors, backlit stretch ceilings, curved glass walls, blob-shaped light fixtures, fluid ergonomic furniture, neon colors with white, dynamic color-changing lights\nNate Berkus, grasscloth wallpapered walls, herringbone wood floors, classic molded ceilings, French doors, vintage crystal chandeliers, mix of antique and contemporary furniture, neutral palette with metallic accents, warm ambient lighting\nJonathan Adler, lacquered walls, needlepoint rugs, Pop Art ceilings, porthole mirrors, Sputnik chandeliers, mid-century modern furniture with a twist, bold colors and graphic patterns, playful accent lighting\nIndia Mahdavi, velvet-upholstered walls, terrazzo floors, domed ceilings, arched windows, candy-colored glass pendants, curvaceous custom furniture, pastel color blocking, soft glowing illumination\nTom Dixon, copper-clad walls, parquet floors, mirrored ceilings, warehouse windows, clustered metallic pendants, industrial-chic furniture, warm metallics with black accents, moody atmospheric lighting\nDavid Chipperfield, limestone walls, oak plank floors, planar ceilings, full-height sliding doors, recessed linear lighting, minimalist bespoke furniture, subdued earthy palette, carefully controlled natural light\nIlse Crawford, lime-washed walls, wide-plank pine floors, pitched ceilings, steel-framed windows, overscale paper lanterns, comfortable upholstered furniture, warm neutrals with tactile textures, cozy layered lighting\nAxel Vervoordt, raw plaster walls, antique stone floors, exposed beam ceilings, leaded glass windows, wrought iron candelabras, rustic furniture with Belgian linen, muted earth tones, soft candlelight ambiance\nKelly Hoppen, taupe-painted walls, silk carpet floors, tray ceilings, plantation shutters, crystal table lamps, clean-lined furniture with luxe fabrics, neutral palette with texture, sophisticated accent lighting\nPeter Marino, leather-paneled walls, rare wood floors, lacquered ceilings, bronze-framed windows, Art Deco-inspired sconces, sumptuous custom furniture, black and gold color scheme, dramatic contrasting light\nPiet Boon, lime-washed brick walls, concrete floors, steel beam ceilings, crittal windows, minimalist track lighting, understated luxury furniture, shades of gray with natural materials, diffused ambient light\nStudio KO, rammed earth walls, zellige tile floors, woven reed ceilings, keyhole windows, perforated brass pendants, low-slung modernist furniture, earthy color palette, warm glowing illumination\nVincent Van Duysen, Belgian linen walls, wide oak plank floors, plastered ceilings, steel-framed doors, minimalist cantilevered lights, austere wooden furniture, monochromatic neutrals, serene natural daylight\nYabu Pushelberg, fluted wood walls, honed stone floors, coffered ceilings, floor-to-ceiling drapes, sculptural floor lamps, sleek custom furniture, soft grays with subtle color accents, layered ambient lighting\nJoseph Dirand, veined marble walls, herringbone parquet floors, ornate molded ceilings, tall mirrors, alabaster sconces, modernist furniture with classical touches, monochrome with gold accents, elegant focused lighting\nCristina Celestino, pastel-hued walls, terrazzo floors, scalloped ceilings, arched doorways, retro-inspired table lamps, playful furniture with feminine curves, soft pastels with jewel tones, dreamy diffused light\nPierre Yovanovitch, oak-paneled walls, chevron wood floors, barrel-vaulted ceilings, circular windows, oversized ceramic pendants, sculptural furniture with curved forms, muted colors with pops of bright hues, warm ambient glow\nStudio Peregalli, frescoed walls, reclaimed terracotta floors, coffered wood ceilings, mullioned windows, antique chandeliers, eclectic mix of period furniture, rich jewel tones, atmospheric layered lighting\nDimore Studio, velvet-draped walls, inlaid wood floors, pressed tin ceilings, stained glass panels, vintage Murano glass lamps, eclectic mid-century furniture, moody dark colors, theatrical lighting effects\nFaye Toogood, chalk-textured walls, poured concrete floors, corrugated metal ceilings, skylight wells, paper lantern clusters, primitive-inspired furniture, chalky neutrals with natural materials, ethereal diffused daylight\nIlmari Tapiovaara, pine-clad walls, birch plank floors, exposed roof trusses, clerestory windows, Alvar Aalto pendants, organic modernist furniture, warm wood tones with black accents, soft northern light\nGert Voorjans, silk-upholstered walls, antique Persian rugs, gilded ceilings, tall sash windows, Venetian glass chandeliers, mix of antiques and modern pieces, rich jewel tones with patterns, dramatic accent lighting\nNeri&Hu, reclaimed brick walls, raw concrete floors, woven bamboo ceilings, steel-framed partitions, paper lantern pendants, minimal furniture with Asian influences, earthy neutrals with red accents, soft filtered light\nIndia Mahdavi, boldly patterned walls, colorful mosaic floors, gold-leafed ceilings, arched mirrors, blown glass chandeliers, curvaceous custom furniture, vibrant color blocking, playful ambient lighting\nShigeru Ban, paper tube walls, bamboo floors, tensile fabric ceilings, shoji screens, washi paper lamps, lightweight modular furniture, natural materials with white accents, soft diffused illumination\nMartyn Lawrence Bullard, exotic wallpapered walls, animal print rugs, lacquered ceilings, Moorish arched windows, Moroccan lanterns, glamorous Hollywood Regency furniture, bold patterns and colors, dramatic mood lighting\nLuca Nichetto, colorful resin walls, geometric tile floors, suspended acoustic panels, ribbon windows, modular lighting systems, playful contemporary furniture, primary colors with pastels, dynamic color-changing illumination",
+        true
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    }
+  ],
+  "links": [
+    [
+      1,
+      4,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      2,
+      5,
+      0,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      3,
+      4,
+      1,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      4,
+      6,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      5,
+      4,
+      1,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      6,
+      7,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      7,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      8,
+      4,
+      2,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      30,
+      27,
+      0,
+      31,
+      0,
+      "STRING"
+    ],
+    [
+      33,
+      31,
+      0,
+      34,
+      0,
+      "STRING"
+    ],
+    [
+      34,
+      35,
+      2,
+      31,
+      1,
+      "INT"
+    ],
+    [
+      36,
+      34,
+      0,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      38,
+      34,
+      0,
+      38,
+      1,
+      "STRING"
+    ],
+    [
+      39,
+      8,
+      0,
+      38,
+      0,
+      "IMAGE"
+    ],
+    [
+      40,
+      38,
+      0,
+      37,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Group",
+      "bounding": [
+        -1040,
+        -163.60000610351562,
+        3010,
+        903.5999755859375
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6588450000000005,
+      "offset": [
+        1374.5182423771826,
+        253.38899631774916
+      ]
+    }
+  },
+  "version": 0.4
+}
