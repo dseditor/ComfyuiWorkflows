@@ -1,0 +1,1173 @@
+{
+  "last_node_id": 294,
+  "last_link_id": 505,
+  "nodes": [
+    {
+      "id": 205,
+      "type": "VAELoader",
+      "pos": [
+        -3030,
+        -570
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            339,
+            462
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ]
+    },
+    {
+      "id": 204,
+      "type": "DualCLIPLoaderGGUF",
+      "pos": [
+        -3010,
+        -450
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            458,
+            489
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoaderGGUF"
+      },
+      "widgets_values": [
+        "t5\\t5-v1_1-xxl-encoder-Q8_0.gguf",
+        "ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors",
+        "flux"
+      ]
+    },
+    {
+      "id": 232,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        -2220,
+        -650
+      ],
+      "size": [
+        250,
+        82
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 375
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            376
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly"
+      },
+      "widgets_values": [
+        "IClora\\portrait-photography.safetensors",
+        1
+      ]
+    },
+    {
+      "id": 209,
+      "type": "FluxSamplerParams+",
+      "pos": [
+        -2210,
+        -500
+      ],
+      "size": [
+        260,
+        300
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 376
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 491
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 335
+        },
+        {
+          "name": "loras",
+          "type": "LORA_PARAMS",
+          "link": 336,
+          "shape": 7
+        },
+        {
+          "name": "seed",
+          "type": "STRING",
+          "link": 451,
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            338
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "params",
+          "type": "SAMPLER_PARAMS",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FluxSamplerParams+"
+      },
+      "widgets_values": [
+        "3121213",
+        "euler",
+        "simple",
+        "8",
+        "3.5",
+        "",
+        "",
+        "1.0"
+      ]
+    },
+    {
+      "id": 288,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -1910,
+        -570
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 489
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 487,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            490
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "",
+        [
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "id": 285,
+      "type": "CLIPVisionLoader",
+      "pos": [
+        -1760,
+        150
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP_VISION",
+          "type": "CLIP_VISION",
+          "links": [
+            483
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPVisionLoader"
+      },
+      "widgets_values": [
+        "sigclip_vision_patch14_384.safetensors"
+      ]
+    },
+    {
+      "id": 284,
+      "type": "StyleModelLoader",
+      "pos": [
+        -1750,
+        30
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STYLE_MODEL",
+          "type": "STYLE_MODEL",
+          "links": [
+            482
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StyleModelLoader"
+      },
+      "widgets_values": [
+        "flux1-redux-dev.safetensors"
+      ]
+    },
+    {
+      "id": 269,
+      "type": "PrimitiveNode",
+      "pos": [
+        -3000,
+        -290
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            451,
+            456
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "title": "Seed",
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        "3121213"
+      ]
+    },
+    {
+      "id": 208,
+      "type": "LorasForFluxParams+",
+      "pos": [
+        -3030,
+        -160
+      ],
+      "size": [
+        310,
+        82
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LORA_PARAMS",
+          "type": "LORA_PARAMS",
+          "links": [
+            336,
+            455
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LorasForFluxParams+"
+      },
+      "widgets_values": [
+        "Flux\\ali-flux-8step.safetensors",
+        "1.0"
+      ]
+    },
+    {
+      "id": 273,
+      "type": "FluxSamplerParams+",
+      "pos": [
+        -2630,
+        -660
+      ],
+      "size": [
+        260,
+        300
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 457
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 459
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 460
+        },
+        {
+          "name": "loras",
+          "type": "LORA_PARAMS",
+          "link": 455,
+          "shape": 7
+        },
+        {
+          "name": "seed",
+          "type": "STRING",
+          "link": 456,
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            461
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "params",
+          "type": "SAMPLER_PARAMS",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FluxSamplerParams+"
+      },
+      "widgets_values": [
+        "3121213",
+        "euler",
+        "simple",
+        "8",
+        "3.5",
+        "",
+        "",
+        "1.0"
+      ]
+    },
+    {
+      "id": 275,
+      "type": "VAEDecode",
+      "pos": [
+        -2590,
+        10
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 461
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 462
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            484
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 203,
+      "type": "UnetLoaderGGUF",
+      "pos": [
+        -3040,
+        -680
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            375,
+            457
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UnetLoaderGGUF"
+      },
+      "widgets_values": [
+        "FLUX1\\flux1-dev-Q8_0.gguf"
+      ]
+    },
+    {
+      "id": 211,
+      "type": "VAEDecode",
+      "pos": [
+        -1910,
+        -660
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 338
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 339
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            492
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 206,
+      "type": "SDXLEmptyLatentSizePicker+",
+      "pos": [
+        -3030,
+        150
+      ],
+      "size": [
+        290,
+        170
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            335,
+            460
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SDXLEmptyLatentSizePicker+"
+      },
+      "widgets_values": [
+        "1024x1024 (1.0)",
+        1,
+        1344,
+        1728
+      ]
+    },
+    {
+      "id": 294,
+      "type": "Note",
+      "pos": [
+        -3670,
+        -720
+      ],
+      "size": [
+        570,
+        650
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "ModelsandLora",
+      "properties": {},
+      "widgets_values": [
+        "Ali-FLUX-8Step Lora(FLUX Turbo)\nhttps://huggingface.co/alimama-creative/FLUX.1-Turbo-Alpha/blob/main/diffusion_pytorch_model.safetensors\n(ComfyUI\\models\\loras)\n==\nportraitphotography(ICLora)  \nhttps://huggingface.co/ali-vilab/In-Context-LoRA/resolve/main/portrait-photography.safetensors\n(ComfyUI\\models\\loras\\iclora)\n==\nhttps://huggingface.co/zer0int/CLIP-GmP-ViT-L-14/blob/main/ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors\n(ComfyUI\\models\\clip)\n==\nhttps://huggingface.co/city96/t5-v1_1-xxl-encoder-gguf/resolve/main/t5-v1_1-xxl-encoder-Q8_0.gguf\n(ComfyUI\\models\\clip\\t5)\n==\nhttps://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/blob/main/flux1-redux-dev.safetensors\n(ComfyUI\\models\\style_models)\n==\nhttps://huggingface.co/Comfy-Org/sigclip_vision_384/blob/main/sigclip_vision_patch14_384.safetensors\n(ComfyUI\\models\\clip_vision)\n==\nhttps://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors\n(ComfyUI\\models\\vae)\n=="
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 292,
+      "type": "ImageConcatFromBatch",
+      "pos": [
+        -1630,
+        -400
+      ],
+      "size": [
+        352.79998779296875,
+        106
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 500
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            505
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageConcatFromBatch"
+      },
+      "widgets_values": [
+        3,
+        false,
+        4096
+      ]
+    },
+    {
+      "id": 290,
+      "type": "ImageListToImageBatch",
+      "pos": [
+        -1620,
+        -540
+      ],
+      "size": [
+        315,
+        26
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 492
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            500
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageListToImageBatch"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 293,
+      "type": "SaveImage",
+      "pos": [
+        -1180,
+        -690
+      ],
+      "size": [
+        2200,
+        980
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 505
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "250103/stroyboard"
+      ]
+    },
+    {
+      "id": 276,
+      "type": "ReduxAdvanced",
+      "pos": [
+        -1720,
+        270
+      ],
+      "size": [
+        260,
+        250
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 490
+        },
+        {
+          "name": "style_model",
+          "type": "STYLE_MODEL",
+          "link": 482
+        },
+        {
+          "name": "clip_vision",
+          "type": "CLIP_VISION",
+          "link": 483
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 484
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            491
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ReduxAdvanced"
+      },
+      "widgets_values": [
+        2,
+        "bilinear",
+        "keep aspect ratio",
+        1,
+        0.1
+      ]
+    },
+    {
+      "id": 274,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -2630,
+        -250
+      ],
+      "size": [
+        360,
+        160
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 458
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            459
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "A full-body portrait of a young Asian woman standing elegantly, long straight black hair flowing down to her waist, wearing a Japanese vivid-color school uniform with golden vivid-colored patterns ,  Natural makeup with subtle red lips. Standing in a graceful pose on the street. Soft studio lighting, 4K, highly detailed.",
+        [
+          false,
+          true
+        ]
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 287,
+      "type": "CR Prompt List",
+      "pos": [
+        -2220,
+        20
+      ],
+      "size": [
+        440,
+        530
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            487
+          ],
+          "slot_index": 0,
+          "shape": 6
+        },
+        {
+          "name": "body_text",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        },
+        {
+          "name": "show_help",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Prompt List"
+      },
+      "widgets_values": [
+        "",
+        "This seamless [FOUR-PANEL] photo captures a 22-year-old woman's transition from work to relaxation; [TOP-LEFT] she is leaning forward at her desk, fingers rapidly typing on her keyboard while her eyes scan multiple monitors, occasionally pausing to jot notes in her planner, [TOP-RIGHT] she is standing at the copy machine, carefully arranging documents on the scanner bed while checking each page number, her finger hovering over the start button, [BOTTOM-LEFT] she is stretching up on her tiptoes at the filing cabinet, methodically sorting folders into color-coded sections, her arms reaching to organize the uppermost drawer, and [BOTTOM-RIGHT] she is pushing open the heavy rooftop door, stepping into the open air as she loosens her tie, walking towards the edge where city lights are beginning to twinkle in the dusk.\nThis seamless [FOUR-PANEL] photo captures a 22-year-old woman's spontaneous journey through the countryside; [TOP-LEFT] she is running through tall grass in a sunlit meadow, her sundress flowing behind her as her bare feet brush against wildflowers, [TOP-RIGHT] she is turning her head towards the camera while mid-stride, her hair catching the golden light as laughter spreads across her face, her arms outstretched in pure joy, [BOTTOM-LEFT] she is darting into a narrow alleyway between old stone walls, her hand trailing along the weathered surface as she navigates the winding path, shadows dancing across her moving form, and [BOTTOM-RIGHT] she is slowing to a stop before an ancient house, her chest rising and falling with excited breaths as she tilts her head back to take in the weathered facade, her hand reaching out to touch the old wooden door.\nThis seamless [FOUR-PANEL] photo shows a young asian student's creative process in a bright and inspiring studio; [TOP-LEFT] she stands before a large canvas, brush in hand, adding vibrant colors to a partially completed painting, [TOP-RIGHT] she sits at a cluttered wooden table, sketching ideas in a notebook with various art supplies scattered around, [BOTTOM-LEFT] she takes a moment to step back and observe her work, adjusting her glasses thoughtfully, and [BOTTOM-RIGHT] she experiments with different textures by mixing paints directly on the palette, her focused expression showcasing her dedication to her craft.",
+        "",
+        0,
+        1000,
+        [
+          false,
+          true
+        ]
+      ]
+    }
+  ],
+  "links": [
+    [
+      335,
+      206,
+      0,
+      209,
+      2,
+      "LATENT"
+    ],
+    [
+      336,
+      208,
+      0,
+      209,
+      3,
+      "LORA_PARAMS"
+    ],
+    [
+      338,
+      209,
+      0,
+      211,
+      0,
+      "LATENT"
+    ],
+    [
+      339,
+      205,
+      0,
+      211,
+      1,
+      "VAE"
+    ],
+    [
+      375,
+      203,
+      0,
+      232,
+      0,
+      "MODEL"
+    ],
+    [
+      376,
+      232,
+      0,
+      209,
+      0,
+      "MODEL"
+    ],
+    [
+      451,
+      269,
+      0,
+      209,
+      4,
+      "STRING"
+    ],
+    [
+      455,
+      208,
+      0,
+      273,
+      3,
+      "LORA_PARAMS"
+    ],
+    [
+      456,
+      269,
+      0,
+      273,
+      4,
+      "STRING"
+    ],
+    [
+      457,
+      203,
+      0,
+      273,
+      0,
+      "MODEL"
+    ],
+    [
+      458,
+      204,
+      0,
+      274,
+      0,
+      "CLIP"
+    ],
+    [
+      459,
+      274,
+      0,
+      273,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      460,
+      206,
+      0,
+      273,
+      2,
+      "LATENT"
+    ],
+    [
+      461,
+      273,
+      0,
+      275,
+      0,
+      "LATENT"
+    ],
+    [
+      462,
+      205,
+      0,
+      275,
+      1,
+      "VAE"
+    ],
+    [
+      482,
+      284,
+      0,
+      276,
+      1,
+      "STYLE_MODEL"
+    ],
+    [
+      483,
+      285,
+      0,
+      276,
+      2,
+      "CLIP_VISION"
+    ],
+    [
+      484,
+      275,
+      0,
+      276,
+      3,
+      "IMAGE"
+    ],
+    [
+      487,
+      287,
+      0,
+      288,
+      1,
+      "STRING"
+    ],
+    [
+      489,
+      204,
+      0,
+      288,
+      0,
+      "CLIP"
+    ],
+    [
+      490,
+      288,
+      0,
+      276,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      491,
+      276,
+      0,
+      209,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      492,
+      211,
+      0,
+      290,
+      0,
+      "IMAGE"
+    ],
+    [
+      500,
+      290,
+      0,
+      292,
+      0,
+      "IMAGE"
+    ],
+    [
+      505,
+      292,
+      0,
+      293,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 7,
+      "title": "ICLora",
+      "bounding": [
+        -2240,
+        -730,
+        560,
+        640
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 8,
+      "title": "Redux",
+      "bounding": [
+        -2230,
+        -50,
+        1010,
+        600
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 9,
+      "title": "Character",
+      "bounding": [
+        -3050,
+        -750,
+        790,
+        819.5999755859375
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.45000000000000207,
+      "offset": [
+        3879.807442924971,
+        1043.2550443480404
+      ]
+    },
+    "ue_links": [],
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "node_versions": {
+      "comfy-core": "v0.3.10-25-g0b9839e",
+      "ComfyUI-GGUF": "0b65261cc4115d273829cd878f8a855e19c5435f",
+      "ComfyUI_AdvancedRefluxControl": "0a87efa252ae5e8f4af1225b0e19c867f908376a",
+      "ComfyUI_Comfyroll_CustomNodes": "d78b780ae43fcf8c6b7c6505e6ffb4584281ceca"
+    }
+  },
+  "version": 0.4
+}
