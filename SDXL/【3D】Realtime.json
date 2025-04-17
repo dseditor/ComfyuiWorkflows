@@ -1,0 +1,652 @@
+{
+  "id": "2eaf4cf6-95e6-4e7c-b2c0-1f29004bd60e",
+  "revision": 0,
+  "last_node_id": 18,
+  "last_link_id": 25,
+  "nodes": [
+    {
+      "id": 11,
+      "type": "CLIPTextEncode",
+      "pos": [
+        790,
+        -640
+      ],
+      "size": [
+        280,
+        110
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            13
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "",
+        [
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "id": 12,
+      "type": "VAEDecode",
+      "pos": [
+        1240,
+        -780
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 14
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 1,
+      "type": "Load3D",
+      "pos": [
+        110,
+        -1790
+      ],
+      "size": [
+        700,
+        940
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "name": "mesh_path",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "normal",
+          "type": "IMAGE",
+          "links": [
+            10
+          ]
+        },
+        {
+          "name": "lineart",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "Load3D",
+        "Camera Info": {
+          "position": {
+            "x": -6.929734393156449,
+            "y": 4.850687330544631,
+            "z": -7.715308414658206
+          },
+          "target": {
+            "x": 0,
+            "y": 1.8228248507928124,
+            "z": 0
+          },
+          "zoom": 1,
+          "cameraType": "perspective"
+        }
+      },
+      "widgets_values": [
+        "3d/test.glb",
+        "upload3dmodel",
+        "clear",
+        "",
+        1024,
+        1024
+      ]
+    },
+    {
+      "id": 14,
+      "type": "EmptyLatentImage",
+      "pos": [
+        400,
+        -660
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        800,
+        -800
+      ],
+      "size": [
+        390,
+        110
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "a isomatic vivid-color house ,ultra detailed,masterpiece,simple background",
+        [
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "type": "ControlNetLoader",
+      "pos": [
+        390,
+        -770
+      ],
+      "size": [
+        355.20001220703125,
+        58
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CONTROL_NET",
+          "type": "CONTROL_NET",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "ControlNetLoader"
+      },
+      "widgets_values": [
+        "SDXL\\controlnet-union-sdxl-1.0\\diffusion_pytorch_model_promax.safetensors"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        10,
+        -800
+      ],
+      "size": [
+        315,
+        98
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            25
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            4,
+            12
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "SDXL\\realvisxlV50_v50LightningBakedvae.safetensors"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "KSampler",
+      "pos": [
+        770,
+        -630
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 25
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 7
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 8
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 17
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        350840921284867,
+        "randomize",
+        4,
+        1,
+        "dpmpp_2m",
+        "beta",
+        1
+      ]
+    },
+    {
+      "id": 8,
+      "type": "ControlNetApplyAdvanced",
+      "pos": [
+        480,
+        -520
+      ],
+      "size": [
+        240,
+        190
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 6
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 13
+        },
+        {
+          "name": "control_net",
+          "type": "CONTROL_NET",
+          "link": 9
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 10
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            7
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "ControlNetApplyAdvanced"
+      },
+      "widgets_values": [
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 9,
+      "type": "SetUnionControlNetType",
+      "pos": [
+        10,
+        -630
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "control_net",
+          "type": "CONTROL_NET",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONTROL_NET",
+          "type": "CONTROL_NET",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "SetUnionControlNetType"
+      },
+      "widgets_values": [
+        "normal"
+      ]
+    },
+    {
+      "id": 13,
+      "type": "PreviewImage",
+      "pos": [
+        850,
+        -1650
+      ],
+      "size": [
+        670,
+        800
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 16
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [
+      4,
+      3,
+      1,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      6,
+      6,
+      0,
+      8,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      7,
+      8,
+      0,
+      7,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      8,
+      8,
+      1,
+      7,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      9,
+      9,
+      0,
+      8,
+      2,
+      "CONTROL_NET"
+    ],
+    [
+      10,
+      1,
+      3,
+      8,
+      3,
+      "IMAGE"
+    ],
+    [
+      11,
+      10,
+      0,
+      9,
+      0,
+      "CONTROL_NET"
+    ],
+    [
+      12,
+      3,
+      1,
+      11,
+      0,
+      "CLIP"
+    ],
+    [
+      13,
+      11,
+      0,
+      8,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      14,
+      7,
+      0,
+      12,
+      0,
+      "LATENT"
+    ],
+    [
+      15,
+      3,
+      2,
+      12,
+      1,
+      "VAE"
+    ],
+    [
+      16,
+      12,
+      0,
+      13,
+      0,
+      "IMAGE"
+    ],
+    [
+      17,
+      14,
+      0,
+      7,
+      3,
+      "LATENT"
+    ],
+    [
+      25,
+      3,
+      0,
+      7,
+      0,
+      "MODEL"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7247295000000004,
+      "offset": [
+        -125.86063245080253,
+        1589.6912343167419
+      ]
+    },
+    "frontendVersion": "1.17.0",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0
+  },
+  "version": 0.4
+}
