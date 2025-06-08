@@ -1,0 +1,283 @@
+{
+  "id": "5cd0c9c7-81d3-4b6e-95ab-824437b5b671",
+  "revision": 0,
+  "last_node_id": 6,
+  "last_link_id": 6,
+  "nodes": [
+    {
+      "id": 2,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -860,
+        -480
+      ],
+      "size": [
+        260,
+        120
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "aac13aa7ce35b07d43633c3bbe654a38c00d74f5",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "成功上傳並加入播放清單！ID: PxKR0cwBMCU"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "Text Multiline",
+      "pos": [
+        -1750,
+        -40
+      ],
+      "size": [
+        400,
+        140
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "pr-was-node-suite-comfyui-47064894",
+        "ver": "056badacda52e88d29d6a65f9509cd3115ace0f2",
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "C:\\Users\\dseditor\\CUI\\ComfyUI\\output\\AnimateDiff_00009-audio.mp4",
+        [
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "type": "Text Multiline",
+      "pos": [
+        -1750,
+        -510
+      ],
+      "size": [
+        400,
+        140
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            2
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "pr-was-node-suite-comfyui-47064894",
+        "ver": "056badacda52e88d29d6a65f9509cd3115ace0f2",
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "6月5日新聞與字幕稿",
+        [
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "type": "FL_CodeNode",
+      "pos": [
+        -1330,
+        -540
+      ],
+      "size": [
+        430,
+        660
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "5_string",
+          "type": "STRING",
+          "link": 2
+        },
+        {
+          "name": "6_string",
+          "type": "STRING",
+          "link": 5
+        },
+        {
+          "name": "7_string",
+          "type": "STRING",
+          "link": 6
+        },
+        {
+          "name": "input",
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output_0",
+          "type": "*",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "output_1",
+          "type": "*",
+          "links": null
+        },
+        {
+          "name": "output_2",
+          "type": "*",
+          "links": null
+        },
+        {
+          "name": "output_3",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "title": "YoutubeUploader",
+      "properties": {
+        "cnr_id": "comfyui_fill-nodes",
+        "ver": "1c99b736ab7607779eee763e8210279a33bc94df",
+        "Node name for S&R": "FL_CodeNode"
+      },
+      "widgets_values": [
+        "from googleapiclient.discovery import build\nfrom google.oauth2.credentials import Credentials\n\ntry:\n    # 使用更大範圍的授權\n    creds = Credentials.from_authorized_user_file('token.json', [\n        'https://www.googleapis.com/auth/youtube.upload',\n        'https://www.googleapis.com/auth/youtube'\n    ])\n    \n    youtube = build('youtube', 'v3', credentials=creds)\n    \n    # 上傳影片（跟之前一樣）\n    request = youtube.videos().insert(\n        part=\"snippet,status\",\n        body={\n            \"snippet\": {\n                \"title\": inputs[0],\n                \"description\": inputs[1],\n                \"categoryId\": \"22\"\n            },\n            \"status\": {\n                \"privacyStatus\": \"public\",\n                \"selfDeclaredMadeForKids\": False\n            }\n        },\n        media_body=inputs[2]\n    )\n    \n    response = request.execute()\n    video_id = response['id']\n    \n    # 現在可以加入播放清單了\n    playlist_id = \"YOURID\"\n    youtube.playlistItems().insert(\n        part=\"snippet\",\n        body={\n            \"snippet\": {\n                \"playlistId\": playlist_id,\n                \"resourceId\": {\n                    \"kind\": \"youtube#video\",\n                    \"videoId\": video_id\n                }\n            }\n        }\n    ).execute()\n    \n    outputs[0] = f\"成功上傳並加入播放清單！ID: {video_id}\"\n    \nexcept Exception as e:\n    outputs[0] = f\"失敗: {str(e)}\"",
+        "./res/hello.py",
+        false,
+        false
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 6,
+      "type": "Text Multiline",
+      "pos": [
+        -1750,
+        -300
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "pr-was-node-suite-comfyui-47064894",
+        "ver": "056badacda52e88d29d6a65f9509cd3115ace0f2",
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "",
+        [
+          false,
+          true
+        ]
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      3,
+      0,
+      1,
+      0,
+      "*"
+    ],
+    [
+      5,
+      6,
+      0,
+      1,
+      1,
+      "STRING"
+    ],
+    [
+      6,
+      5,
+      0,
+      1,
+      2,
+      "*"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9646149645000006,
+      "offset": [
+        1850,
+        640
+      ]
+    },
+    "frontendVersion": "1.21.7",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
