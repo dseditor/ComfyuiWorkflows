@@ -9,7 +9,7 @@ OutPaint，OutPaint的示範
 ```bash
 CD custom_nodes
 #切換到ComfyUI的custom_nodes資料夾下
-CD ComfyuI-OllamaGemini
+CD ComfyUI-OllamaGemini
 #切換到OllamaGemini節點資料夾下
 git pull
 #拉取最新更新
