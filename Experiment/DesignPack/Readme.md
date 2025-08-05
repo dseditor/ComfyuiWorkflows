@@ -1,0 +1,2 @@
+**使用DesignPack創造的PDF檔案**
+基礎模型為Flux-Krea
