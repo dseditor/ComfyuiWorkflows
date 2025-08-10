@@ -1,0 +1,1933 @@
+{
+  "id": "7cbcec68-7fa6-47bb-a38a-da689949a001",
+  "revision": 0,
+  "last_node_id": 240,
+  "last_link_id": 379,
+  "nodes": [
+    {
+      "id": 177,
+      "type": "ReferenceLatent",
+      "pos": [
+        -423.33843994140625,
+        -579.302490234375
+      ],
+      "size": [
+        197.712890625,
+        46
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "conditioning",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 294
+        },
+        {
+          "label": "latent",
+          "name": "latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 293
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            292
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "ReferenceLatent",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 35,
+      "type": "FluxGuidance",
+      "pos": [
+        -133.33843994140625,
+        -779.302490234375
+      ],
+      "size": [
+        240,
+        58
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "conditioning",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 292
+        },
+        {
+          "label": "guidance",
+          "name": "guidance",
+          "type": "FLOAT",
+          "widget": {
+            "name": "guidance"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            57,
+            329
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.38",
+        "Node name for S&R": "FluxGuidance",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        2.5
+      ]
+    },
+    {
+      "id": 135,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        -133.33843994140625,
+        -669.302490234375
+      ],
+      "size": [
+        240,
+        26
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "conditioning",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 329
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            238
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "ConditioningZeroOut",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        -123.33843231201172,
+        -589.3024291992188
+      ],
+      "size": [
+        190,
+        46
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "samples",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 52
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 61
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            240
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.38",
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 124,
+      "type": "VAEEncode",
+      "pos": [
+        -423.33843994140625,
+        -489.3023986816406
+      ],
+      "size": [
+        240,
+        50
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "pixels",
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 222
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 223
+        }
+      ],
+      "outputs": [
+        {
+          "label": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            291,
+            293
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "VAEEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 42,
+      "type": "FluxKontextImageScale",
+      "pos": [
+        -423.33843994140625,
+        -379.3023986816406
+      ],
+      "size": [
+        270,
+        30
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 330
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            222
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.38",
+        "Node name for S&R": "FluxKontextImageScale",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 38,
+      "type": "DualCLIPLoader",
+      "pos": [
+        -783.3384399414062,
+        -368.3526306152344
+      ],
+      "size": [
+        337.76861572265625,
+        130
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip_name1",
+          "name": "clip_name1",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name1"
+          }
+        },
+        {
+          "label": "clip_name2",
+          "name": "clip_name2",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name2"
+          }
+        },
+        {
+          "label": "type",
+          "name": "type",
+          "type": "COMBO",
+          "widget": {
+            "name": "type"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            59
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.38",
+        "Node name for S&R": "DualCLIPLoader",
+        "models": [
+          {
+            "name": "clip_l.safetensors",
+            "directory": "text_encoders",
+            "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors"
+          },
+          {
+            "name": "t5xxl_fp8_e4m3fn_scaled.safetensors",
+            "directory": "text_encoders",
+            "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn_scaled.safetensors"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "clip_l.safetensors",
+        "t5xxl_fp8_e4m3fn_scaled.safetensors",
+        "flux",
+        "default"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 39,
+      "type": "VAELoader",
+      "pos": [
+        -786.8992309570312,
+        -472.8334045410156
+      ],
+      "size": [
+        337.76861572265625,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "vae_name",
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "VAE",
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            61,
+            223
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.38",
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "ae.safetensors",
+            "directory": "vae",
+            "url": "https://huggingface.co/Comfy-Org/Lumina_Image_2.0_Repackaged/resolve/main/split_files/vae/ae.safetensors"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 37,
+      "type": "UNETLoader",
+      "pos": [
+        -779.5402221679688,
+        -602.7146606445312
+      ],
+      "size": [
+        337.76861572265625,
+        82
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "unet_name",
+          "name": "unet_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "unet_name"
+          }
+        },
+        {
+          "label": "weight_dtype",
+          "name": "weight_dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "weight_dtype"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            314,
+            357
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.38",
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "flux1-dev-kontext_fp8_scaled.safetensors",
+            "directory": "diffusion_models",
+            "url": "https://huggingface.co/Comfy-Org/flux1-kontext-dev_ComfyUI/resolve/main/split_files/diffusion_models/flux1-dev-kontext_fp8_scaled.safetensors"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "flux1-dev-kontext_fp8_scaled.safetensors",
+        "default"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 219,
+      "type": "LayerUtility: PurgeVRAM V2",
+      "pos": [
+        -137.8189697265625,
+        -145.21142578125
+      ],
+      "size": [
+        279.6304626464844,
+        82
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "anything",
+          "name": "anything",
+          "type": "*",
+          "link": 356
+        },
+        {
+          "label": "purge_cache",
+          "name": "purge_cache",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "purge_cache"
+          }
+        },
+        {
+          "label": "purge_models",
+          "name": "purge_models",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "purge_models"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "any",
+          "name": "any",
+          "type": "*"
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_layerstyle",
+        "ver": "3bfe8e435d167b4a5bf08716729f89802dbbaa6f",
+        "Node name for S&R": "LayerUtility: PurgeVRAM V2",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true,
+        true
+      ],
+      "color": "rgba(38, 73, 116, 0.7)"
+    },
+    {
+      "id": 31,
+      "type": "KSampler",
+      "pos": [
+        -123.33843231201172,
+        -479.3023986816406
+      ],
+      "size": [
+        260,
+        262
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 378
+        },
+        {
+          "label": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 57
+        },
+        {
+          "label": "negative",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 238
+        },
+        {
+          "label": "latent_image",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 291
+        },
+        {
+          "label": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          }
+        },
+        {
+          "label": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          }
+        },
+        {
+          "label": "cfg",
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          }
+        },
+        {
+          "label": "sampler_name",
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          }
+        },
+        {
+          "label": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          }
+        },
+        {
+          "label": "denoise",
+          "name": "denoise",
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            52,
+            356
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.38",
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        40196356449298,
+        "fixed",
+        20,
+        1,
+        "euler",
+        "beta57",
+        1
+      ]
+    },
+    {
+      "id": 136,
+      "type": "SaveImage",
+      "pos": [
+        204.45013427734375,
+        -810.3162231445312
+      ],
+      "size": [
+        973.1597900390625,
+        797.0775756835938
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 240
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "SaveImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 227,
+      "type": "CR Prompt List",
+      "pos": [
+        -2222.66552734375,
+        -482.9707336425781
+      ],
+      "size": [
+        221.34259033203125,
+        278.2103576660156
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "prepend_text",
+          "name": "prepend_text",
+          "type": "STRING",
+          "widget": {
+            "name": "prepend_text"
+          }
+        },
+        {
+          "label": "multiline_text",
+          "name": "multiline_text",
+          "type": "STRING",
+          "widget": {
+            "name": "multiline_text"
+          }
+        },
+        {
+          "label": "append_text",
+          "name": "append_text",
+          "type": "STRING",
+          "widget": {
+            "name": "append_text"
+          }
+        },
+        {
+          "label": "start_index",
+          "name": "start_index",
+          "type": "INT",
+          "widget": {
+            "name": "start_index"
+          }
+        },
+        {
+          "label": "max_rows",
+          "name": "max_rows",
+          "type": "INT",
+          "widget": {
+            "name": "max_rows"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "prompt",
+          "name": "prompt",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            365
+          ]
+        },
+        {
+          "label": "body_text",
+          "name": "body_text",
+          "shape": 6,
+          "type": "STRING"
+        },
+        {
+          "label": "show_help",
+          "name": "show_help",
+          "type": "STRING"
+        }
+      ],
+      "title": "4時間替換",
+      "properties": {
+        "cnr_id": "comfyroll",
+        "ver": "d78b780ae43fcf8c6b7c6505e6ffb4584281ceca",
+        "Node name for S&R": "CR Prompt List",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "請將此空間照片轉換為",
+        "夜晚明亮光線效果\n夜晚室內燈光效果\n夕陽光線照射效果\n清晨光線照射效果",
+        "，圖面營造自然光影與反光效果，保持原有空間風格與構圖，生成溫馨真實的氛圍渲染圖。",
+        0,
+        1
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 213,
+      "type": "CR Prompt List",
+      "pos": [
+        -2499.33740234375,
+        -831.8906860351562
+      ],
+      "size": [
+        210,
+        268.42315673828125
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "prepend_text",
+          "name": "prepend_text",
+          "type": "STRING",
+          "widget": {
+            "name": "prepend_text"
+          }
+        },
+        {
+          "label": "multiline_text",
+          "name": "multiline_text",
+          "type": "STRING",
+          "widget": {
+            "name": "multiline_text"
+          }
+        },
+        {
+          "label": "append_text",
+          "name": "append_text",
+          "type": "STRING",
+          "widget": {
+            "name": "append_text"
+          }
+        },
+        {
+          "label": "start_index",
+          "name": "start_index",
+          "type": "INT",
+          "widget": {
+            "name": "start_index"
+          }
+        },
+        {
+          "label": "max_rows",
+          "name": "max_rows",
+          "type": "INT",
+          "widget": {
+            "name": "max_rows"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "prompt",
+          "name": "prompt",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            353
+          ]
+        },
+        {
+          "label": "body_text",
+          "name": "body_text",
+          "shape": 6,
+          "type": "STRING"
+        },
+        {
+          "label": "show_help",
+          "name": "show_help",
+          "type": "STRING"
+        }
+      ],
+      "title": "1空房改造(上傳空房間)",
+      "properties": {
+        "cnr_id": "comfyroll",
+        "ver": "d78b780ae43fcf8c6b7c6505e6ffb4584281ceca",
+        "Node name for S&R": "CR Prompt List",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "佈置這個房間為",
+        "客廳，採取北歐風設計\n書房，採取日式禪風設計\n餐廳，採取法式鄉村設計\n浴室，採取工業風格設計",
+        "，豐富多樣的家具及明亮的光線，保持房間與窗戶結構",
+        0,
+        1
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 218,
+      "type": "CR Prompt List",
+      "pos": [
+        -2231.076904296875,
+        -813.9461669921875
+      ],
+      "size": [
+        214.36683654785156,
+        256.2830505371094
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "prepend_text",
+          "name": "prepend_text",
+          "type": "STRING",
+          "widget": {
+            "name": "prepend_text"
+          }
+        },
+        {
+          "label": "multiline_text",
+          "name": "multiline_text",
+          "type": "STRING",
+          "widget": {
+            "name": "multiline_text"
+          }
+        },
+        {
+          "label": "append_text",
+          "name": "append_text",
+          "type": "STRING",
+          "widget": {
+            "name": "append_text"
+          }
+        },
+        {
+          "label": "start_index",
+          "name": "start_index",
+          "type": "INT",
+          "widget": {
+            "name": "start_index"
+          }
+        },
+        {
+          "label": "max_rows",
+          "name": "max_rows",
+          "type": "INT",
+          "widget": {
+            "name": "max_rows"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "prompt",
+          "name": "prompt",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            355
+          ]
+        },
+        {
+          "label": "body_text",
+          "name": "body_text",
+          "shape": 6,
+          "type": "STRING"
+        },
+        {
+          "label": "show_help",
+          "name": "show_help",
+          "type": "STRING"
+        }
+      ],
+      "title": "2線稿繪製(上傳線稿)",
+      "properties": {
+        "cnr_id": "comfyroll",
+        "ver": "d78b780ae43fcf8c6b7c6505e6ffb4584281ceca",
+        "Node name for S&R": "CR Prompt List",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Render這張線稿為真實照片，",
+        "北歐家具風\n奶油文青風\n自然清新風\n工業粗曠風",
+        "，色彩豐富，光線明亮",
+        0,
+        1
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 221,
+      "type": "CR Prompt List",
+      "pos": [
+        -2522.27685546875,
+        -476.1344299316406
+      ],
+      "size": [
+        253.01034545898438,
+        260.37860107421875
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "prepend_text",
+          "name": "prepend_text",
+          "type": "STRING",
+          "widget": {
+            "name": "prepend_text"
+          }
+        },
+        {
+          "label": "multiline_text",
+          "name": "multiline_text",
+          "type": "STRING",
+          "widget": {
+            "name": "multiline_text"
+          }
+        },
+        {
+          "label": "append_text",
+          "name": "append_text",
+          "type": "STRING",
+          "widget": {
+            "name": "append_text"
+          }
+        },
+        {
+          "label": "start_index",
+          "name": "start_index",
+          "type": "INT",
+          "widget": {
+            "name": "start_index"
+          }
+        },
+        {
+          "label": "max_rows",
+          "name": "max_rows",
+          "type": "INT",
+          "widget": {
+            "name": "max_rows"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "prompt",
+          "name": "prompt",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            359
+          ]
+        },
+        {
+          "label": "body_text",
+          "name": "body_text",
+          "shape": 6,
+          "type": "STRING"
+        },
+        {
+          "label": "show_help",
+          "name": "show_help",
+          "type": "STRING"
+        }
+      ],
+      "title": "3場景家具風格替換(上傳既有房間)",
+      "properties": {
+        "cnr_id": "comfyroll",
+        "ver": "d78b780ae43fcf8c6b7c6505e6ffb4584281ceca",
+        "Node name for S&R": "CR Prompt List",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "調整家具，如配件、燈具、椅子、植栽、地毯等裝飾，讓這些裝飾帶有",
+        "歐式古典風\n奶油文青風\n自然清新風\n工業粗曠風",
+        "，保持圖片中的窗戶、牆壁等主要房間架構",
+        0,
+        4
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 220,
+      "type": "PathchSageAttentionKJ",
+      "pos": [
+        -768.0350341796875,
+        -750.633544921875
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 357
+        },
+        {
+          "label": "sage_attention",
+          "name": "sage_attention",
+          "type": "COMBO",
+          "widget": {
+            "name": "sage_attention"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            377
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "ee0eb6696b03e55d57201c39872793b44b9381ed",
+        "Node name for S&R": "PathchSageAttentionKJ",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "auto"
+      ]
+    },
+    {
+      "id": 238,
+      "type": "ModelPatchTorchSettings",
+      "pos": [
+        -470,
+        -750
+      ],
+      "size": [
+        307.443359375,
+        58
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 377
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            378
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "ee0eb6696b03e55d57201c39872793b44b9381ed",
+        "Node name for S&R": "ModelPatchTorchSettings",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -423.33843994140625,
+        -299.3023986816406
+      ],
+      "size": [
+        263.2095642089844,
+        88
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 59
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 379
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            294
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.38",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Rotate to show the room’s left view"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 229,
+      "type": "CR Prompt List",
+      "pos": [
+        -2830,
+        -720
+      ],
+      "size": [
+        256.84344482421875,
+        323.35223388671875
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "prepend_text",
+          "name": "prepend_text",
+          "type": "STRING",
+          "widget": {
+            "name": "prepend_text"
+          }
+        },
+        {
+          "label": "multiline_text",
+          "name": "multiline_text",
+          "type": "STRING",
+          "widget": {
+            "name": "multiline_text"
+          }
+        },
+        {
+          "label": "append_text",
+          "name": "append_text",
+          "type": "STRING",
+          "widget": {
+            "name": "append_text"
+          }
+        },
+        {
+          "label": "start_index",
+          "name": "start_index",
+          "type": "INT",
+          "widget": {
+            "name": "start_index"
+          }
+        },
+        {
+          "label": "max_rows",
+          "name": "max_rows",
+          "type": "INT",
+          "widget": {
+            "name": "max_rows"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "prompt",
+          "name": "prompt",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            366
+          ]
+        },
+        {
+          "label": "body_text",
+          "name": "body_text",
+          "shape": 6,
+          "type": "STRING"
+        },
+        {
+          "label": "show_help",
+          "name": "show_help",
+          "type": "STRING"
+        }
+      ],
+      "title": "5家具背景替換(單一家具圖片)",
+      "properties": {
+        "cnr_id": "comfyroll",
+        "ver": "d78b780ae43fcf8c6b7c6505e6ffb4584281ceca",
+        "Node name for S&R": "CR Prompt List",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "將它放到",
+        "歐式的客廳\n美式鄉村風格的臥室\n奶油風的客廳\n陽光普照的花園",
+        "裡",
+        0,
+        4
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 217,
+      "type": "ImpactSwitch",
+      "pos": [
+        -1950,
+        -730
+      ],
+      "size": [
+        235.7294921875,
+        182
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "input1",
+          "name": "input1",
+          "shape": 7,
+          "type": "*",
+          "link": 353
+        },
+        {
+          "label": "select",
+          "name": "select",
+          "type": "INT",
+          "widget": {
+            "name": "select"
+          }
+        },
+        {
+          "label": "sel_mode",
+          "name": "sel_mode",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "sel_mode"
+          }
+        },
+        {
+          "label": "input2",
+          "name": "input2",
+          "type": "STRING",
+          "link": 355
+        },
+        {
+          "label": "input3",
+          "name": "input3",
+          "type": "STRING",
+          "link": 359
+        },
+        {
+          "label": "input4",
+          "name": "input4",
+          "type": "STRING",
+          "link": 365
+        },
+        {
+          "label": "input5",
+          "name": "input5",
+          "type": "STRING",
+          "link": 366
+        },
+        {
+          "label": "input6",
+          "name": "input6",
+          "type": "STRING"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "selected_value",
+          "type": "*",
+          "links": [
+            372
+          ]
+        },
+        {
+          "label": "selected_label",
+          "name": "selected_label",
+          "type": "STRING"
+        },
+        {
+          "label": "selected_index",
+          "name": "selected_index",
+          "type": "INT"
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "705698faf242851881abd7d1e1774baa3cf47136",
+        "Node name for S&R": "ImpactSwitch",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        3,
+        false
+      ]
+    },
+    {
+      "id": 204,
+      "type": "LoadImage",
+      "pos": [
+        -1610,
+        -1230
+      ],
+      "size": [
+        274.080078125,
+        314.0000305175781
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            330
+          ]
+        },
+        {
+          "label": "MASK",
+          "name": "MASK",
+          "type": "MASK"
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.43",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI_temp_cnjzx_00001_.png",
+        "image"
+      ]
+    },
+    {
+      "id": 233,
+      "type": "OllamaFluxKontextEnhancerV2",
+      "pos": [
+        -1650,
+        -840
+      ],
+      "size": [
+        400,
+        600
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "annotation_data",
+          "type": "STRING",
+          "link": 376
+        },
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "edit_description",
+          "type": "STRING",
+          "widget": {
+            "name": "edit_description"
+          },
+          "link": 372
+        }
+      ],
+      "outputs": [
+        {
+          "name": "flux_edit_instructions",
+          "type": "STRING",
+          "links": [
+            373,
+            379
+          ]
+        },
+        {
+          "name": "system_prompt",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "kontext-super-prompt",
+        "ver": "ed6637c4ae2b148a4ff938f8f395f9be5cb1a328",
+        "Node name for S&R": "OllamaFluxKontextEnhancerV2",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "",
+        "gpt-oss:latest",
+        "refresh",
+        false,
+        "general_editing",
+        "auto_smart",
+        "http://127.0.0.1:11434",
+        0.7,
+        false,
+        1882049783,
+        "randomize",
+        "none",
+        false,
+        "My Guidance",
+        ""
+      ],
+      "color": "#673AB7",
+      "bgcolor": "#512DA8",
+      "boxcolor": "#673AB7",
+      "model_selection": "gpt-oss:latest"
+    },
+    {
+      "id": 234,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -1180,
+        -740
+      ],
+      "size": [
+        300,
+        520
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 373
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "aac13aa7ce35b07d43633c3bbe654a38c00d74f5",
+        "Node name for S&R": "ShowText|pysssss",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Transform the furniture, accessories, lamps, chairs, plants, and rugs into a European classical style, while preserving the existing windows, walls, and overall room structure.",
+        "Transform the furniture and accessories—chairs, lamps, plants, rugs—into a cream boho aesthetic, keeping the windows, walls, and overall room layout unchanged.",
+        "Transform the chairs and sofa into light green with leaf‑patterned upholstery, replace the existing lamps with bamboo or rattan fixtures that cast soft, natural light, add potted plants with lush green foliage near the windows, and change the rug to a soft pastel color with a subtle botanical print. Keep the windows, walls, and overall room structure unchanged, ensuring the new décor blends with a fresh, natural aesthetic.",
+        "Transform the chairs, lamps, plants, rugs, and other furnishings into an industrial rugged style, using exposed metal, distressed wood, and muted earth tones, while keeping the windows, walls, and overall room structure unchanged."
+      ]
+    },
+    {
+      "id": 228,
+      "type": "Note",
+      "pos": [
+        -1950,
+        -160
+      ],
+      "size": [
+        305.1781921386719,
+        112.52529907226562
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "切換開關1-4選擇效果分類，上傳對應圖片\nStartIndex代表從第幾行開始\nMaxRows代表取幾行\n預設都是第一行0開始rows為1\n就是取第一行提示詞"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 237,
+      "type": "PrimitiveString",
+      "pos": [
+        -1980,
+        -370
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            376
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.49",
+        "Node name for S&R": "PrimitiveString",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        ""
+      ]
+    }
+  ],
+  "links": [
+    [
+      52,
+      31,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      57,
+      35,
+      0,
+      31,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      59,
+      38,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      61,
+      39,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      222,
+      42,
+      0,
+      124,
+      0,
+      "IMAGE"
+    ],
+    [
+      223,
+      39,
+      0,
+      124,
+      1,
+      "VAE"
+    ],
+    [
+      238,
+      135,
+      0,
+      31,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      240,
+      8,
+      0,
+      136,
+      0,
+      "IMAGE"
+    ],
+    [
+      291,
+      124,
+      0,
+      31,
+      3,
+      "LATENT"
+    ],
+    [
+      292,
+      177,
+      0,
+      35,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      293,
+      124,
+      0,
+      177,
+      1,
+      "LATENT"
+    ],
+    [
+      294,
+      6,
+      0,
+      177,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      314,
+      37,
+      0,
+      198,
+      0,
+      "MODEL"
+    ],
+    [
+      329,
+      35,
+      0,
+      135,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      330,
+      204,
+      0,
+      42,
+      0,
+      "IMAGE"
+    ],
+    [
+      353,
+      213,
+      0,
+      217,
+      0,
+      "*"
+    ],
+    [
+      355,
+      218,
+      0,
+      217,
+      3,
+      "STRING"
+    ],
+    [
+      356,
+      31,
+      0,
+      219,
+      0,
+      "*"
+    ],
+    [
+      357,
+      37,
+      0,
+      220,
+      0,
+      "MODEL"
+    ],
+    [
+      359,
+      221,
+      0,
+      217,
+      4,
+      "STRING"
+    ],
+    [
+      365,
+      227,
+      0,
+      217,
+      5,
+      "STRING"
+    ],
+    [
+      366,
+      229,
+      0,
+      217,
+      6,
+      "STRING"
+    ],
+    [
+      372,
+      217,
+      0,
+      233,
+      2,
+      "STRING"
+    ],
+    [
+      373,
+      233,
+      0,
+      234,
+      0,
+      "STRING"
+    ],
+    [
+      376,
+      237,
+      0,
+      233,
+      0,
+      "STRING"
+    ],
+    [
+      377,
+      220,
+      0,
+      238,
+      0,
+      "MODEL"
+    ],
+    [
+      378,
+      238,
+      0,
+      31,
+      0,
+      "MODEL"
+    ],
+    [
+      379,
+      233,
+      0,
+      6,
+      1,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 7,
+      "title": "Kontext",
+      "bounding": [
+        -800,
+        -850,
+        965.6380615234375,
+        837.8556518554688
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "VHS_KeepIntermediate": true,
+    "links_added_by_ue": [],
+    "VHS_MetadataImage": true,
+    "ue_links": [],
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "VHS_latentpreviewrate": 0,
+    "frontendVersion": "1.24.4",
+    "VHS_latentpreview": false,
+    "groupNodes": {},
+    "ds": {
+      "scale": 1.167184107045001,
+      "offset": [
+        2930,
+        1330
+      ]
+    }
+  },
+  "version": 0.4
+}
