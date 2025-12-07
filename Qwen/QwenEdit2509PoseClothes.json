@@ -137,7 +137,7 @@
         58
       ],
       "flags": {},
-      "order": 8,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -177,7 +177,7 @@
         58
       ],
       "flags": {},
-      "order": 11,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -217,7 +217,7 @@
         58
       ],
       "flags": {},
-      "order": 6,
+      "order": 7,
       "mode": 0,
       "inputs": [
         {
@@ -246,43 +246,6 @@
       ]
     },
     {
-      "id": 14,
-      "type": "NunchakuQwenImageDiTLoader",
-      "pos": [
-        -2190,
-        -1250
-      ],
-      "size": [
-        340,
-        130
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            41
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "ComfyUI-nunchaku",
-        "ver": "1d5dd13dd31d01fdb9e8e5cc9e4626a1b7225a2f",
-        "Node name for S&R": "NunchakuQwenImageDiTLoader",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "svdq-int4_r128-qwen-image-edit-2509-lightningv2.0-8steps.safetensors",
-        "auto",
-        1,
-        "disable"
-      ]
-    },
-    {
       "id": 21,
       "type": "VAEEncode",
       "pos": [
@@ -294,7 +257,7 @@
         46
       ],
       "flags": {},
-      "order": 13,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -337,7 +300,7 @@
         26
       ],
       "flags": {},
-      "order": 12,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -415,7 +378,7 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        1085705990198979,
+        346269665761259,
         "randomize",
         8,
         1,
@@ -436,7 +399,7 @@
         314
       ],
       "flags": {},
-      "order": 3,
+      "order": 2,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -476,7 +439,7 @@
         314
       ],
       "flags": {},
-      "order": 4,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -516,7 +479,7 @@
         82
       ],
       "flags": {},
-      "order": 10,
+      "order": 9,
       "mode": 0,
       "inputs": [
         {
@@ -546,71 +509,6 @@
       ]
     },
     {
-      "id": 24,
-      "type": "TextEncodeQwenImageEditPlus",
-      "pos": [
-        -1830,
-        -1620
-      ],
-      "size": [
-        260,
-        190
-      ],
-      "flags": {},
-      "order": 9,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 37
-        },
-        {
-          "name": "vae",
-          "shape": 7,
-          "type": "VAE",
-          "link": 38
-        },
-        {
-          "name": "image1",
-          "shape": 7,
-          "type": "IMAGE",
-          "link": 55
-        },
-        {
-          "name": "image2",
-          "shape": 7,
-          "type": "IMAGE",
-          "link": 57
-        },
-        {
-          "name": "image3",
-          "shape": 7,
-          "type": "IMAGE",
-          "link": 64
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            36,
-            53
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.66",
-        "Node name for S&R": "TextEncodeQwenImageEditPlus",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "將第一張圖的人穿上第二張圖的衣服並以第三張圖的姿勢為動作參考"
-      ]
-    },
-    {
       "id": 38,
       "type": "DWPreprocessor",
       "pos": [
@@ -622,7 +520,7 @@
         222
       ],
       "flags": {},
-      "order": 7,
+      "order": 6,
       "mode": 0,
       "inputs": [
         {
@@ -674,7 +572,7 @@
         350
       ],
       "flags": {},
-      "order": 5,
+      "order": 4,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -732,6 +630,108 @@
       },
       "widgets_values": [
         "QwenEdit/ComfyUI"
+      ]
+    },
+    {
+      "id": 14,
+      "type": "NunchakuQwenImageDiTLoader",
+      "pos": [
+        -2190,
+        -1250
+      ],
+      "size": [
+        490,
+        140
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            41
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-nunchaku",
+        "ver": "1d5dd13dd31d01fdb9e8e5cc9e4626a1b7225a2f",
+        "Node name for S&R": "NunchakuQwenImageDiTLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "svdq-int4_r128-qwen-image-edit-2509-lightning-8steps-251115.safetensors",
+        "auto",
+        1,
+        "disable"
+      ]
+    },
+    {
+      "id": 24,
+      "type": "TextEncodeQwenImageEditPlus",
+      "pos": [
+        -1830,
+        -1620
+      ],
+      "size": [
+        260,
+        190
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 37
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 38
+        },
+        {
+          "name": "image1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 55
+        },
+        {
+          "name": "image2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 57
+        },
+        {
+          "name": "image3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 64
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            36,
+            53
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.66",
+        "Node name for S&R": "TextEncodeQwenImageEditPlus",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "將第一張圖的人穿上第二張圖的衣服並以第三張圖的姿勢為動作參考，真實的照片風格，背景是黃昏的校園走廊"
       ]
     }
   ],
@@ -904,8 +904,8 @@
     "ds": {
       "scale": 0.9090909090909091,
       "offset": [
-        3007.7334564208945,
-        2079.066711425785
+        2866.2000000000003,
+        1875.9333557128894
       ]
     },
     "links_added_by_ue": [],
