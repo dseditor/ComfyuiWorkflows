@@ -1,0 +1,980 @@
+{
+  "id": "b1c3aee6-2524-431f-abef-6517a61b2edb",
+  "revision": 0,
+  "last_node_id": 61,
+  "last_link_id": 103,
+  "nodes": [
+    {
+      "id": 40,
+      "type": "ModelSamplingAuraFlow",
+      "pos": [
+        -3100,
+        -1250
+      ],
+      "size": [
+        269.9869791666667,
+        58
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 62
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            63
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.66",
+        "Node name for S&R": "ModelSamplingAuraFlow",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        3
+      ]
+    },
+    {
+      "id": 39,
+      "type": "CFGNorm",
+      "pos": [
+        -3100,
+        -1380
+      ],
+      "size": [
+        269.9869791666667,
+        58
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 73
+        }
+      ],
+      "outputs": [
+        {
+          "name": "patched_model",
+          "type": "MODEL",
+          "links": [
+            62
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.66",
+        "Node name for S&R": "CFGNorm",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        1
+      ]
+    },
+    {
+      "id": 42,
+      "type": "TextEncodeQwenImageEditPlus",
+      "pos": [
+        -2800,
+        -1380
+      ],
+      "size": [
+        399.9479166666667,
+        168
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 74
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 75
+        },
+        {
+          "name": "image1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 86
+        },
+        {
+          "name": "image2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "image3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 95
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            66,
+            78
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.66",
+        "Node name for S&R": "TextEncodeQwenImageEditPlus",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "將房間布置為精緻的工業風空間，保持基本結構不變，補充植栽、軟裝家具、硬體裝潢的一致性風格"
+      ]
+    },
+    {
+      "id": 33,
+      "type": "VAELoader",
+      "pos": [
+        -3400,
+        -1000
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            75,
+            77
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.6.0",
+        "Node name for S&R": "VAELoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Qwen_Image-VAE.safetensors"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "CLIPLoaderGGUF",
+      "pos": [
+        -3410,
+        -1140
+      ],
+      "size": [
+        290,
+        90
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            74
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-GGUF",
+        "ver": "cf0573351ac260d629d460d97f09b09ac17d3726",
+        "Node name for S&R": "CLIPLoaderGGUF",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Qwen2.5-VL-7B-Instruct-Q8_0.gguf",
+        "qwen_image"
+      ]
+    },
+    {
+      "id": 38,
+      "type": "UNETLoader",
+      "pos": [
+        -3410,
+        -1270
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            73
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.6.0",
+        "Node name for S&R": "UNETLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "qwen_image_edit_2511_fp8_e4m3fn_scaled_lightning_comfyui.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 57,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -3420,
+        -1430
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            93
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.6.0",
+        "Node name for S&R": "EmptyLatentImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        1304,
+        1504,
+        1
+      ]
+    },
+    {
+      "id": 59,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -3080,
+        -2030
+      ],
+      "size": [
+        380,
+        520.0000000000001
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 102
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "aac13aa7ce35b07d43633c3bbe654a38c00d74f5",
+        "Node name for S&R": "ShowText|pysssss",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "A girl in colorful Lolita one-piece dress with pastel pinks, purples and gold accents, standing beside a bustling Tainan night market stall filled with glowing neon signs and food stalls, holding a steaming bowl of local street food like fish balls or crab meat soup, dynamic low angle shot capturing vibrant chaos and warm ambient lighting, kawaii fashion meets chaotic urban energy, ultra detailed, 4k, high quality product photography",
+        "A girl wearing a multicolored Lolita one-piece dress with lace details and thigh-high slit, seated elegantly on bamboo-stool inside an old-style Tainan tea house, surrounded by teapots, porcelain cups, and traditional wooden decor, overhead shot capturing her enjoying herbal tea while sunlight filters through paper lanterns, tranquil atmosphere, soft natural light, professional still life composition, high resolution",
+        "A girl in vibrant Lolita outfit with glitter accents and frilly layers, standing beside a food stall selling Tainan specialty dishes like fried pork rice or braised fish balls, close-up from side angle capturing her eating enthusiastically while sizzling steam rises around her, dynamic motion blur effect for movement, rich color contrast, kawaii aesthetic meets street authenticity, 4k ultra detail",
+        "A girl dressed in a pastel Lolita one-piece with intricate embroidery and ruffles, standing respectfully before a traditional Tainan temple entrance adorned with red lanterns and wooden carvings, holding an offering plate while looking upward at the shrine, shallow depth of field focusing on her face and outfit details, soft golden hour lighting creating spiritual ambiance, high quality product shot",
+        "A girl wearing a colorful Lolita one-piece dress with floral prints and lace trim, sitting on stone bench beneath ancient trees at Tainan garden park, enjoying local dessert like red bean paste cake or fruit tarts while surrounded by blooming peonies, flat lay composition from above capturing her peaceful moment, natural daylight filtering through leaves, professional food and fashion photography, 4k quality",
+        "A girl in a multi-colored Lolita one-piece with rainbow hues and delicate embroidery, walking through crowded Tainan market streets filled with lanterns, vendors, and cultural artifacts, captured from behind-low angle showing her back as she moves past stalls selling local snacks like taro ice cream or fermented fish sauce dumplings, bustling urban energy mixed with whimsical fashion, high contrast lighting, detailed 4k cinematic shot"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "LoadImage",
+      "pos": [
+        -3670,
+        -1450
+      ],
+      "size": [
+        222.798828125,
+        326
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            86
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.50",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "IMG_PITU_20220917_144728(1).jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 41,
+      "type": "PathchSageAttentionKJ",
+      "pos": [
+        -3070,
+        -1140
+      ],
+      "size": [
+        269.9869791666667,
+        82
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 63
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            68
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "6ee278aa7d802c03ad713a7c5fbc02861b6773a8",
+        "Node name for S&R": "PathchSageAttentionKJ",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "auto",
+        false
+      ]
+    },
+    {
+      "id": 49,
+      "type": "FluxKontextMultiReferenceLatentMethod",
+      "pos": [
+        -2780,
+        -1140
+      ],
+      "size": [
+        300,
+        70
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 78
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            79
+          ]
+        }
+      ],
+      "title": "Edit Model Reference Method",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.5.1",
+        "Node name for S&R": "FluxKontextMultiReferenceLatentMethod",
+        "widget_ue_connectable": {},
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": [
+        "index_timestep_zero"
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 44,
+      "type": "VAEDecode",
+      "pos": [
+        -2690,
+        -1020
+      ],
+      "size": [
+        140,
+        46
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 65
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 77
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            72
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.6.0",
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 45,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        -2530,
+        -1030
+      ],
+      "size": [
+        204.134765625,
+        26
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 66
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            70
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.67",
+        "Node name for S&R": "ConditioningZeroOut",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 47,
+      "type": "KSampler",
+      "pos": [
+        -2360,
+        -1370
+      ],
+      "size": [
+        269.9869791666667,
+        262
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 68
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 79
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 70
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 93
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            65
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.50",
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        432704803442879,
+        "fixed",
+        6,
+        1,
+        "euler",
+        "simple",
+        1
+      ]
+    },
+    {
+      "id": 48,
+      "type": "SaveImage",
+      "pos": [
+        -2030,
+        -2020
+      ],
+      "size": [
+        610,
+        1090
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 72
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.50",
+        "Node name for S&R": "SaveImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "QwenEdit/ComfyUI"
+      ]
+    },
+    {
+      "id": 50,
+      "type": "GGUFInference",
+      "pos": [
+        -3430,
+        -2020
+      ],
+      "size": [
+        320,
+        490
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "image_3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "used_seed",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "prompts",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            95,
+            102
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "Listhelper",
+        "ver": "4145df5e4639b74007041df8142ee7e53a6da827",
+        "Node name for S&R": "GGUFInference",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Download: QwenVL",
+        "Generate 6 sets of prompts to make the storyboard about a girl in Tainan scenery, wearing colorful Lolita style one-piece dresses, with different photography angles, enjoying local cuisine",
+        "simple_prompt_list.md",
+        "",
+        3072,
+        0.7,
+        0.9,
+        40,
+        779436473294822,
+        "randomize",
+        false,
+        "Download: QwenVL mmproj",
+        true
+      ]
+    },
+    {
+      "id": 61,
+      "type": "PreviewAny",
+      "pos": [
+        -3770,
+        -2000
+      ],
+      "size": [
+        310,
+        380
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 103
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.6.0",
+        "Node name for S&R": "PreviewAny",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 60,
+      "type": "ModelDownloader",
+      "pos": [
+        -4140,
+        -1990
+      ],
+      "size": [
+        340,
+        380
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "status_message",
+          "type": "STRING",
+          "links": [
+            103
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "Listhelper",
+        "ver": "020e5fbe398b7ad1444b5d7a9ffe2926e8dc39b8",
+        "Node name for S&R": "ModelDownloader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "diffusion_models\nhttps://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning/resolve/main/qwen_image_edit_2511_fp8_e4m3fn_scaled_lightning_comfyui.safetensors\nCLIP\nhttps://huggingface.co/unsloth/Qwen2.5-VL-7B-Instruct-GGUF/resolve/main/Qwen2.5-VL-7B-Instruct-Q8_0.gguf\nhttps://huggingface.co/QuantStack/Qwen-Image-Edit-GGUF/resolve/main/mmproj/Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf\nVAE\nhttps://huggingface.co/QuantStack/Qwen-Image-GGUF/resolve/main/VAE/Qwen_Image-VAE.safetensors\n",
+        false,
+        true,
+        4,
+        8
+      ]
+    }
+  ],
+  "links": [
+    [
+      62,
+      39,
+      0,
+      40,
+      0,
+      "MODEL"
+    ],
+    [
+      63,
+      40,
+      0,
+      41,
+      0,
+      "MODEL"
+    ],
+    [
+      65,
+      47,
+      0,
+      44,
+      0,
+      "LATENT"
+    ],
+    [
+      66,
+      42,
+      0,
+      45,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      68,
+      41,
+      0,
+      47,
+      0,
+      "MODEL"
+    ],
+    [
+      70,
+      45,
+      0,
+      47,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      72,
+      44,
+      0,
+      48,
+      0,
+      "IMAGE"
+    ],
+    [
+      73,
+      38,
+      0,
+      39,
+      0,
+      "MODEL"
+    ],
+    [
+      74,
+      2,
+      0,
+      42,
+      0,
+      "CLIP"
+    ],
+    [
+      75,
+      33,
+      0,
+      42,
+      1,
+      "VAE"
+    ],
+    [
+      77,
+      33,
+      0,
+      44,
+      1,
+      "VAE"
+    ],
+    [
+      78,
+      42,
+      0,
+      49,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      79,
+      49,
+      0,
+      47,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      86,
+      10,
+      0,
+      42,
+      2,
+      "IMAGE"
+    ],
+    [
+      93,
+      57,
+      0,
+      47,
+      3,
+      "LATENT"
+    ],
+    [
+      95,
+      50,
+      2,
+      42,
+      5,
+      "STRING"
+    ],
+    [
+      102,
+      50,
+      2,
+      59,
+      0,
+      "STRING"
+    ],
+    [
+      103,
+      60,
+      0,
+      61,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Group",
+      "bounding": [
+        -3440,
+        -1500,
+        1390,
+        570
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ue_links": [],
+    "ds": {
+      "scale": 0.866197183098592,
+      "offset": [
+        4280.194400574111,
+        2278.9240906119553
+      ]
+    },
+    "links_added_by_ue": [],
+    "frontendVersion": "1.35.9",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true,
+    "workflowRendererVersion": "LG"
+  },
+  "version": 0.4
+}
