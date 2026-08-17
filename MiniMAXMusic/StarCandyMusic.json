@@ -1,0 +1,545 @@
+{
+  "id": "acac8b4a-9c5e-464f-8bae-33b91bc36965",
+  "revision": 0,
+  "last_node_id": 9,
+  "last_link_id": 18,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "UNETLoader",
+      "pos": [
+        100,
+        130
+      ],
+      "size": [
+        270,
+        90
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            12
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0",
+        "Node name for S&R": "UNETLoader",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "minimax_music3_dit_fp16.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "minimax_music3_dit_fp16.safetensors",
+        "weight_dtype": "default"
+      }
+    },
+    {
+      "id": 2,
+      "type": "CLIPLoader",
+      "pos": [
+        110,
+        270
+      ],
+      "size": [
+        270,
+        110
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0",
+        "Node name for S&R": "CLIPLoader",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "minimax_music3_text_encoder_pruned_int8_convrot.safetensors",
+        "minimax",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "minimax_music3_text_encoder_pruned_int8_convrot.safetensors",
+        "type": "minimax",
+        "device": "default"
+      }
+    },
+    {
+      "id": 3,
+      "type": "VAELoader",
+      "pos": [
+        90,
+        430
+      ],
+      "size": [
+        270,
+        60
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0",
+        "Node name for S&R": "VAELoader",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "minimax_music3_dav.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_music3_dav.safetensors"
+      }
+    },
+    {
+      "id": 6,
+      "type": "EmptyMiniMaxMusic3LatentAudio",
+      "pos": [
+        30,
+        540
+      ],
+      "size": [
+        350,
+        90
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0",
+        "Node name for S&R": "EmptyMiniMaxMusic3LatentAudio",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        95,
+        1
+      ],
+      "widgets_values_named": {
+        "seconds": 95,
+        "batch_size": 1
+      }
+    },
+    {
+      "id": 5,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        860,
+        150
+      ],
+      "size": [
+        160,
+        30
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0",
+        "Node name for S&R": "ConditioningZeroOut",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "type": "KSampler",
+      "pos": [
+        860,
+        220
+      ],
+      "size": [
+        270,
+        270
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 12
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 13
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 14
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0",
+        "Node name for S&R": "KSampler",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        777888999,
+        "randomize",
+        30,
+        1.7,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 777888999,
+        "control_after_generate": "randomize",
+        "steps": 30,
+        "cfg": 1.7,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 8,
+      "type": "VAEDecodeAudio",
+      "pos": [
+        870,
+        520
+      ],
+      "size": [
+        140,
+        50
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 16
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 17
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            18
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0",
+        "Node name for S&R": "VAEDecodeAudio",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "type": "SaveAudioMP3",
+      "pos": [
+        1160,
+        150
+      ],
+      "size": [
+        270,
+        140
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 18
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0",
+        "Node name for S&R": "SaveAudioMP3",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "audio/henshin_xingtang",
+        "320k"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "audio/henshin_xingtang",
+        "quality": "320k"
+      }
+    },
+    {
+      "id": 4,
+      "type": "MiniMaxMusic3TextEncode",
+      "pos": [
+        410,
+        130
+      ],
+      "size": [
+        420,
+        610
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            11,
+            13
+          ]
+        },
+        {
+          "name": "seconds",
+          "type": "FLOAT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0",
+        "Node name for S&R": "MiniMaxMusic3TextEncode",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "upbeat Japanese TV anime magical girl transformation opening theme, sparkling bell arpeggios and bright synth leads, punchy orchestral brass stabs, driving rock drums with tambourine, energetic cute female vocal singing in Mandarin, soaring heroic chorus with a key change at the climax, glittering chimes, joyful triumphant 90s anime OP energy, polished studio mix",
+        "[verse]\n書包甩到肩膀後面\n天空裂開一道甜甜的縫\n又輪到我了\n\n[pre-chorus]\n髮夾發燙 星星在數秒\n三 二 一\n\n[chorus]\n變身 小星糖登場\n糖霜色的裙襬轉成光\n夜再長 我也照得亮\n一顆星 就夠了\n變身 糖也可以當武器\n我甜得很有原則\n要守護誰 我自己決定\n\n[verse]\n教室還亮著最後一盞燈\n有人今天還沒有被接住\n那我就去 我最快\n\n[bridge]\n不是因為我很勇敢\n是因為我不想有人一個人\n\n[chorus]\n變身 小星糖登場\n把黑夜咬開一個缺口\n別怕 我來了\n一顆星 就夠了\n變身 我的名字叫小星糖\n今天也會 準時發亮\n",
+        20260815,
+        "randomize",
+        95,
+        1.7,
+        50
+      ],
+      "widgets_values_named": {
+        "caption": "upbeat Japanese TV anime magical girl transformation opening theme, sparkling bell arpeggios and bright synth leads, punchy orchestral brass stabs, driving rock drums with tambourine, energetic cute female vocal singing in Mandarin, soaring heroic chorus with a key change at the climax, glittering chimes, joyful triumphant 90s anime OP energy, polished studio mix",
+        "lyrics": "[verse]\n書包甩到肩膀後面\n天空裂開一道甜甜的縫\n又輪到我了\n\n[pre-chorus]\n髮夾發燙 星星在數秒\n三 二 一\n\n[chorus]\n變身 小星糖登場\n糖霜色的裙襬轉成光\n夜再長 我也照得亮\n一顆星 就夠了\n變身 糖也可以當武器\n我甜得很有原則\n要守護誰 我自己決定\n\n[verse]\n教室還亮著最後一盞燈\n有人今天還沒有被接住\n那我就去 我最快\n\n[bridge]\n不是因為我很勇敢\n是因為我不想有人一個人\n\n[chorus]\n變身 小星糖登場\n把黑夜咬開一個缺口\n別怕 我來了\n一顆星 就夠了\n變身 我的名字叫小星糖\n今天也會 準時發亮\n",
+        "seed": 20260815,
+        "control_after_generate": "randomize",
+        "max_duration": 95,
+        "cfg_scale": 1.7,
+        "top_k": 50
+      }
+    }
+  ],
+  "links": [
+    [
+      10,
+      2,
+      0,
+      4,
+      0,
+      "CLIP"
+    ],
+    [
+      11,
+      4,
+      0,
+      5,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      12,
+      1,
+      0,
+      7,
+      0,
+      "MODEL"
+    ],
+    [
+      13,
+      4,
+      0,
+      7,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      14,
+      5,
+      0,
+      7,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      15,
+      6,
+      0,
+      7,
+      3,
+      "LATENT"
+    ],
+    [
+      16,
+      7,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      17,
+      3,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      18,
+      8,
+      0,
+      9,
+      0,
+      "AUDIO"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ue_links": [],
+    "ds": {
+      "scale": 1,
+      "offset": [
+        82.00219836078048,
+        87.36202043708681
+      ]
+    },
+    "frontendVersion": "1.49.6",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
